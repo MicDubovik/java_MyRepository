@@ -3,7 +3,6 @@
 <file name="D:\Project\java_MyRepository\junior\chapter_001\src\main\java\ru\job4j\Calculate.java">
 </file>
 <file name="D:\Project\java_MyRepository\junior\chapter_001\src\main\java\ru\job4j\package-info.java">
-<error line="1" severity="error" message="Missing a Javadoc comment." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocStyleCheck"/>
 </file>
 <file name="D:\Project\java_MyRepository\junior\chapter_001\src\test\java\ru\job4j\CalculateTest.java">
 <error line="0" severity="error" message="Missing package-info.java file." source="com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck"/>

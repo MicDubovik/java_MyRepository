@@ -1,4 +1,7 @@
-package ru.job4j;
 /**
-* bla-bla-bla
+* bla-bla-bla.
 */
+
+
+
+package ru.job4j;
