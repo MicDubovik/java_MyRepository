@@ -8,7 +8,7 @@ public class Max {
 
 
     int result;
-    int result2;
+    
 
     /**
      * Определение максимального из чисел
