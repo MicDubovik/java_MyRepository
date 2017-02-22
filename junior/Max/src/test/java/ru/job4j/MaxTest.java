@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 public class MaxTest {
 
     /**
-     * тест для определения максимального из чисел
+     * тест для определения максимального из 2-х чисел
      */
 
     @Test
@@ -22,5 +22,21 @@ public class MaxTest {
         assertThat(result, is(25));
 
     }
+    /**
+     * тест для определения максимального из 3-х чисел
+     */
+
+    @Test
+    public void testMaxFrom3() {
+
+        final Max testMax = new Max();
+
+        final int  result = testMax.max(15,25,3);
+
+        assertThat(result, is(25));
+
+    }
+
+
 }
 
