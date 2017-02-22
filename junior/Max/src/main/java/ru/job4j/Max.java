@@ -8,7 +8,7 @@ public class Max {
 
 
     int result;
-    
+    int result2;
 
     /**
      * Определение максимального из чисел
@@ -43,7 +43,8 @@ public class Max {
 
         int res1 = max(first, second);
         int res2 = max(second, third);
-        return res1 < res2 ? res2 : res1;
+        int res3 = max(res1,res2);
+        return res3 ;
 
     }
 
