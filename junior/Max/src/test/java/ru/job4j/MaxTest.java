@@ -9,16 +9,17 @@ import static org.junit.Assert.assertThat;
 public class MaxTest {
 
     /**
-     * тест метода сложения
+     * тест для определения максимального из чисел
      */
 
     @Test
-    public void testAdd() {
+    public void testMax() {
 
         final Max testMax = new Max();
 
-        final String  result = testMax.max(15,25);
-        assertThat(result, is("first < second"));
+        final int  result = testMax.max(15,25);
+
+        assertThat(result, is(25));
 
     }
 }

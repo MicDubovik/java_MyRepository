@@ -1,22 +1,32 @@
 package ru.job4j;
 
+/**
+ * Найти максимальное из 2-х чисел
+ */
+
 public class Max {
 
 
-    String result = "";
+    int result ;
+
+    /**
+     * Определение максимального из чисел
+     * Если числа равны возвращаем 0
+     * @param value1 входящие аргументы
+     * @param value2 входящие аргументы
+     * @return       возвращаемое значение
+     */
 
 
-
-
-    public String max(int value1, int value2){
+    public int max(int value1, int value2){
         if (  value1> value2){
-             this.result = "first > second" ;
+             this.result = value1 ;
         }
         else if ( value1< value2){
-            this.result ="first < second";
+            this.result = value2;
         }
         else {
-            this.result = "max.value1 = max.value2";
+            this.result = 0;
         }
         return result;
     }
