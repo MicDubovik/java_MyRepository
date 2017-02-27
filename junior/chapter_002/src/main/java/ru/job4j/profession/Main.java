@@ -1,7 +1,7 @@
 package ru.job4j.profession;
 
 /**
- * Created by Katy on 27.02.2017.
+ * Занятие наследования
  */
 public class Main {
     public static void main(String[] args) {
@@ -15,6 +15,12 @@ public class Main {
         worker[0]=doctor  ;
         worker[1]=teacher;
         worker[2]=engeneer;
+
+        /**
+         * Вывод на экран инф-и о рабочих
+         * и делаем проверку , если они могут быть приведены
+         * к определенному типу - вызываем поля , недоступные при приведении к базовому типу.
+         */
 
         for (Profession prof : worker) {
             System.out.print(prof.name+"\t"+prof.qualification+"\t"+prof.old);
