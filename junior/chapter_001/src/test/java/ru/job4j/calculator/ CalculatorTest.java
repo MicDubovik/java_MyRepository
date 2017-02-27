@@ -6,7 +6,7 @@ package ru.job4j.calculator;
 
 
 
-public class CalculatorTest{
+class CalculatorTest{
 
     /**
      * тест метода сложения

@@ -1,4 +1,4 @@
-package ru.job4j.paint;
+package ru.job4j;
 
 /**
  * Отрисовка пирамиды символом "^"
@@ -6,10 +6,7 @@ package ru.job4j.paint;
 public class Paint {
 
     StringBuilder builder = new StringBuilder();
-    String simbol= "^";
-    String empty = " ";
-    String move ="\n" ;
-    int num =1;
+
 
     /**
      * Мотод отрисовки пирамиды
@@ -18,22 +15,23 @@ public class Paint {
      */
 
    public String piramid(int h){
+       int k=1;
 
-       for (int i = 0; i < num*h; i++)
+       for (int i = 0; i < k*h; i++)
        {
 
            for (int j = 1; j < h; j++)
            {
-               builder.append(empty);
+               builder.append(" ");
            }
 
-           for (int x = 0; x < num; x++)
+           for (int x = 0; x < k; x++)
            {
-               builder.append(simbol);
+               builder.append("^");
            }
            h -= 1;
-           num += 2;
-          builder.append(move);
+           k += 2;
+          builder.append("\n");
 
        }
        return builder.toString();

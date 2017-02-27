@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 /**
  * Тестируем класс Turnarray.
  */
-public class TurnArrayTest {
+class TurnArrayTest {
     /**
      * Тестируем метод methodTurn().
      */

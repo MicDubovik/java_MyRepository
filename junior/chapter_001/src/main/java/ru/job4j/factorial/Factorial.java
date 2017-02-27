@@ -4,8 +4,7 @@ package ru.job4j.factorial;
  * Вычисление факториала числа
  */
 public class Factorial {
-
-    int number ;
+    
 
     /**
      * Вычисление факториала рекурсивно .
