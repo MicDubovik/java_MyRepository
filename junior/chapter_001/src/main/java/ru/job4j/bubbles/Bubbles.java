@@ -8,6 +8,7 @@ public class Bubbles {
      * Реализация метода сортировки
      * @param array
      * @return
+     *
      */
 
     public int[] methodBubles(int[] array) {
