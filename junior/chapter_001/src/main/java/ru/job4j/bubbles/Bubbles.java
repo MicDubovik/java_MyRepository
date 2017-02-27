@@ -1,7 +1,7 @@
 package ru.job4j.bubbles;
 
 /**
- * Сортировка методом пузырька.
+ * Сортировка методом пузырька...
  */
 public class Bubbles {
     /**
