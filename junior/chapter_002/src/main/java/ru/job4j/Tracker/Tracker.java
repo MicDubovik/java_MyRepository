@@ -46,7 +46,7 @@ public class Tracker {
      */
     public void editItem(String id, String comment, String description) {
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && String.valueOf(items[i].getId()).equals(id)) {
+            if (items[i] != null && items[i].getId().equals(id)) {
                 items[i].setComment(comment);
                 items[i].setDescription(description);
             }
