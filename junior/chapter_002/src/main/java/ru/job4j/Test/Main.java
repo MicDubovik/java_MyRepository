@@ -7,14 +7,20 @@ public class Main {
 
     public static void main(String[] args) {
 
-        BaseClass base = new BaseClass();
-        DerivedClass derive = new DerivedClass();
+         String[] num = new String[5];
 
-        System.out.println(base.getNumber_base());
-        System.out.println(derive.getNumber_derived()+derive.getNumber_base());
-        derive.write();
+        for (int i = 0; i < num.length; i++) {
+            num[i]="ok";
+        }
+        for (String i : num) {
+            System.out.println(i);
+        }
+        num[2]=null;
+        for (String i : num) {
+            System.out.println(i);
+        }
 
-        System.out.println(((BaseClass) derive).getNumber_base());;
-        derive.write();
+
+
     }
 }

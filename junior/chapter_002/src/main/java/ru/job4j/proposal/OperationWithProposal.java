@@ -27,7 +27,6 @@ public class OperationWithProposal {
             }
             if (count < 1 && i == proposals.length - 1) System.out.println("Нет заявок");
         }
-
     }
 
     /**
@@ -36,7 +35,6 @@ public class OperationWithProposal {
 
     public void editProposal() {
         int number = 0;
-
         for (int i = 0; i < proposals.length; i++) {
             System.out.println("Введите ID заявки для редактирования:");
             scan = new Scanner(System.in);
@@ -48,7 +46,6 @@ public class OperationWithProposal {
             } else {
                 System.out.println("Нет такого ID !!!");
             }
-
         }
     }
 
@@ -66,9 +63,7 @@ public class OperationWithProposal {
             } else {
                 System.out.println("Нет такого ID !!!");
             }
-
         }
-
     }
 
     /**
