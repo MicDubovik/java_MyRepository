@@ -1,7 +1,5 @@
 package ru.job4j.testPart001;
 
-import java.util.Arrays;
-
 /**
  * Тестовое задание 001
  * Сравнить и удостовериться ,что строка sub является подстрокой origin
@@ -76,12 +74,27 @@ public class Suborigin {
                 }
             }
         }
+               int z=0;
+        for (int i = 0; i < charnew.length; i++) {
+            z++;
+            if (charnew[i]==charsSub[i] && z==charnew.length){
+
+            }
+        }
         /**
-         * превращаем наши массивы в строки
-         * и сравниваем их.
+         * Сравниваем наши массивы
+         * делаем счетчик и проверяем равенство.
          */
 
-        if (Arrays.equals(charnew,charsSub)) {
+        int num=0;
+        for (int i = 0; i < charnew.length; i++) {
+
+            if (charnew[i]==charsSub[i]){
+                num++;
+            }
+
+        }
+        if (num==charnew.length){
             result=true;
         }
         else {
@@ -89,6 +102,8 @@ public class Suborigin {
         }
         return result;
     }
+
+
 }
 
 

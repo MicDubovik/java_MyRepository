@@ -1,6 +1,7 @@
 package ru.job4j.paint;
 
 import org.junit.Test;
+import ru.job4j.Paint;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
