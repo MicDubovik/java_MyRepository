@@ -82,8 +82,8 @@ public class StartUI {
 
     public static void main(String[] args) {
         Item item = new Item();
-           Input input = new StubInput(new String[]{"1","old task","old newdesc","4","8"});
-      //  Input input = new ConsoleInput();
+        //   Input input = new StubInput(new String[]{"1","old task","old newdesc","4","8"});
+        Input input = new ConsoleInput();
         new StartUI(input).init();
     }
 }
