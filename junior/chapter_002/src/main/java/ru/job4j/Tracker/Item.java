@@ -24,6 +24,13 @@ public class Item {
         this.comment = comment;
     }
 
+    public Item(String id, String name, String description, String comment) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.comment = comment;
+    }
+
     public String getComment() {
         return comment;
     }
