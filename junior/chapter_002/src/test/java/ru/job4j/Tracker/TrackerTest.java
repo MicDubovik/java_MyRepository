@@ -31,8 +31,8 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("first name","first desc","comment"));
         String id = item.getId();
-        tracker.editItem( id,"new comment","new desc");
-        assertThat(item.getComment(),is("new comment"));
+     //   tracker.editItem( id,"new desc");
+        assertThat(item.getDescription(),is("new desc"));
 
     }
 

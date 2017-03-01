@@ -13,6 +13,7 @@ public class Tracker {
 
     /**
      * Добавление заявки
+     *
      * @param item
      * @return
      */
@@ -25,6 +26,7 @@ public class Tracker {
 
     /**
      * Добавление комментария
+     *
      * @param comment
      * @param id
      */
@@ -40,29 +42,34 @@ public class Tracker {
 
     /**
      * Редактирование заявки
-     * @param id
-     * @param comment
-     * @param description
+     *
+     * @param
+     * @param
+     * @param
      */
-    public void editItem(String id, String comment, String description) {
+    public Item editItem(Item olditem, Item newitem) {
+
+        Item item = new Item();
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
-                items[i].setComment(comment);
-                items[i].setDescription(description);
+            if (items[i] != null && items[i].getId().equals(olditem.getId())) {
+                items[i].setName(newitem.getName());
+                items[i].setDescription(newitem.getDescription());
+                item = items[i];
             }
         }
+        return item;
     }
 
-    /**
-     * Поиск по ключевому слову
-     * @param word
-     * @return
-     */
+        /**
+         * Поиск по ключевому слову
+         * @param word
+         * @return
+         */
 
     public Item findByComment(String word) {
         Item result = null;
         for (int i = 0; i < items.length; i++) {
-            if (items[i].getDescription().contains(word) || (items[i].getComment().contains(word))) {
+            if (items[i] != null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
                 result = items[i];
                 break;
             }
@@ -72,13 +79,14 @@ public class Tracker {
 
     /**
      * Удаление заявки
+     *
      * @param id
      */
 
     public void deleteItem(String id) {
-        for (int i = 0; i < items.length-1; i++) {
-            if (  items[i].getId().equals(id)) {
-                items[i]=null;
+        for (int i = 0; i < items.length - 1; i++) {
+            if (items[i].getId().equals(id)) {
+                items[i] = null;
                 break;
             }
         }
@@ -88,6 +96,7 @@ public class Tracker {
 
     /**
      * Поиск заявки по ID.
+     *
      * @param id
      * @return
      */
@@ -105,6 +114,7 @@ public class Tracker {
 
     /**
      * метод генерации ID.
+     *
      * @return
      */
 
@@ -114,6 +124,7 @@ public class Tracker {
 
     /**
      * Показать все заявки.
+     *
      * @return
      */
     public Item[] getAll() {
@@ -121,12 +132,11 @@ public class Tracker {
 
         for (int index = 0; index != this.posission; index++) {
 
-                result[index] = this.items[index];
+            result[index] = this.items[index];
         }
 
         return result;
     }
-
 
 
 }
