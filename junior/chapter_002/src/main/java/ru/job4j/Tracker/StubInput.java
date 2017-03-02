@@ -46,6 +46,8 @@ public class StubInput implements Input {
 
     @Override
     public int selectNumber(String question, int[] number) {
-        return number.length;
+        int key = Integer.valueOf(this.operation(question));
+
+        return key;
     }
 }

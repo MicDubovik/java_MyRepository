@@ -21,6 +21,7 @@ public class StartUI {
         }
 
         menu.fillActions();
+
         System.out.println("*********************");
         System.out.println("*  Пограмма заявок  *");
         System.out.println("*********************");

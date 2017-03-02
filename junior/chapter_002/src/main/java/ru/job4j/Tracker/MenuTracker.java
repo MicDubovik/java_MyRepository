@@ -57,12 +57,12 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String name = input.askName("Please enter the tasks name: ");
             String description = input.askDesc("Please enter the tasks description: ");
-
+            tracker.add(new Item(name, description));
             /**
              * тестовая заявка
              */
             tracker.add(new Item("1111", "test task1", "test description1", "test comment"));
-            tracker.add(new Item(name, description));
+
         }
 
         public String info() {
@@ -142,9 +142,9 @@ public class MenuTracker {
         @Override
         public void execute(Input input, Tracker tracker) {
             String word = input.askWord("Please enter word for search : ");
-            Item item = tracker.findByComment(word);
-            System.out.println(String.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment()));
 
+           Item item = tracker.findByComment(word);
+            System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
 
         }
 

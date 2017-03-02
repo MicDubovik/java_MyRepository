@@ -74,12 +74,14 @@ public class Tracker {
     public Item findByComment(String word) {
         Item result = null;
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
-                result = items[i];
-                break;
+           if (items[i]!= null && items[i].getComment()!=null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
+
+                       result = items[i];
+                       break;
+                   }
             }
-        }
-        return result;
+
+        return result ;
     }
 
     /**

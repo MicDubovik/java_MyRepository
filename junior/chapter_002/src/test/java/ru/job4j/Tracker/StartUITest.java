@@ -31,42 +31,42 @@ public class StartUITest {
         /**
          * Тест добавления и показа всех заявок.
          */
-        Input input = new StubInput(new String[]{"1", "old task", "old newdesc", "4", "8"});
+        Input input = new StubInput(new String[]{"0", "old task", "old newdesc","n","1","y"});
 
         new StartUI(input).init();
 
          /**
          * Тест редактирования заявки
          */
-        Input inputEdit = new StubInput(new String[]{"1", "old task", "old newdesc", "4", "2", "1111","new name","new desc","4","8"});
+        Input inputEdit = new StubInput(new String[]{"0","old task", "old newdesc","n","1","n", "2", "1111", "new name","new desc","n","1","y"});
 
         new StartUI(inputEdit).init();
 
         /**
          * Добавление комментария
          */
-        Input inputComm = new StubInput(new String[]{"1", "old task", "old newdesc", "4","3","1111","new comment","4","8"});
+        Input inputComm = new StubInput(new String[]{"0", "old task", "old newdesc","n","1","n","5","1111","new comment","n","1","y"});
 
         new StartUI(inputComm).init();
 
         /**
          * Поиск по id
          */
-        Input inputId = new StubInput(new String[]{"1", "old task", "old newdesc", "4","6","1111", "8"});
+        Input inputId = new StubInput(new String[]{"0", "old task", "old newdesc","n","1","n" ,"3","1111","y"});
 
         new StartUI(inputId).init();
 
         /**
          * Поиск слов в заявке
          */
-        Input inputWord = new StubInput(new String[]{"1", "old task", "old newdesc", "4","5","test","8"});
+        Input inputWord = new StubInput(new String[]{"0", "old task", "old newdesc","n","1","n" ,"6","test","y"});
 
         new StartUI(inputWord).init();
 
         /**
          *  Удаление заявки
          */
-        Input inputDelete = new StubInput(new String[]{"1", "old task", "old newdesc", "4","7","1111","4","8"});
+        Input inputDelete = new StubInput(new String[]{"0", "old task", "old newdesc","n","1","n","4","1111","n","1","y"});
 
         new StartUI(inputDelete).init();
 
