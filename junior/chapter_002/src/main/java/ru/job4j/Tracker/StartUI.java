@@ -12,7 +12,6 @@ public class StartUI {
     }
 
 
-
     public void init() {
 
         Tracker tracker = new Tracker();
@@ -33,8 +32,16 @@ public class StartUI {
 
             switch (operation) {
                 case "1":
+
                     String name = input.askName("Please enter the tasks name: ");
                     String description = input.askDesc("Please enter the tasks description: ");
+
+                    /**
+                     * тестовая заявка
+                     */
+                    tracker.add(new Item("1111", "test task1", "test description1","test comment"));
+
+
                     tracker.add(new Item(name, description));
                     break;
                 case "2":
@@ -42,17 +49,18 @@ public class StartUI {
                     String id = input.askId("Please enter the tasks ID:");
                     name = input.askName("Please enter the tasks name: ");
                     description = input.askDesc("Please enter the tasks description: ");
-                    tracker.editItem(tracker.findById(id) ,new Item(name,description));
+                    item3 = tracker.findById(id);
+                    tracker.editItem(item3, new Item(name, description));
                     break;
                 case "3":
                     id = input.askId("Please enter the tasks ID:");
                     String comment = input.askComment("Please enter comment for the tasks : ");
-                    tracker.addComment(comment, id);
+                    tracker.addComment(tracker.findById(id), comment);
                     break;
                 case "4":
                     for (Item item : tracker.getAll()) {
-                        if (item!=null)
-                        System.out.print(item.getId() + "\t" + item.getName() + "\t" + item.getDescription() + "\t" + item.getComment());
+                        if (item != null)
+                            System.out.print(item.getId() + "\t" + item.getName() + "\t" + item.getDescription() + "\t" + item.getComment());
                         System.out.println();
                     }
                     break;

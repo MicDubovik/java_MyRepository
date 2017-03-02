@@ -19,8 +19,11 @@ public class Tracker {
      */
 
     public Item add(Item item) {
-        item.setId(generateId());
-        this.items[posission++] = item;
+        if (item.getId()==null) {
+            item.setId(generateId());
+            this.items[posission++] = item;
+        }
+        else this.items[posission++]= item;
         return item;
     }
 
@@ -28,16 +31,18 @@ public class Tracker {
      * Добавление комментария
      *
      * @param comment
-     * @param id
+     * @param
      */
-    public void addComment(String comment, String id) {
+    public Item addComment(Item item ,String comment) {
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i].getId().equals(id)) {
+            if (items[i] != null && items[i].getId().equals(item.getId())) {
 
                 items[i].setComment(comment);
+                item = items[i];
 
             }
         }
+        return item ;
     }
 
     /**

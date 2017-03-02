@@ -22,17 +22,19 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("first name","first desc"));
         String id = item.getId();
-          tracker.addComment( "comment",id);
-        assertThat(item.getComment(),is("comment"));
+        String comment = "new comment";
+          tracker.addComment( item,comment);
+        assertThat(item.getComment(),is("new comment"));
     }
 
     @Test
     public void editItem() throws Exception {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("first name","first desc","comment"));
+        Item item2 = tracker.add(new Item("Sec name","second desc","sec comment"));
         String id = item.getId();
-     //   tracker.editItem( id,"new desc");
-        assertThat(item.getDescription(),is("new desc"));
+        tracker.editItem( item,item2);
+        assertThat(tracker.editItem( item,item2).getDescription(),is("second desc"));
 
     }
 

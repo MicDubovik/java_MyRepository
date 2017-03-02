@@ -18,16 +18,19 @@ public class StubInput implements Input {
 
     @Override
     public String askDesc(String question) {
+
         return answers[position++];
     }
 
     @Override
     public String askComment(String question) {
+
         return answers[position++];
     }
 
     @Override
     public String askId(String question) {
+
         return answers[position++];
     }
 
