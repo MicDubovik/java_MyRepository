@@ -43,4 +43,9 @@ public class StubInput implements Input {
     public String operation(String operation) {
         return answers[position++];
     }
+
+    @Override
+    public int selectNumber(String question, int[] number) {
+        return number.length;
+    }
 }

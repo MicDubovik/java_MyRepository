@@ -11,4 +11,5 @@ public interface Input {
     String askId(String question);
     String askWord(String s);
     String operation(String operation);
+    int selectNumber(String question,int[] number);
 }

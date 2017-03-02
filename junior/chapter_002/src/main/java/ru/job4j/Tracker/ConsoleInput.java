@@ -14,11 +14,13 @@ public class ConsoleInput implements Input {
         System.out.println(question);
         return scanner.nextLine();
     }
-    public String askDesc(String question){
+
+    public String askDesc(String question) {
         System.out.println(question);
         return scanner.nextLine();
     }
-    public String askComment(String question){
+
+    public String askComment(String question) {
         System.out.println(question);
         return scanner.nextLine();
     }
@@ -34,9 +36,18 @@ public class ConsoleInput implements Input {
         System.out.println(question);
         return scanner.nextLine();
     }
-    public String operation(String operation){
+
+    public String operation(String operation) {
         System.out.println(operation);
         return scanner.nextLine();
     }
 
+    @Override
+    public int selectNumber(String question, int[] number) {
+
+        int key = Integer.valueOf(this.operation(question));
+
+            return key;
+
+    }
 }
