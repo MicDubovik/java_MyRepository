@@ -60,20 +60,20 @@ public class StartUI {
                 case "4":
                     for (Item item : tracker.getAll()) {
                         if (item != null)
-                            System.out.format("%s  ,%s  ,%s  ,%s",item.getId(), item.getName(),item.getDescription(),item.getComment());
+                            System.out.println(String.format("%s  ,%s  ,%s  ,%s",item.getId(), item.getName(),item.getDescription(),item.getComment()));
                         System.out.println();
                     }
                     break;
                 case "5":
                     String word = input.askWord("Please enter word for search : ");
                     Item item = tracker.findByComment(word);
-                    System.out.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment());
+                    System.out.println(String.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment()));
 
                     break;
                 case "6":
                     id = input.askId("Please enter the tasks ID:");
                     item = tracker.findById(id);
-                    System.out.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment());
+                    System.out.println(String.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment()));
 
                     break;
                 case "7":
