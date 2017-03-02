@@ -60,20 +60,20 @@ public class StartUI {
                 case "4":
                     for (Item item : tracker.getAll()) {
                         if (item != null)
-                            System.out.print(item.getId() + "\t" + item.getName() + "\t" + item.getDescription() + "\t" + item.getComment());
+                            System.out.format("%s  ,%s  ,%s  ,%s",item.getId(), item.getName(),item.getDescription(),item.getComment());
                         System.out.println();
                     }
                     break;
                 case "5":
                     String word = input.askWord("Please enter word for search : ");
                     Item item = tracker.findByComment(word);
-                    System.out.println(item.getId() + "\t" + item.getName() + "\t" + item.getDescription() + "\t" + item.getComment());
+                    System.out.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment());
 
                     break;
                 case "6":
                     id = input.askId("Please enter the tasks ID:");
                     item = tracker.findById(id);
-                    System.out.println(item.getId() + "\t" + item.getName() + "\t" + item.getDescription() + "\t" + item.getComment());
+                    System.out.format("%s  ,%s  ,%s  ,%s",item.getId(),item.getName(),item.getDescription(),item.getComment());
 
                     break;
                 case "7":
@@ -85,12 +85,11 @@ public class StartUI {
                     System.out.println("By !!!");
 
             }
-        } while (operation != "exit");
+        } while (!operation.equals("exit"));
     }
 
     public static void main(String[] args) {
         Item item = new Item();
-        //   Input input = new StubInput(new String[]{"1","old task","old newdesc","4","8"});
         Input input = new ConsoleInput();
         new StartUI(input).init();
     }
