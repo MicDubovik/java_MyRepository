@@ -10,44 +10,31 @@ public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    public String askName(String question) {
+    public String ask(String question) {
         System.out.println(question);
         return scanner.nextLine();
     }
 
-    public String askDesc(String question) {
-        System.out.println(question);
-        return scanner.nextLine();
-    }
 
-    public String askComment(String question) {
-        System.out.println(question);
-        return scanner.nextLine();
-    }
+
 
     @Override
-    public String askId(String question) {
-        System.out.println(question);
-        return scanner.nextLine();
-    }
+    public int ask(String question, int[] number) throws MenuOutExeption {
 
-    @Override
-    public String askWord(String question) {
-        System.out.println(question);
-        return scanner.nextLine();
-    }
+        int key = Integer.valueOf(this.ask(question));
 
-    public String operation(String operation) {
-        System.out.println(operation);
-        return scanner.nextLine();
-    }
-
-    @Override
-    public int selectNumber(String question, int[] number) {
-
-        int key = Integer.valueOf(this.operation(question));
-
+        boolean exist = false;
+        for(int value : number) {
+            if (value == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
             return key;
-
+        } else {
+            throw new MenuOutExeption(" Out of menu range. ");
+        }
     }
+
 }

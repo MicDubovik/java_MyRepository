@@ -5,11 +5,7 @@ package ru.job4j.Tracker;
  */
 public interface Input {
 
-    String askName(String question);
-    String askDesc(String question);
-    String askComment(String question);
-    String askId(String question);
-    String askWord(String s);
-    String operation(String operation);
-    int selectNumber(String question,int[] number);
+    String ask(String question) ;
+
+    int ask(String question,int[] number) ;
 }

@@ -24,14 +24,20 @@ public class MenuTracker {
     }
 
 
-    public void fillActions() {
+
+    public int[] fillActions() {
         this.actions[number++] = new AddItem();
-        this.actions[number++] = new ShowItems();
+        this.actions[number++] = new ShowAllItems();
         this.actions[number++] = new EditItem();
         this.actions[number++] = new FindItemById();
         this.actions[number++] = new DeleteItem();
         this.actions[number++] = new AddComment();
         this.actions[number++] = new FindItemByComment();
+        int[] possibleAction = new int[actions.length];
+        for (int i = 0; i < this.actions.length; i++) {
+            possibleAction[i] = this.actions[i].key();
+        }
+        return possibleAction;
 
     }
 
@@ -46,17 +52,26 @@ public class MenuTracker {
             }
         }
     }
+    private void showTasks(Item item) {
+        System.out.println(item.getId() + " " + item.getName() + " " + item.getDescription());
+    }
 
-    private class AddItem implements UserAction {
-
-
+    private class AddItem extends BaseAction {
+        /**
+         * Номер метода.
+         * @return number.
+         */
         public int key() {
             return 0;
         }
-
+        /**
+         * Действие метода.
+         * @param input input.
+         * @param tracker tracker.
+         */
         public void execute(Input input, Tracker tracker) {
-            String name = input.askName("Please enter the tasks name: ");
-            String description = input.askDesc("Please enter the tasks description: ");
+            String name = input.ask("Please enter the item name: ");
+            String description = input.ask("Please enter the item description: ");
             tracker.add(new Item(name, description));
             /**
              * тестовая заявка
@@ -64,35 +79,49 @@ public class MenuTracker {
             tracker.add(new Item("1111", "test task1", "test description1", "test comment"));
 
         }
-
-        public String info() {
-            return String.format("%s- %s", this.key(), "Add the new task.");
+        /**
+         * Информация о методе.
+         */
+        AddItem() {
+            super("Add the new item.");
         }
     }
 
-    private class EditItem implements UserAction {
-
+    private class EditItem extends BaseAction {
+        /**
+         * Номер метода.
+         * @return number.
+         */
         public int key() {
-            return 2;
+            return 1;
         }
-
+        /**
+         * Действие метода.
+         * @param input input.
+         * @param tracker tracker.
+         */
         public void execute(Input input, Tracker tracker) {
+            select(3);
             Item item3 = new Item();
-            String id = input.askId("Please enter the tasks ID:");
-            String name = input.askName("Please enter the tasks name: ");
-            String description = input.askDesc("Please enter the tasks description: ");
+            String id = input.ask("Please enter the tasks ID:");
+            String name = input.ask("Please enter the tasks name: ");
+            String description = input.ask("Please enter the tasks description: ");
             item3 = tracker.findById(id);
             tracker.editItem(item3, new Item(name, description));
-
-
         }
-
-        public String info() {
-            return String.format("%s- %s", this.key(), "Edit  task .");
+        /**
+         * Информация о методе.
+         */
+        EditItem() {
+            super("Edit item.");
         }
     }
 
-    private class ShowItems implements UserAction {
+
+
+    private class ShowAllItems extends BaseAction {
+
+
 
         public int key() {
             return 1;
@@ -101,38 +130,56 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.getAll()) {
                 if (item != null)
-                System.out.println(String.format("%s. %s. %s. %s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
+                 showTasks(item);
 
             }
         }
 
-        public String info() {
-            return String.format("%s- %s", this.key(), "Show all task.");
-
+        /**
+         * Конструктор принимающий имя метода.
+         *
+         *
+         */
+       public ShowAllItems () {
+            super("Show all tasks.");
         }
 
     }
 
-    private class FindItemById implements UserAction {
+    private class FindItemById extends BaseAction {
 
         public int key() {
             return 3;
         }
 
         public void execute(Input input, Tracker tracker) {
-
-            String id = input.askId("Please enter the tasks ID:");
-           Item item = tracker.findById(id);
-            System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
-
+            try {
+              //  select(3);
+                String id = input.ask("Please enter the id item: ");
+                Item result = tracker.findById(id);
+                showTasks(result);
+            } catch (NullPointerException npe) {
+                System.out.println("Please enter valid id");
+            }
         }
 
-        public String info() {
-            return String.format("%s- %s", this.key(), "Find task by ID.");
-        }
-    }
+//         try{   String id = input.ask("Please enter the tasks ID:");
+//           Item item = tracker.findById(id);
+//            System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
+//
+//        }catch (NullPointerException npe){System.out.println("Please enter valid id");
+//
+//        public String info() {
+//            return String.format("%s- %s", this.key(), "Find task by ID.");
+//        }
+            FindItemById( ) {
 
-    private class FindItemByComment implements UserAction {
+                super("Find item by id.");
+            }
+        }
+
+
+    private class FindItemByComment extends BaseAction {
 
         @Override
         public int key() {
@@ -141,52 +188,58 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            String word = input.askWord("Please enter word for search : ");
+            String word = input.ask("Please enter word for search : ");
 
            Item item = tracker.findByComment(word);
             System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
 
         }
 
-        @Override
-        public String info() {
-            return String.format("%s- %s", this.key(), "Find task by key-word.");
+        public FindItemByComment() {
+            super("Find item by comment.");
         }
     }
 
-    private class DeleteItem implements UserAction {
+    private class DeleteItem extends BaseAction {
 
         public int key() {
             return 4;
         }
 
         public void execute(Input input, Tracker tracker) {
-            tracker.deleteItem(input.askId("Please, enter task's ID: "));
+            try {
+                tracker.deleteItem(input.ask("Please, enter task's ID: "));
+            } catch (NullPointerException npe) {
+                System.out.println("Please enter valid id");
+            }
+        }
+        DeleteItem() {
+            super("Delete item.");
         }
 
-        @Override
-        public String info() {
-            return String.format("%s- %s", this.key(), "Delete task.");
-        }
     }
 
 
-    private class AddComment implements UserAction {
+
+    private class AddComment extends BaseAction {
 
         public int key() {
             return 5;
         }
 
         public void execute(Input input, Tracker tracker) {
-           String id = input.askId("Please enter the tasks ID:");
-            String comment = input.askComment("Please enter comment for the tasks : ");
-            tracker.addComment(tracker.findById(id), comment);
+          try {
+              String id = input.ask("Please enter the tasks ID:");
+             Item item = tracker.findById(id);
+              String comment = input.ask("Please enter comment for the tasks : ");
+              tracker.addComment(item, comment);
+          }catch (NullPointerException npe) {
+              System.out.println("Please enter valid id");
+          }
         }
 
-        @Override
-        public String info() {
-            return String.format("%s- %s", this.key(), "Add comment for task.");
+        public AddComment( ) {
+            super("Add comment");
         }
-
     }
 }

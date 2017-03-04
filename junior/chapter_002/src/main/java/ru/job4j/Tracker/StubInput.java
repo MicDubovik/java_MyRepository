@@ -12,42 +12,26 @@ public class StubInput implements Input {
     }
 
     @Override
-    public String askName(String question) {
+    public String ask(String question) {
         return answers[position++];
     }
 
-    @Override
-    public String askDesc(String question) {
 
-        return answers[position++];
-    }
 
     @Override
-    public String askComment(String question) {
-
-        return answers[position++];
-    }
-
-    @Override
-    public String askId(String question) {
-
-        return answers[position++];
-    }
-
-    @Override
-    public String askWord(String s) {
-        return answers[position++];
-    }
-
-    @Override
-    public String operation(String operation) {
-        return answers[position++];
-    }
-
-    @Override
-    public int selectNumber(String question, int[] number) {
-        int key = Integer.valueOf(this.operation(question));
-
-        return key;
+    public int ask(String question, int[] number) throws MenuOutExeption {
+        int key = Integer.valueOf(this.ask(question));
+        boolean exists = false;
+        for (int value : number) {
+            if (value == key) {
+                exists = true;
+                break;
+            }
+        }
+        if (exists) {
+            return key;
+        } else {
+            throw new MenuOutExeption("Out if menu exception");
+        }
     }
 }

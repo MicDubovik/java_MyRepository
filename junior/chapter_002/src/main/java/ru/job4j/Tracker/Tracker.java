@@ -19,11 +19,10 @@ public class Tracker {
      */
 
     public Item add(Item item) {
-        if (item.getId()==null) {
+        if (item.getId() == null) {
             item.setId(generateId());
             this.items[posission++] = item;
-        }
-        else this.items[posission++]= item;
+        } else this.items[posission++] = item;
         return item;
     }
 
@@ -33,7 +32,7 @@ public class Tracker {
      * @param comment
      * @param
      */
-    public Item addComment(Item item ,String comment) {
+    public Item addComment(Item item, String comment) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i].getId().equals(item.getId())) {
 
@@ -42,7 +41,7 @@ public class Tracker {
 
             }
         }
-        return item ;
+        return item;
     }
 
     /**
@@ -65,23 +64,24 @@ public class Tracker {
         return item;
     }
 
-        /**
-         * Поиск по ключевому слову
-         * @param word
-         * @return
-         */
+    /**
+     * Поиск по ключевому слову
+     *
+     * @param word
+     * @return
+     */
 
-    public Item findByComment(String word) {
+    public Item findByComment(String word) throws ItemNotFoundException {
         Item result = null;
         for (int i = 0; i < items.length; i++) {
-           if (items[i]!= null && items[i].getComment()!=null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
+            if (items[i] != null && items[i].getComment() != null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
 
-                       result = items[i];
-                       break;
-                   }
+                result = items[i];
+                break;
             }
+        }
 
-        return result ;
+        return result;
     }
 
     /**
@@ -110,14 +110,40 @@ public class Tracker {
 
     protected Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
-                result = item;
+        for (Item items : this.items) {
+            if (items != null && items.getId().equals(id)) {
+                result = items;
                 break;
             }
         }
         return result;
     }
+
+
+//        Item result = null;
+////        boolean invalid = true;
+////
+////        do {
+////            try {
+//
+//        for (Item item : items) {
+//
+//            if (item != null && item.getId().equals(id)  ) {
+//                result = item;
+////                        invalid = false;
+//                break;
+////                    } else {
+////                        throw new MenuOutExeption("Not this ID.");
+////                    }
+//            }
+//
+////            } catch (MenuOutExeption moe) {
+////                System.out.println("Please enter valid ID");
+////            }
+////        } while(invalid);
+//        }
+//        return result;
+//    }
 
     /**
      * метод генерации ID.

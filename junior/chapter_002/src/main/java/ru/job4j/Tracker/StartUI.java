@@ -11,16 +11,14 @@ public class StartUI {
         this.input = input;
     }
 
+    private int[] number;
+    Tracker tracker;
+    MenuTracker menu;
 
     public void init() {
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(input, tracker);
-        int[] number = new int[menu.getActions().length];
-        for (int index = 0; index < menu.getActions().length; index++) {
-            number[index] = index + 1;
-        }
-
-        menu.fillActions();
+        tracker = new Tracker();
+        menu = new MenuTracker(input, tracker);
+        number = menu.fillActions();
 
         System.out.println("*********************");
         System.out.println("*  Пограмма заявок  *");
@@ -28,14 +26,14 @@ public class StartUI {
 
         do {
             menu.show();
-            menu.select(input.selectNumber("select: ", number));
-        } while (!"y".equals(this.input.operation("Exit ?(y/n):")));
+            menu.select(input.ask("select: ", number));
+        } while (!"y".equals(this.input.ask("Exit ?(y/n):")));
     }
 
 
     public static void main(String[] args) {
         Item item = new Item();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         new StartUI(input).init();
     }
 }
