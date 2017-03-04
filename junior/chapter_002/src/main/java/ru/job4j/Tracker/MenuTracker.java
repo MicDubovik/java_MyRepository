@@ -154,7 +154,7 @@ public class MenuTracker {
 
         public void execute(Input input, Tracker tracker) {
             try {
-              //  select(3);
+
                 String id = input.ask("Please enter the id item: ");
                 Item result = tracker.findById(id);
                 showTasks(result);
@@ -162,16 +162,6 @@ public class MenuTracker {
                 System.out.println("Please enter valid id");
             }
         }
-
-//         try{   String id = input.ask("Please enter the tasks ID:");
-//           Item item = tracker.findById(id);
-//            System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
-//
-//        }catch (NullPointerException npe){System.out.println("Please enter valid id");
-//
-//        public String info() {
-//            return String.format("%s- %s", this.key(), "Find task by ID.");
-//        }
             FindItemById( ) {
 
                 super("Find item by id.");

@@ -71,7 +71,7 @@ public class Tracker {
      * @return
      */
 
-    public Item findByComment(String word) throws ItemNotFoundException {
+    public Item findByComment(String word)  {
         Item result = null;
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i].getComment() != null && (items[i].getDescription().contains(word) || (items[i].getComment().contains(word)))) {
@@ -98,7 +98,6 @@ public class Tracker {
             }
         }
 
-
     }
 
     /**
@@ -118,32 +117,6 @@ public class Tracker {
         }
         return result;
     }
-
-
-//        Item result = null;
-////        boolean invalid = true;
-////
-////        do {
-////            try {
-//
-//        for (Item item : items) {
-//
-//            if (item != null && item.getId().equals(id)  ) {
-//                result = item;
-////                        invalid = false;
-//                break;
-////                    } else {
-////                        throw new MenuOutExeption("Not this ID.");
-////                    }
-//            }
-//
-////            } catch (MenuOutExeption moe) {
-////                System.out.println("Please enter valid ID");
-////            }
-////        } while(invalid);
-//        }
-//        return result;
-//    }
 
     /**
      * метод генерации ID.
