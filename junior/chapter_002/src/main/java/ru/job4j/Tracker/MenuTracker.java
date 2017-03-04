@@ -101,7 +101,7 @@ public class MenuTracker {
          * @param tracker tracker.
          */
         public void execute(Input input, Tracker tracker) {
-            select(3);
+
             Item item3 = new Item();
             String id = input.ask("Please enter the tasks ID:");
             String name = input.ask("Please enter the tasks name: ");
