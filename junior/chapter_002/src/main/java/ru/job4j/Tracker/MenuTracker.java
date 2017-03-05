@@ -1,7 +1,7 @@
 package ru.job4j.Tracker;
 
 /**
- * Created by Katy on 02.03.2017.
+ * Класс обертка
  */
 public class MenuTracker {
     private int number = 0;
@@ -15,13 +15,18 @@ public class MenuTracker {
         this.tracker = tracker;
     }
 
-    public int[] getActions() {
-        int[] result = new int[number];
-        for (int index = 0; index < result.length; index++) {
-            result[index] = actions[index].key();
-        }
-        return result;
-    }
+//    /**
+//     *
+//     * @return
+//     */
+//
+//    public int[] getActions() {
+//        int[] result = new int[number];
+//        for (int index = 0; index < result.length; index++) {
+//            result[index] = actions[index].key();
+//        }
+//        return result;
+//    }
 
 
 
@@ -93,7 +98,7 @@ public class MenuTracker {
          * @return number.
          */
         public int key() {
-            return 1;
+            return 2;
         }
         /**
          * Действие метода.

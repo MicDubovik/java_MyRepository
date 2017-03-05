@@ -1,7 +1,7 @@
 package ru.job4j.Tracker;
 
 /**
- * Created by Katy on 03.03.2017.
+ *
  */
 public class ValidateInput extends ConsoleInput {
 

@@ -1,7 +1,7 @@
 package ru.job4j.Tracker;
 
 /**
- * Created by Katy on 04.03.2017.
+ * CАбстрактный класс
  */
 public abstract class BaseAction implements UserAction {
     /**

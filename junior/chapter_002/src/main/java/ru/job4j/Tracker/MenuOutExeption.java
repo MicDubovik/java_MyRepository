@@ -1,7 +1,7 @@
 package ru.job4j.Tracker;
 
 /**
- * Created by Katy on 03.03.2017.
+ * Создаем свой класс для вывода управления информацией об ошибках.
  */
 public class MenuOutExeption extends RuntimeException {
 
