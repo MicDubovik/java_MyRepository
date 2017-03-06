@@ -3,25 +3,34 @@ package ru.job4j.Test;
 /**
  * Created by Katy on 05.03.2017.
  */
-public class Figure {
+public abstract class Figure {
 
     String name;
+    Cell position;
 
-    Cell startposition;
-    Cell newposition;
+   // Cell  position;
 
-    public Figure(String name, Cell startposition, Cell newposition) {
+
+    public Figure() {
+    }
+
+    public Figure(String name ,Cell position ) {
         this.name = name;
-        this.startposition = startposition;
-        this.newposition = newposition;
+
     }
 
-    public Cell move(Cell startposition , Cell newposition) {
-
-//        if (newposition.getX()!= )
-        newposition.setX(startposition.getX()+7);
-        newposition.setY(startposition.getY()+7);
-        return newposition ;
+    public String getName() {
+        return name;
     }
 
-}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public abstract Cell move(Cell newposition );
+
+
+
+    }
+
+

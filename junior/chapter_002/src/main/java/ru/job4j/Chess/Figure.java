@@ -1,21 +1,36 @@
 package ru.job4j.Chess;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Абстрактный класс описывающий общие
+ * свойства фигур.
  */
 public abstract class Figure {
 
-    final Cell position;
+    String name;
+    Cell position;
 
-    public Figure(Cell position) {
-        this.position = position;
+
+
+
+    public Figure() {
     }
-//   public Cell[] way(Cell dist) throws ImpossibleMoveException {
-//
-//
-//    }
 
-    public abstract Figure clone(Cell dist);
+    public Figure(String name ,Cell position ) {
+        this.name = name;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public abstract Cell[] way(Cell dist) throws ImpossibleMoveException;
+
 
 
 }

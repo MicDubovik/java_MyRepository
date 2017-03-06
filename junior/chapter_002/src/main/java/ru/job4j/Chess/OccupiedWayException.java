@@ -1,7 +1,12 @@
 package ru.job4j.Chess;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Создаем собственный класс указатель на ошибку
+ * если путь занят.
  */
 public class OccupiedWayException extends Exception {
+
+    public OccupiedWayException(String message) {
+        super(message);
+    }
 }

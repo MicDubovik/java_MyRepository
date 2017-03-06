@@ -6,6 +6,7 @@ package ru.job4j.Test;
 public class Cell {
     int x;
     int y;
+    String status;
 
 
     public Cell(int x, int y) {
@@ -18,6 +19,7 @@ public class Cell {
     }
 
     public void setX(int x) {
+        if (x<=8)
         this.x = x;
     }
 
@@ -26,16 +28,17 @@ public class Cell {
     }
 
     public void setY(int y) {
+        if (y<=8)
         this.y = y;
     }
 
-    public static void main(String[] args) {
-
-        Cell cell = new Cell(3,1);
-//        Figure figure =new Figure();
-//        figure.startposition = cell ;
-//
-//        figure.move(cell,new Cell(4,2));
-
+    public String getStatus() {
+        return status;
     }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
 }

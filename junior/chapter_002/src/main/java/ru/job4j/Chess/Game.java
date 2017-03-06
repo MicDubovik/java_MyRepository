@@ -1,7 +1,7 @@
-package ru.job4j.Test;
+package ru.job4j.Chess;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Created by Katy on 06.03.2017.
  */
 public class Game {
     Figure[] figures;
@@ -12,15 +12,17 @@ public class Game {
         this.boards = boards;
     }
 
-    public void start() {
+    public void start() throws ImpossibleMoveException {
         System.out.println("Select figure");
         System.out.println("Enter new position ");
+
+        boards.fillBoard();
 
         Figure figure = new Bishop();
         Figure figure1 = new Rook();
 
-        figure.move(new Cell(5,3));
-        figure1.move(new Cell(1,3));
+        figure.way(new Cell(5,3));
+        figure1.way(new Cell(1,3));
 
     }
 
