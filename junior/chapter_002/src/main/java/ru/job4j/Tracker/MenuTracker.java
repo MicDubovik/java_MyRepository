@@ -15,21 +15,6 @@ public class MenuTracker {
         this.tracker = tracker;
     }
 
-//    /**
-//     *
-//     * @return
-//     */
-//
-//    public int[] getActions() {
-//        int[] result = new int[number];
-//        for (int index = 0; index < result.length; index++) {
-//            result[index] = actions[index].key();
-//        }
-//        return result;
-//    }
-
-
-
     public int[] fillActions() {
         this.actions[number++] = new AddItem();
         this.actions[number++] = new ShowAllItems();
@@ -57,75 +42,89 @@ public class MenuTracker {
             }
         }
     }
+
     private void showTasks(Item item) {
-        System.out.println(item.getId() + " " + item.getName() + " " + item.getDescription());
+        System.out.println(item.getId() + " " + item.getName() + " " + item.getDescription() + " " + item.getComment());
     }
 
     private class AddItem extends BaseAction {
-        /**
-         * Номер метода.
-         * @return number.
-         */
-        public int key() {
-            return 0;
-        }
-        /**
-         * Действие метода.
-         * @param input input.
-         * @param tracker tracker.
-         */
-        public void execute(Input input, Tracker tracker) {
-            String name = input.ask("Please enter the item name: ");
-            String description = input.ask("Please enter the item description: ");
-            tracker.add(new Item(name, description));
-            /**
-             * тестовая заявка
-             */
-            tracker.add(new Item("1111", "test task1", "test description1", "test comment"));
 
-        }
         /**
          * Информация о методе.
          */
         AddItem() {
             super("Add the new item.");
         }
-    }
 
-    private class EditItem extends BaseAction {
         /**
          * Номер метода.
+         *
          * @return number.
          */
         public int key() {
-            return 2;
+            return 0;
         }
+
         /**
          * Действие метода.
-         * @param input input.
+         *
+         * @param input   input.
          * @param tracker tracker.
          */
         public void execute(Input input, Tracker tracker) {
+            String name = input.ask("Please enter the item name: ");
+            String description = input.ask("Please enter the item description: ");
+            tracker.add(new Item(name, description));
 
-            Item item3 = new Item();
-            String id = input.ask("Please enter the tasks ID:");
-            String name = input.ask("Please enter the tasks name: ");
-            String description = input.ask("Please enter the tasks description: ");
-            item3 = tracker.findById(id);
-            tracker.editItem(item3, new Item(name, description));
         }
+
+    }
+
+    private class EditItem extends BaseAction {
+
         /**
          * Информация о методе.
          */
         EditItem() {
             super("Edit item.");
         }
-    }
 
+        /**
+         * Номер метода.
+         *
+         * @return number.
+         */
+        public int key() {
+            return 2;
+        }
+
+        /**
+         * Действие метода.
+         *
+         * @param input   input.
+         * @param tracker tracker.
+         */
+        public void execute(Input input, Tracker tracker) {
+
+
+            String id = input.ask("Please enter the tasks ID:");
+            String name = input.ask("Please enter the tasks name: ");
+            String description = input.ask("Please enter the tasks description: ");
+            Item item = tracker.findById(id);
+            tracker.editItem(item, new Item(name, description));
+        }
+
+    }
 
 
     private class ShowAllItems extends BaseAction {
 
+        /**
+         * Конструктор принимающий имя метода.
+         */
+        public ShowAllItems() {
+            super("Show all tasks.");
+        }
 
 
         public int key() {
@@ -135,46 +134,50 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             for (Item item : tracker.getAll()) {
                 if (item != null)
-                 showTasks(item);
+                    showTasks(item);
 
             }
-        }
-
-        /**
-         * Конструктор принимающий имя метода.
-         *
-         *
-         */
-       public ShowAllItems () {
-            super("Show all tasks.");
         }
 
     }
 
     private class FindItemById extends BaseAction {
 
+        FindItemById() {
+
+            super("Find item by id.");
+        }
+
         public int key() {
             return 3;
         }
 
+
         public void execute(Input input, Tracker tracker) {
-            try {
 
-                String id = input.ask("Please enter the id item: ");
-                Item result = tracker.findById(id);
-                showTasks(result);
-            } catch (NullPointerException npe) {
-                System.out.println("Please enter valid id");
-            }
-        }
-            FindItemById( ) {
+            Item result = new Item();
+            String id = input.ask("Please enter the id item: ");
 
-                super("Find item by id.");
+            for (int i = 0; i < tracker.getAll().length; i++) {
+
+                if (id.equals(tracker.getAll()[i].getId())) {
+                    result = tracker.findById(id);
+                    break;
+                } else {
+                    throw new NullPointerException("NullPointerException !!!");
+                }
             }
+            showTasks(result);
         }
+
+    }
 
 
     private class FindItemByComment extends BaseAction {
+
+        public FindItemByComment() {
+            super("Find item by comment.");
+        }
 
         @Override
         public int key() {
@@ -185,17 +188,19 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String word = input.ask("Please enter word for search : ");
 
-           Item item = tracker.findByComment(word);
+            Item item = tracker.findByComment(word);
             System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
 
         }
 
-        public FindItemByComment() {
-            super("Find item by comment.");
-        }
+
     }
 
     private class DeleteItem extends BaseAction {
+
+        DeleteItem() {
+            super("Delete item.");
+        }
 
         public int key() {
             return 4;
@@ -208,33 +213,29 @@ public class MenuTracker {
                 System.out.println("Please enter valid id");
             }
         }
-        DeleteItem() {
-            super("Delete item.");
-        }
 
     }
 
 
-
     private class AddComment extends BaseAction {
+
+        public AddComment() {
+            super("Add comment");
+        }
 
         public int key() {
             return 5;
         }
 
         public void execute(Input input, Tracker tracker) {
-          try {
-              String id = input.ask("Please enter the tasks ID:");
-             Item item = tracker.findById(id);
-              String comment = input.ask("Please enter comment for the tasks : ");
-              tracker.addComment(item, comment);
-          }catch (NullPointerException npe) {
-              System.out.println("Please enter valid id");
-          }
-        }
-
-        public AddComment( ) {
-            super("Add comment");
+            try {
+                String id = input.ask("Please enter the tasks ID:");
+                Item item = tracker.findById(id);
+                String comment = input.ask("Please enter comment for the tasks : ");
+                tracker.addComment(item, comment);
+            } catch (NullPointerException npe) {
+                System.out.println("Please enter valid id");
+            }
         }
     }
 }

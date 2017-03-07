@@ -12,10 +12,7 @@ public class Rook extends Figure{
         new Rook();
     }
 
-    @Override
-    public Cell move(Cell newposition) {
-        return null;
-    }
+
 
     @Override
     public Cell[] way(Cell dist) throws ImpossibleMoveException {

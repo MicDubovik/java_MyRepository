@@ -1,3 +1,7 @@
 Manifest-Version: 1.0
 Main-Class: ru.job4j.Tracker.StartUI
+<manifestEntries>
+  <StartUI-Class>org.sonatype.haven.ExodusCli</StartUI-Class>
+  <Build-Number>123</Build-Number>
+</manifestEntries>
 
