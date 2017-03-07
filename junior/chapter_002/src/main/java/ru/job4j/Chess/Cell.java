@@ -15,7 +15,7 @@ public class Cell {
      * Статус ячейки (свободна-занята
      */
 
-    private String status;
+    private String status = "empty";
 
 
     public Cell() {
@@ -50,6 +50,9 @@ public class Cell {
     public void setStatus(String status) {
         this.status = status;
     }
+
+
+
     //    public void fillCell() {
 //        this.array = new int[8][8];
 //
@@ -58,9 +61,9 @@ public class Cell {
 //
 //            for (int j = 0; j < 8; j++) {
 //                if (i == 0) {
-//                    this.array[i][j] = 11 + i + j;
+//                    this.array[i][j] = k + i + j;
 //                } else {
-//                    this.array[i][j] = 10 * i + i + j + k - z + 1;
+//                    this.array[i][j] = 10 * i + i + j + k - z+1;
 //                    k = +10;
 //                }
 //

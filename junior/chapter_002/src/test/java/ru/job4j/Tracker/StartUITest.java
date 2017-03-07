@@ -44,7 +44,9 @@ public class StartUITest {
          */
          @Test
          public void editTest() {
-             Input inputEdit = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "2", "1111", "new name", "new desc", "n", "1", "y"});
+             Tracker tracker = new Tracker();
+             tracker.add(new Item("1111","test name","test desc","test comm"));
+             Input inputEdit = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "2","1111", "new name", "new desc", "n", "1", "y"});
 
              new StartUI(inputEdit).init();
          }
