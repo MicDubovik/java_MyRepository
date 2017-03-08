@@ -6,14 +6,18 @@ package ru.job4j.Tracker;
 public class StartUI {
     private Input input;
     String operation;
+    private int[] number;
+    Tracker tracker;
+    MenuTracker menu;
 
     public StartUI(Input input) {
         this.input = input;
     }
 
-    private int[] number;
-    Tracker tracker;
-    MenuTracker menu;
+    public StartUI(Input input, Tracker tracker) {
+        this.input = input;
+        this.tracker = tracker;
+    }
 
     public void init() {
         tracker = new Tracker();
