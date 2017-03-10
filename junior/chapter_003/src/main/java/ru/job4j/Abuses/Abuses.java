@@ -11,16 +11,22 @@ public class Abuses {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String str=null;
+        StringBuilder sb = new StringBuilder();
+        String result = null;
+
+
         for (String s : abuse) {
+
+            result = result+sb.append(s.replaceAll("abuses", ""));
 
             br.read(s.toCharArray());
 
-              str = s.replaceAll("abuses", "");
         }
 
-        out.write(str.getBytes());
+        out.write(result.getBytes());
 
     }
+
+
 
 }
