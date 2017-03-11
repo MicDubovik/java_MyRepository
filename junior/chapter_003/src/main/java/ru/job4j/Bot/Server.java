@@ -1,4 +1,4 @@
-package ru.job4j.Abuses.Bot;
+package ru.job4j.Bot;
 
 import java.io.BufferedReader;
 import java.io.IOException;
