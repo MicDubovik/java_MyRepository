@@ -105,6 +105,8 @@ public class FileSort implements ISort {
         newfile.sort(source,distance);
 
     }
-
+/**
+ *   Файл создается , но не пойму , почему в него не пишется отсортированный  массив строк .
+ */
 
 }

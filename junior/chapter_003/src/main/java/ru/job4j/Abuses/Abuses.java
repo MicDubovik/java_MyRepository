@@ -9,24 +9,22 @@ public class Abuses {
 
     void dropAbuses(InputStream in, OutputStream out, String[] abuse) throws IOException {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        StringBuilder sb = new StringBuilder();
-        String result = null;
-
-
-        for (String s : abuse) {
-
-            result = result+sb.append(s.replaceAll("abuses", ""));
-
-            br.read(s.toCharArray());
-
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(in));
+             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(out))) {
+            StringBuilder sb = new StringBuilder();
+            for (String s : abuse) {
+                sb.append(s);
+                sb.append(" ");
+            }
+            String str;
+            while ((str = br.readLine()) != null) {
+                str = str.replaceAll("abuse", "");
+                bw.write(str);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        out.write(result.getBytes());
-
     }
-
-
 
 }
