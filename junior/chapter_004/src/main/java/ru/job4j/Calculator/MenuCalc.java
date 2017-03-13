@@ -2,33 +2,35 @@ package ru.job4j.Calculator;
 
 import java.util.Scanner;
 
-public class MenuCalc {
-    Calculator calculator;
+public class MenuCalc  {
+    Calculator calculator ;
     Scanner scanner = new Scanner(System.in);
     private String numOperation;
     ConsoleInput consoleIn ;
+    IMenu imenu ;
+    IStart istart ;
+
+    public void menuShow(){
+        this.imenu = (IMenu) new SecondMenu();
+       this.imenu.menuShow();
+    }
 
 
     public void start(){
-        consoleIn = new ConsoleInput();
-        calculator = new Calculator();
-        numOperation = consoleIn.askOperation();
-        switch (numOperation){
-            case "/" :calculator.div(consoleIn.askNumber(),consoleIn.askNumber());
-            ;break;
-            case "*" : calculator.mul(consoleIn.askNumber(),consoleIn.askNumber());
-                calculator.getResult();break;
-            case "+" : calculator.add(consoleIn.askNumber(),consoleIn.askNumber());
-                calculator.getResult();break;
-            case "-" : calculator.sub(consoleIn.askNumber(),consoleIn.askNumber());
-                calculator.getResult();break;
+
+        this.istart = (IStart) new EngineerStart();
+        istart.start();
 
         }
+        public void showOperation(){
+            this.imenu = new SecondMenu();
+            this.imenu.showOperation();
+        }
 
-    }
+
     public void   result(){
 
-        System.out.println(calculator.getResult());
+        System.out.println( istart.getResult());
     }
     public String  again(){
 

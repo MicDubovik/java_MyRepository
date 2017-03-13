@@ -4,15 +4,15 @@ public class InteractCalc {
 
     MenuCalc menuCalc;
 
+
+
     public static void main(String[] args) {
 
-            System.out.println("========================");
-            System.out.println("--------Calculator------");
 
-
-         MenuCalc menuCalc = new MenuCalc();
+        MenuCalc menuCalc = new MenuCalc();
+        menuCalc.menuShow();
         do {
-            System.out.println("Enter operation *,/,+,- ");
+            menuCalc.showOperation();
             menuCalc.start();
             menuCalc.result();
             System.out.println("Exit ? ... y/n ");
