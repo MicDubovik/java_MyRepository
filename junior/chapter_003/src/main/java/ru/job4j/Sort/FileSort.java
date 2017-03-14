@@ -86,7 +86,11 @@ public class FileSort implements ISort {
             for (String s : newArrayWithoutNull) {
                 System.out.println(s);
                writer.write(s);
+               writer.write("\n");
+
             }
+            writer.flush();
+            writer.close();
 
 
         } catch (IOException e) {
