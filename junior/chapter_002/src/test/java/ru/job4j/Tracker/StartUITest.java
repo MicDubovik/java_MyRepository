@@ -11,10 +11,6 @@ import static org.junit.Assert.assertThat;
  */
 public class StartUITest {
 
-
-
-
-
     @Test
     public void getAllTest() {
 
@@ -39,12 +35,10 @@ public class StartUITest {
          */
         @Test
         public void addTaskTest() {
-
-
-
+            Tracker tracker = new Tracker();
             Input input = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "y"});
 
-            new StartUI(input).init();
+            new StartUI(input,tracker).init();
         }
 
          /**
@@ -53,12 +47,8 @@ public class StartUITest {
          @Test
          public void editTest() {
              Item item1 = new Item("task1", "description1");
-
-             Item[] items = {item1};
              Tracker tracker = new Tracker();
              tracker.add(item1);
-
-
 
              Input input = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "2",tracker.add(item1).getId(), "new name", "new desc", "n", "1", "y"});
 
@@ -72,10 +62,9 @@ public class StartUITest {
         public void addCommentTest() {
 
             Tracker tracker = new Tracker();
-            Item item1 = new Item("1111","task1", "description1","comment");
-            Item[] items = {item1};
-            tracker.add(item1);
-            Input inputComm = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "5", "1111", "new comment", "n", "1", "y"});
+            Item item1 = new Item("task1", "description1");
+//
+            Input inputComm = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "5", tracker.add(item1).getId(), "new comment", "n", "1", "y"});
 
             new StartUI(inputComm ,tracker).init();
         }
@@ -86,11 +75,11 @@ public class StartUITest {
         @Test
         public void findByIDTest() {
 
+
             Tracker tracker = new Tracker();
-            Item item1 = new Item("1111","task1", "description1","comment");
-            Item[] items = {item1};
-            tracker.add(item1);
-            Input inputId = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "3", "1111", "y"});
+            Item item1 = new Item("task1", "description1");
+//
+            Input inputId = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "3", tracker.add(item1).getId(), "y"});
 
             new StartUI(inputId,tracker).init();
         }
@@ -100,10 +89,11 @@ public class StartUITest {
          */
         @Test
         public void findByWordTest() {
+            Tracker tracker = new Tracker();
 
             Input inputWord = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "6", "old", "y"});
 
-            new StartUI(inputWord).init();
+            new StartUI(inputWord,tracker).init();
         }
 
         /**
@@ -112,12 +102,12 @@ public class StartUITest {
         @Test
         public void deleteTaskTest() {
 
-            Tracker tracker = new Tracker();
-            Item item1 = new Item("1111","task1", "description1","comment");
-            Item[] items = {item1};
 
-            Input inputDelete = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "4", "1111", "n", "1", "y"});
-            tracker.add(item1);
+            Tracker tracker = new Tracker();
+            Item item1 = new Item("task1", "description1");
+
+            Input inputDelete = new StubInput(new String[]{"0", "old task", "old newdesc", "n", "1", "n", "4", tracker.add(item1).getId(), "n", "1", "y"});
+
             new StartUI(inputDelete,tracker).init();
         }
 

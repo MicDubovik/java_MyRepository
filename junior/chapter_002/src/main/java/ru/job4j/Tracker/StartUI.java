@@ -5,7 +5,6 @@ package ru.job4j.Tracker;
  */
 public class StartUI {
     private Input input;
-    String operation;
     private int[] number;
     Tracker tracker;
     MenuTracker menu;
@@ -20,7 +19,6 @@ public class StartUI {
     }
 
     public void init() {
-        tracker = new Tracker();
         menu = new MenuTracker(input, tracker);
         number = menu.fillActions();
 
@@ -36,9 +34,10 @@ public class StartUI {
 
 
     public static void main(String[] args) {
-        Item item = new Item();
+       Item item = new Item();
+        Tracker tracker = new Tracker();
         Input input = new ValidateInput();
-        new StartUI(input).init();
+        new StartUI(input,tracker).init();
     }
 }
 

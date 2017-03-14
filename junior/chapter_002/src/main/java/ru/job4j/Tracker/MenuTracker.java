@@ -189,7 +189,12 @@ public class MenuTracker {
             String word = input.ask("Please enter word for search : ");
 
             Item item = tracker.findByComment(word);
-            System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
+            if (item.getComment()!=null){
+                System.out.println(String.format("%s  ,%s  ,%s  ,%s", item.getId(), item.getName(), item.getDescription(), item.getComment()));
+            }
+            else {
+                System.out.println(String.format("%s  ,%s  ,%s  ", item.getId(), item.getName(), item.getDescription()));
+            }
 
         }
 
