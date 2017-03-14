@@ -10,21 +10,12 @@ import java.util.Scanner;
 
 public class Client {
 
-   private Socket socket;
-   private int port ;
-
-
-    public Client(Socket socket) {
-        this.socket = socket;
-    }
-
-
-
-    public void startClient(){
-        try {
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+    public void startClient() throws IOException {
+        Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 5000);
+        try(PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            Scanner console = new Scanner(System.in);
+            Scanner console = new Scanner(System.in)) {
+
 
             String ask = console.nextLine();
             do {
@@ -46,9 +37,8 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        int port = 5000;
-        String ip = "127.0.0.1";
-        Socket socket = new Socket(InetAddress.getByName(ip), port);
+        Client cli = new Client();
 
+        cli.startClient();
     }
 }
