@@ -1,6 +1,9 @@
 package ru.job4j.newFood;
 
-public class AbstractShop implements IStorage {
+/**
+ * Abstract class for expanding
+ */
+public  class AbstractShop implements IStorage {
 
     IStorage storage ;
 
