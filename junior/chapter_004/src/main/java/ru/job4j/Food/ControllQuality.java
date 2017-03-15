@@ -9,4 +9,5 @@ public class ControllQuality {
     public void strategyMethod(Food food){
         strategy.addFood( food);
     }
+
 }

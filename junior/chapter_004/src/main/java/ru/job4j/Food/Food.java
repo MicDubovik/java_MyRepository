@@ -11,7 +11,7 @@ import java.util.Date;
 public class Food {
     private  String name;
     private int expiryDate  ;
-    private String createDate;
+    private String createDate; // "dd.MM.yyyy"
 
     private int price;
     private int disscount;
