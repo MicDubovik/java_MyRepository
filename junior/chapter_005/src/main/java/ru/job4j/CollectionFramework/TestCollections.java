@@ -35,7 +35,7 @@ public class TestCollections {
 
         TestCollections testSpeed = new TestCollections();
 
-        int num = 100;
+        int num = 100000;
 
         System.out.println("Time for add ArrayList<> = "+testSpeed.add(list,string,num));
         System.out.println("Time for add LinkedList<> = "+testSpeed.add(linked,string,num));
