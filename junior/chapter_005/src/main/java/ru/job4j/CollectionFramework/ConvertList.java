@@ -64,6 +64,12 @@ public class ConvertList {
         return array;
     }
 
+    /**
+     * Method for conver all array to ArrayList.
+     * @param list
+     * @return
+     */
+
     public List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         int i = 0;
