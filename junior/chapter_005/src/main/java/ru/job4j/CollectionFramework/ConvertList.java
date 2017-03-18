@@ -38,7 +38,7 @@ public class ConvertList {
      * @return
      */
     public int[][] toArray(List<Integer> list, int rows) {
-        int[][] array = new int[0][0];
+        int[][] array ;
         int size2 = 0;
 
         if (list.size() % rows == 0) {
@@ -102,6 +102,10 @@ public class ConvertList {
          * Converting array to ArrayList.
          */
         list.toList(array);
+        for (Integer integer : list.toList(array)) {
+            System.out.println(integer+" ");
+        }
+        System.out.println();
 
         /**
          * Print to screen array.
