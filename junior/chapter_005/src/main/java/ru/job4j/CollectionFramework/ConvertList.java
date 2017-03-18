@@ -10,6 +10,7 @@ import java.util.List;
 public class ConvertList {
     /**
      * Method for convert array to ArrayList.
+     *
      * @param array
      * @return
      */
@@ -31,6 +32,7 @@ public class ConvertList {
 
     /**
      * Method for convert ArrayList to array.
+     *
      * @param list
      * @param rows
      * @return
@@ -62,8 +64,21 @@ public class ConvertList {
         return array;
     }
 
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<>();
+        int i = 0;
+        for (int[] ints : list) {
+            for (int anInt : ints) {
+                result.add(anInt);
+
+            }
+        }
+        return result;
+    }
+
     /**
      * Start application.
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -115,5 +130,13 @@ public class ConvertList {
                 }
             }
         }
+
+        System.out.println();
+
+        List<int[]> list2 = new ArrayList<>();
+        list2.add(new int[]{1, 2});
+        list2.add(new int[]{3, 4, 5, 6});
+
+        System.out.println(list.convert(list2)+" ");
     }
 }
