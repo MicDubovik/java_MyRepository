@@ -79,7 +79,7 @@ public class Bank {
             int h = 0;
             for (int s : arg.getLongTime()) {
 
-                System.out.println("Time "+h+"-00 :" + s);
+                System.out.println("Time "+h+"-00 - "+(h+1)+"-00  " + s);
                 h++;
             }
             i++;
