@@ -16,17 +16,15 @@ public class ConvertList {
      */
 
     public List<Integer> toList(int[][] array) {
+        List<Integer> integerList = new ArrayList<>();
         Integer[] integer = new Integer[array.length * array[0].length];
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
-                integer[i * array[i].length + j] = array[i][j];
+                integerList.add(array[i][j]);
             }
         }
 
-        List<Integer> integerList = new ArrayList<>();
-        for (Integer in : integer) {
-            integerList.add(in);
-        }
+
         return integerList;
     }
 
