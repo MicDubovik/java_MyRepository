@@ -8,7 +8,7 @@ import java.util.List;
  * Класс обертка
  */
 public class MenuTracker {
-    private int number = 0;
+
     private Input input;
     private Tracker tracker;
     private List<UserAction> actions = new ArrayList<>();
@@ -33,20 +33,13 @@ public class MenuTracker {
         for (int i = 0; i < actions.size(); i++) {
             this.possibleAction.put(actions.get(i).key(), actions.get(i));
         }
-
-
-//        int[] possibleAction = new int[actions.length];
-//        for (int i = 0; i < this.actions.length; i++) {
-//            possibleAction[i] = this.actions[i].key();
-//        }
         return possibleAction;
-
     }
 
     public void select(int key) {
 
         this.possibleAction.get(key).execute(this.input,this.tracker);
-//        this.actions[key].execute(this.input, this.tracker);
+
     }
 
     public void show() {
@@ -140,7 +133,6 @@ public class MenuTracker {
             super("Show all tasks.");
         }
 
-
         public int key() {
             return 1;
         }
@@ -149,7 +141,6 @@ public class MenuTracker {
             for (Item item : tracker.getAll()) {
                 if (item != null)
                     showTasks(item);
-
             }
         }
 

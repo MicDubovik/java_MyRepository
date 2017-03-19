@@ -10,8 +10,6 @@ import java.util.Random;
  */
 public class Tracker {
     private List<Item> items = new ArrayList<>();
-//    private Item[] items = new Item[100];
-    private int posission = 0;
     private static final Random RN = new Random();
 
     /**
@@ -28,11 +26,6 @@ public class Tracker {
         } else this.items.add(item);
         return item;
 
-//        if (item.getId() == null) {
-//            item.setId(generateId());
-//            this.items[posission++] = item;
-//        } else this.items[posission++] = item;
-//        return item;
     }
 
     /**
@@ -50,15 +43,6 @@ public class Tracker {
 
             }
         }
-
-//        for (int i = 0; i < items.length; i++) {
-//            if (items[i] != null && items[i].getId().equals(item.getId())) {
-//
-//                items[i].setComment(comment);
-//                item = items[i];
-//
-//            }
-//        }
         return item;
     }
 
@@ -81,14 +65,6 @@ public class Tracker {
         }
         return item;
 
-//        for (int i = 0; i < items.length; i++) {
-//            if (items[i] != null && items[i].getId().equals(olditem.getId())) {
-//                items[i].setName(newitem.getName());
-//                items[i].setDescription(newitem.getDescription());
-//                item = items[i];
-//            }
-//        }
-//        return item;
     }
 
     /**
@@ -124,7 +100,6 @@ public class Tracker {
                 break;
             }
         }
-
     }
 
     /**
@@ -164,16 +139,5 @@ public class Tracker {
 
 
         return items;
-
-//        Item[] result = new Item[this.posission];
-//
-//        for (int index = 0; index != this.posission; index++) {
-//
-//            result[index] = this.items[index];
-//        }
-//
-//        return result;
     }
-
-
 }
