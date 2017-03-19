@@ -26,7 +26,7 @@ public class Visitors {
      * @return
      */
     public int[] addFlag(){
-        for (int i = 0; i <21 ; i++) {
+        for (int i = 0; i <this.out ; i++) {
             if (i >=this.in && i<=this.out){
                 longTime[i] = 1;
             }else {

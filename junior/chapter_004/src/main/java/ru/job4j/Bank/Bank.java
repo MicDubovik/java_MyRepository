@@ -24,7 +24,6 @@ public class Bank {
             int randomInTime = (random.nextInt(11) + 8);
             int randomOutTime = 0;
 
-
             do {
                 randomOutTime = (random.nextInt(12) + 8);
             } while (randomOutTime <= randomInTime);
@@ -54,7 +53,6 @@ public class Bank {
             }
         }
         return sum ;
-
     }
 
     /**
@@ -90,7 +88,7 @@ public class Bank {
          * Show count visitors in Bank.
          */
         for (int num : time) {
-            System.out.println("Количество посетителей в банке (" + hours + "-00): " + num);
+            System.out.println("Количество посетителей в банке (c " + hours + "-00 до "+(hours+1)+"-00): " + num);
             hours++;
         }
 
