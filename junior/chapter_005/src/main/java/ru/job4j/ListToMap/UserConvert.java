@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Convert List to Map.
+ */
 public class UserConvert {
 
     public HashMap<Integer, User> process(List<User> list) {
