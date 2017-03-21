@@ -4,6 +4,5 @@ public class MenuOutExeption extends RuntimeException {
 
     public MenuOutExeption(String msg) {
         super(msg);
-
     }
 }

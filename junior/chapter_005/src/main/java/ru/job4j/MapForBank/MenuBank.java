@@ -11,7 +11,6 @@ public class MenuBank {
     private List<UserActionBank> actions = new ArrayList<>();
     private HashMap<Integer, UserActionBank> possibleAction = new HashMap<>();
 
-
     public MenuBank(InputBank input, Bank bank) {
         this.input = input;
         this.bank = bank;

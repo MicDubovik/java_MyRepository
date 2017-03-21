@@ -5,6 +5,7 @@ package ru.job4j.MapForBank;
  *
  */
 public class Account {
+
     private int value;
     private int requisites;
 

@@ -13,9 +13,6 @@ public class ConsoleInputBank implements InputBank {
         return scanner.nextLine();
     }
 
-
-
-
     @Override
     public int ask(String question, HashMap<Integer, UserActionBank> number) throws MenuOutExeption {
 

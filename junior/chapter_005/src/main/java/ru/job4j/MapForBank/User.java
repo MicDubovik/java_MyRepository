@@ -3,7 +3,12 @@ package ru.job4j.MapForBank;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class User.
+ */
+
 public class User {
+
     private String name;
     private String passport;
     List<Account> accounts = new ArrayList<>();

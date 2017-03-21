@@ -28,8 +28,6 @@ public class Bank {
            this.listUsers.get(index).getAccounts().add(account);
 
            fill(this.listUsers);
-
-
     }
 
     public void deleteAccountFromUser(User user, Account account) {

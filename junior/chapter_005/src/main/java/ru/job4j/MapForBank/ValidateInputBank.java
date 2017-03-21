@@ -5,6 +5,7 @@ import java.util.HashMap;
 class ValidateInput extends ConsoleInputBank {
 
     public int ask(String question, HashMap<Integer, UserActionBank> number) {
+
         boolean invalid = true;
         int value = -1;
         do {

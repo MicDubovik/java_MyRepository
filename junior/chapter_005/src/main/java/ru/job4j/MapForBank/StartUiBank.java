@@ -22,6 +22,7 @@ public class StartUiBank {
         menu = new MenuBank(input, bank);
         number = menu.fillActions();
 
+
         System.out.println("*****************************");
         System.out.println("* Программа перевода денег  *");
         System.out.println("*****************************");
