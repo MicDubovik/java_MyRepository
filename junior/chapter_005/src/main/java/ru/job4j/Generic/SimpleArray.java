@@ -39,9 +39,9 @@ public class SimpleArray<T> {
     /**
      * Method for delete object from array.
      *
-     * @param obj
+     * @param index
      */
-    public void delete(T obj) {
+    public void delete(int index) {
         this.objects[index] = null;
     }
 
