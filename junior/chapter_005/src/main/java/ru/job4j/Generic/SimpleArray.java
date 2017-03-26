@@ -33,7 +33,7 @@ public class SimpleArray<T> {
      * @param obj
      */
     public void add(T obj) {
-        this.objects[index++] = obj;
+        this.objects[this.index++] = obj;
     }
 
     /**

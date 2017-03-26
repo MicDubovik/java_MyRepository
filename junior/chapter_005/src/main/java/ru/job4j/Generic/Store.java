@@ -4,9 +4,9 @@ public interface Store<T extends Base> {
 
        void add(T obj);
 
-       void update(T obj,int index);
+       void update(T obj,String id);
 
-       void delete(int index);
+       void delete(String id);
 
-       T get(int index);
+       T get(String id);
 }

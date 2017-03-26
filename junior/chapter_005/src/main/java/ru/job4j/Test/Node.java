@@ -1,10 +1,9 @@
 package ru.job4j.Test;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Node implements Iterator{
+public class Node {//implements Iterator{
     int value;
     Node next;
 
@@ -13,18 +12,18 @@ public class Node implements Iterator{
         this.value = value;
     }
 
-    @Override
-    public boolean hasNext() {
-        if (next.next()!=null)
-        return true;
-        else return false;
-    }
-
-    @Override
-    public Node next() {
-
-            return next;
-    }
+//    @Override
+//    public boolean hasNext() {
+//        if (next.next()!=null)
+//        return true;
+//        else return false;
+//    }
+//
+//    @Override
+//    public Node next() {
+//
+//            return next;
+//    }
 
     public static void main(String[] args) {
 
@@ -46,14 +45,24 @@ public class Node implements Iterator{
         numbers.add(third);
         numbers.add(four);
 
-
-        for (int i = 0; i < numbers.size()+1; i++) {
-
-            if (i+1==5){
-                System.out.println(true);
-            }
-
+        int i = 0;
+        while (numbers.iterator().hasNext()){
+            System.out.println(numbers.iterator().next().value);
+            i++;
+            System.out.println(numbers.get(i).value);
         }
+
+
+
+
+
+//        for (int i = 0; i < numbers.size()+1; i++) {
+//
+//            if (i+1==5){
+//                System.out.println(true);
+//            }
+//
+//        }
 
 
 

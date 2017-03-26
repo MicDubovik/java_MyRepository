@@ -42,6 +42,7 @@ public class Cycle implements Iterator {
         List<Cycle> numbers = new LinkedList<>();
 
 
+
         numbers.add(first);
         numbers.add(two);
         numbers.add(third);
