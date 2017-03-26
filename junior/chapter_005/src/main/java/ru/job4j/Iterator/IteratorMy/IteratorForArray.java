@@ -24,9 +24,9 @@ public class IteratorForArray implements Iterator {
      */
     @Override
     public boolean hasNext() {
-        if (this.values.length > this.index1 && this.values[0].length > this.index2 && index1 >= 0 && index2 >= 0) {
-            return true;
-        } else return false;
+
+            return this.values.length > this.index1 && this.values[0].length > this.index2 && index1 >= 0 && index2 >= 0;
+
     }
 
     /**
