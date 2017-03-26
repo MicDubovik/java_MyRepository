@@ -5,7 +5,6 @@ public class InteractCalc {
     MenuCalc menuCalc;
 
 
-
     public static void main(String[] args) {
 
 

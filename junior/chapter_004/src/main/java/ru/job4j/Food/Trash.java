@@ -1,9 +1,9 @@
 package ru.job4j.Food;
 
-public class Trash extends Food implements IStrategy{
+public class Trash extends Food implements IStrategy {
     private Food[] trashProducts = new Trash[100];
 
-    public Trash( ) {
+    public Trash() {
 
     }
 
@@ -13,6 +13,7 @@ public class Trash extends Food implements IStrategy{
 
     /**
      * Method add product to Trash.
+     *
      * @param food
      * @return
      */
@@ -21,9 +22,10 @@ public class Trash extends Food implements IStrategy{
         for (int i = 0; i < 100; i++) {
             if (this.trashProducts[i] != null) ;
             trashProducts[i] = new Food();
-            this.trashProducts[i] = food;break;
+            this.trashProducts[i] = food;
+            break;
         }
         System.out.println("Продукт добавлен в Trash ");
-        return  trashProducts;
+        return trashProducts;
     }
 }

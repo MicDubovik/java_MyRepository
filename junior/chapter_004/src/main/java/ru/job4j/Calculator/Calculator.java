@@ -14,7 +14,7 @@ public class Calculator {
     private double result;
 
     /**
-     * метод сложения
+     * метод сложения.
      */
 
     public void add(double first, double second) {
@@ -25,7 +25,7 @@ public class Calculator {
     }
 
     /**
-     * метод вычитания
+     * метод вычитания.
      */
 
     public void sub(double first, double second) {
@@ -37,7 +37,7 @@ public class Calculator {
     }
 
     /**
-     * метод деления
+     * метод деления.
      */
 
     public void div(double first, double second) {
@@ -52,7 +52,7 @@ public class Calculator {
     }
 
     /**
-     * метод умножения
+     * метод умножения.
      */
 
     public void mul(double first, double second) {
@@ -63,7 +63,7 @@ public class Calculator {
     }
 
     /**
-     * свойство поля результат
+     * свойство поля результат.
      */
 
     public double getResult() {

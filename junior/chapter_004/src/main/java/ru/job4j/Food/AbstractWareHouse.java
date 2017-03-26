@@ -1,17 +1,15 @@
 package ru.job4j.Food;
 
-public abstract class AbstractWareHouse implements IStrategy{
+public abstract class AbstractWareHouse implements IStrategy {
 
-   protected IAddWarehouse iAddWarehouse;
+    protected IAddWarehouse iAddWarehouse;
 
     public AbstractWareHouse(IAddWarehouse iAddWarehouse) {
         this.iAddWarehouse = iAddWarehouse;
     }
 
-    public   Food[] addFood(Food food){
+    public Food[] addFood(Food food) {
 
-        return   iAddWarehouse.addFood(food);
+        return iAddWarehouse.addFood(food);
     }
-
-
 }

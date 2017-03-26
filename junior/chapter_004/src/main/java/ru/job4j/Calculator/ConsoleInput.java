@@ -14,9 +14,9 @@ public class ConsoleInput implements Input {
 
 
     @Override
-    public int askNumber( ) {
+    public int askNumber() {
         System.out.println("Enter number :");
-         return scanner.nextInt() ;
+        return scanner.nextInt();
 
     }
 }

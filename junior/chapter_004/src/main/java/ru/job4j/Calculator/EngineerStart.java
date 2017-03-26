@@ -1,6 +1,6 @@
 package ru.job4j.Calculator;
 
-public class EngineerStart implements IStart{
+public class EngineerStart implements IStart {
 
     EngineerCalc calculator;
     private String numOperation;
@@ -18,11 +18,12 @@ public class EngineerStart implements IStart{
                 calculator.cosinus(consoleIn.askNumber(), consoleIn.askNumber());
 
                 break;
-                default:
-                    System.out.println("The operation is not");
+            default:
+                System.out.println("The operation is not");
         }
     }
-    public double getResult(){
+
+    public double getResult() {
         return this.calculator.getResult();
     }
 }

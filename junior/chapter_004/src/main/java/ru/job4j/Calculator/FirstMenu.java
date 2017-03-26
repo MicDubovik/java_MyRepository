@@ -1,8 +1,8 @@
 package ru.job4j.Calculator;
 
-public class FirstMenu implements IMenu{
+public class FirstMenu implements IMenu {
 
-    public void menuShow(){
+    public void menuShow() {
         System.out.println("========================");
         System.out.println("--------Calculator------");
     }

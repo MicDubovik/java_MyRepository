@@ -4,7 +4,7 @@ public class EngineerCalc {
 
     double result;
 
-    public void sinus(double first ,double second){
+    public void sinus(double first, double second) {
 
         if (second != 0) {
             this.result = first / second;
@@ -12,7 +12,8 @@ public class EngineerCalc {
             this.result = 0;
         }
     }
-    public void  cosinus(double first, double second){
+
+    public void cosinus(double first, double second) {
         if (second != 0) {
             this.result = second / first;
         } else {

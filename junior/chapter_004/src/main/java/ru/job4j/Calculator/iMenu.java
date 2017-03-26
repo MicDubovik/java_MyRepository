@@ -1,7 +1,8 @@
 package ru.job4j.Calculator;
 
-interface IMenu  {
+interface IMenu {
 
-     void menuShow();
-     void showOperation();
+    void menuShow();
+
+    void showOperation();
 }

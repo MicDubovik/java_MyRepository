@@ -14,6 +14,7 @@ public class Warehouse extends Food implements IStrategy {
 
     /**
      * Method add product in Warehouse.
+     *
      * @param food
      * @return
      */
@@ -21,10 +22,11 @@ public class Warehouse extends Food implements IStrategy {
     public Food[] addFood(Food food) {
 
         for (int i = 0; i < 100; i++) {
-          if (this.wareProducts[i]== null){
-              wareProducts[i] = new Food();
-            this.wareProducts[i] = food;break;
-          }
+            if (this.wareProducts[i] == null) {
+                wareProducts[i] = new Food();
+                this.wareProducts[i] = food;
+                break;
+            }
         }
         System.out.println("Продукт добавлен в Warehouse ");
         return wareProducts;

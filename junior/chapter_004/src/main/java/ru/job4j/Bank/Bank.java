@@ -3,7 +3,7 @@ package ru.job4j.Bank;
 import java.util.Random;
 
 /**
- * Class describe  Bank
+ * Class describe  Bank.
  */
 
 public class Bank {
@@ -39,11 +39,11 @@ public class Bank {
     /**
      * Method sum  flag when visitors was inside Bank.
      *
-     * @param visitors
-     * @return
+     * @param visitors .
+     * @return sum.
      */
     public int[] sumFlag(Visitors[] visitors) {
-        int[] sum  = new int[21];
+        int[] sum = new int[21];
         sum[0] = 0;
         for (Visitors v : visitors) {
             for (int i = 0; i < 21; i++) {
@@ -52,11 +52,11 @@ public class Bank {
                 }
             }
         }
-        return sum ;
+        return sum;
     }
 
     /**
-     * Main method for start.
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -79,7 +79,7 @@ public class Bank {
             int h = 0;
             for (int s : arg.getLongTime()) {
 
-                System.out.println("Time "+h+"-00 - "+(h+1)+"-00  " + s);
+                System.out.println("Time " + h + "-00 - " + (h + 1) + "-00  " + s);
                 h++;
             }
             i++;
@@ -88,7 +88,7 @@ public class Bank {
          * Show count visitors in Bank.
          */
         for (int num : time) {
-            System.out.println("Количество посетителей в банке (c " + hours + "-00 до "+(hours+1)+"-00): " + num);
+            System.out.println("Количество посетителей в банке (c " + hours + "-00 до " + (hours + 1) + "-00): " + num);
             hours++;
         }
 

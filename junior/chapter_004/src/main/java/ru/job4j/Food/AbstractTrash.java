@@ -7,7 +7,7 @@ public abstract class AbstractTrash {
         this.strategy = strategy;
     }
 
-    public   Food[] addFood(Food food){
-       return strategy.addFood(food) ;
+    public Food[] addFood(Food food) {
+        return strategy.addFood(food);
     }
 }
