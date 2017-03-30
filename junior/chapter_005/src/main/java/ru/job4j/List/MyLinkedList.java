@@ -61,6 +61,7 @@ public class MyLinkedList<E> implements SimpleLinkedCont<E> {
      */
     @Override
     public E remove(int index) {
+
         checkIndex(index);
 
         Entry<E> removedEntry = getEntryByIndex(index);
