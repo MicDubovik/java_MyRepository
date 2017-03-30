@@ -5,13 +5,15 @@ import java.util.List;
 
 public class MySimpleTree<E> implements ITree<E> {
 
+    /**
+     * Root.
+     */
     Node<E> root;
 
-
-    public MySimpleTree() {
-
-    }
-
+    /**
+     * Add element.
+     * @param value
+     */
     public void addChild(E value) {
         if (root == null) {
             root = new Node<E>(value);
@@ -20,6 +22,10 @@ public class MySimpleTree<E> implements ITree<E> {
         }
     }
 
+    /**
+     * Get element.
+     * @return
+     */
     @Override
     public List<E> getChildren() {
 
@@ -34,7 +40,11 @@ public class MySimpleTree<E> implements ITree<E> {
         return eList;
     }
 
-
+    /**
+     * Find element.
+     * @param element
+     * @return
+     */
     public E find(E element) {
 
         E result = null;
@@ -44,6 +54,10 @@ public class MySimpleTree<E> implements ITree<E> {
         return result;
     }
 
+    /**
+     * Check isBalanced Tree.
+     * @return
+     */
     public boolean isBalancedTree() {
         boolean result = false;
         if (this.root != null) {
@@ -52,26 +66,48 @@ public class MySimpleTree<E> implements ITree<E> {
         return result;
     }
 
+    /**
+     * Class Node.
+     * @param <E>
+     */
     private class Node<E> implements ITree<E> {
-
+        /**
+         * Value .
+         */
         private E value;
-
+        /**
+         * Reference at left element.
+         */
         private Node<E> left;
-
+        /**
+         * Reference at right element.
+         */
         private Node<E> right;
-
+        /**
+         * Boolean switch.
+         */
         boolean nextLeft = true;
 
-
+        /**
+         * Constructor.
+         * @param value
+         */
         public Node(E value) {
             this.value = value;
         }
 
+        /**
+         * Get value.
+         * @return
+         */
         public E getValue() {
             return value;
         }
 
-
+        /**
+         * Add child element.
+         * @param value
+         */
         @Override
         public void addChild(E value) {
 
@@ -93,6 +129,10 @@ public class MySimpleTree<E> implements ITree<E> {
             }
         }
 
+        /**
+         * Get List elements.
+         * @return
+         */
         @Override
         public List<E> getChildren() {
 
@@ -104,7 +144,6 @@ public class MySimpleTree<E> implements ITree<E> {
 
                 list.addAll(this.left.getChildren());
 
-
             }
             if (right != null) {
 
@@ -115,7 +154,11 @@ public class MySimpleTree<E> implements ITree<E> {
             return list;
         }
 
-
+        /**
+         * Find element on Tree.
+         * @param element
+         * @return
+         */
         public E find(E element) {
 
             E result = null;
@@ -133,6 +176,10 @@ public class MySimpleTree<E> implements ITree<E> {
             return result;
         }
 
+        /**
+         * Check isBalanced Tree.
+         * @return
+         */
         public boolean isBalancedTree() {
             boolean result = false;
             if (recursiveBalance() != -1) {
@@ -141,6 +188,10 @@ public class MySimpleTree<E> implements ITree<E> {
             return result;
         }
 
+        /**
+         * subsidiary  method for isBalance.
+         * @return
+         */
         private int recursiveBalance() {
             int result = 0;
 

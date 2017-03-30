@@ -3,11 +3,20 @@ package ru.job4j.Tree;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class BinaryTree.
+ * @param <E>
+ */
 public class MyBinary<E extends Comparable<E>> implements ITree<E> {
-
+    /**
+     * Root .
+     */
     private Node<E> root;
 
-
+    /**
+     * Add root ,and add child.
+     * @param value
+     */
     @Override
     public void addChild(E value) {
         if (this.root != null) {
@@ -18,6 +27,10 @@ public class MyBinary<E extends Comparable<E>> implements ITree<E> {
 
     }
 
+    /**
+     * Get List elements.
+     * @return
+     */
     @Override
     public List<E> getChildren() {
 
@@ -32,6 +45,11 @@ public class MyBinary<E extends Comparable<E>> implements ITree<E> {
         return eList;
     }
 
+    /**
+     * Find element.
+     * @param element
+     * @return
+     */
     public E find(E element) {
 
         E result = null;
@@ -41,39 +59,75 @@ public class MyBinary<E extends Comparable<E>> implements ITree<E> {
         return result;
     }
 
+    /**
+     * Class Node.
+     * @param <E>
+     */
     private class Node<E extends Comparable<E>> implements ITree<E> {
 
         private E value;
-
+        /**
+         * Reference at left element.
+         */
         private Node<E> left;
-
+        /**
+         * Reference at right element.
+         */
         private Node<E> right;
 
+        /**
+         * Constructor .
+         * @param value
+         */
         public Node(E value) {
             this.value = value;
 
         }
 
+        /**
+         * Get value.
+         * @return
+         */
         public E getValue() {
             return value;
         }
 
+        /**
+         * Getleft .
+         * @return
+         */
         public Node<E> getLeft() {
             return left;
         }
 
+        /**
+         * SetLeft.
+         * @param left
+         */
         public void setLeft(Node<E> left) {
             this.left = left;
         }
 
+        /**
+         * GetRight.
+         * @return
+         */
         public Node<E> getRight() {
             return right;
         }
 
+        /**
+         * SetRight.
+         * @param right
+         */
         public void setRight(Node<E> right) {
             this.right = right;
         }
 
+        /**
+         * Add element on tree.
+         * @param value
+         */
         @Override
         public void addChild(E value) {
 
@@ -98,6 +152,10 @@ public class MyBinary<E extends Comparable<E>> implements ITree<E> {
             }
         }
 
+        /**
+         * Get List elements .
+         * @return
+         */
         @Override
         public List<E> getChildren() {
             List<E> list = new ArrayList<E>();
@@ -118,6 +176,11 @@ public class MyBinary<E extends Comparable<E>> implements ITree<E> {
             return list;
         }
 
+        /**
+         * Find element in tree.
+         * @param value
+         * @return
+         */
         public E find(E value) {
             E result = null;
             E checkingValue;
