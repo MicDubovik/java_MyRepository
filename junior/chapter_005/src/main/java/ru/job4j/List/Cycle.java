@@ -2,8 +2,6 @@ package ru.job4j.List;
 
 
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Cycle implements Iterator {
 
@@ -27,6 +25,23 @@ public class Cycle implements Iterator {
         return next;
     }
 
+    public boolean isCycle() {
+
+        Cycle fast = this;
+        Cycle slow = this;
+
+        while (true) {
+            fast = fast.next().next();
+            slow = slow.next();
+            if (fast==null || slow==null){
+                return false;
+            }
+            if (slow == fast) {
+                return true;
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         Cycle first = new Cycle(1);
@@ -39,22 +54,24 @@ public class Cycle implements Iterator {
         third.next = four;
         four.next = first;
 
-        List<Cycle> numbers = new LinkedList<>();
+        System.out.println(first.isCycle());
 
-
-
-        numbers.add(first);
-        numbers.add(two);
-        numbers.add(third);
-        numbers.add(four);
-
-
-        for (int i = 0; i < numbers.size() + 21; i++) {
-
-            if (i + 1 > numbers.size()) {
-                System.out.println(true);
-            }
-
-        }
+//        List<Cycle> numbers = new LinkedList<>();
+//
+//
+//
+//        numbers.add(first);
+//        numbers.add(two);
+//        numbers.add(third);
+//        numbers.add(four);
+//
+//
+//        for (int i = 0; i < numbers.size() + 21; i++) {
+//
+//            if (i + 1 > numbers.size()) {
+//                System.out.println(true);
+//            }
+//
+//        }
     }
 }
