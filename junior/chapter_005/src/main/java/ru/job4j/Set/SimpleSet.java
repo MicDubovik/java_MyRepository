@@ -1,23 +1,26 @@
 package ru.job4j.Set;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
-public class SimpleSet<E>   implements ISetIntarface,Iterator {
-
-
-   private int index;
+public class SimpleSet<E> implements ISetIntarface<E>, Iterator {
 
 
-    List<E> mySets = new ArrayList<>();
+    private int index;
 
+    //    List<E> mySets = new ArrayList<>();
+
+    private Object[] mySets = new Object[10];
+
+
+    public void setMySets(Object[] mySets) {
+        this.mySets = mySets;
+    }
 
     @Override
     public boolean hasNext() {
         boolean result = false;
         try {
-            if (mySets.get(index) != null) {
+            if (mySets[index] != null) {
                 result = true;
             }
         } catch (IndexOutOfBoundsException e) {
@@ -28,19 +31,28 @@ public class SimpleSet<E>   implements ISetIntarface,Iterator {
 
     @Override
     public E next() {
-        if (hasNext()){
-            return mySets.get(index++);
+        if (hasNext()) {
+            return ((E) mySets[index++]);
         } else {
             throw new NullPointerException("Position is empty.");
         }
     }
 
     @Override
-    public void add(Object o)   {
-        if (!mySets.contains(o)){
-            mySets.add(((E) o));
-        }else {
-            mySets.set( mySets.indexOf(o), ((E) o)) ;
+    public void add(E e) {
+        boolean flag = false;
+        for (Object mySet : mySets) {
+            if (mySet.equals(e)) {
+
+                System.out.println("is not unique element");
+            } else flag = true;
+        }
+        if (flag) {
+            for (int i = 0; i < mySets.length; i++) {
+                if (mySets[i] == null) {
+                    mySets[i] = e;
+                }
+            }
         }
     }
 
