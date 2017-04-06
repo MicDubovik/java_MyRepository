@@ -93,45 +93,70 @@ public class Order {
         for (MyList list : listMap.values()) {
 
             if (list.getOperation().equals("BUY")) {
+
+                for (MyList myList1 : ordersBID) {
+                    double first = list.getPrice();
+                    double second = myList1.getPrice();
+                    if (first == second) {
+                        myList1.setValue(myList1.getValue() + list.getValue());
+                    }
+                }
                 this.ordersBID.add(list);
-
-            }
-            else if(list.getOperation().equals("SELL")) {
+            } else if (list.getOperation().equals("SELL")) {
+                for (MyList myList1 : ordersASK) {
+                    double first = list.getPrice();
+                    double second = myList1.getPrice();
+                    if (first == second) {
+                        myList1.setValue(myList1.getValue() + list.getValue());
+                    }
+                }
                 this.ordersASK.add(list);
-
             }
         }
+
     }
 
-    public void cutList(SortedSet<MyList> listSet) {
+    public void cutListBID(SortedSet<MyList> listSet) {
 
         for (MyList list : listSet) {
 
             String nameBookList = list.getBook();
 
             if (nameBookList.equals("book-1")) {
-                for (MyList myList1 : ordersList.getBook1()) {
-                    if (myList1.getPrice()==list.getPrice()){
-                        list.setValue(myList1.getValue()+list.getValue());
-                    }
-                }
-                ordersList.getBook1().add(list);
+
+                ordersList.getBook1BID().add(list);
 
             } else if (nameBookList.equals("book-2")) {
-                for (MyList myList1 : ordersList.getBook2()) {
-                    if (myList1.getPrice()==list.getPrice()){
-                        list.setValue(myList1.getValue()+list.getValue());
-                    }
-                }
-                ordersList.getBook2().add(list);
+
+
+                ordersList.getBook2BID().add(list);
 
             } else {
-                for (MyList myList1 : ordersList.getBook3()) {
-                    if (myList1.getPrice()==list.getPrice()){
-                        list.setValue(myList1.getValue()+list.getValue());
-                    }
-                }
-                ordersList.getBook3().add(list);
+
+                ordersList.getBook3BID().add(list);
+            }
+
+        }
+
+    }
+    public void cutListASK(SortedSet<MyList> listSet) {
+
+        for (MyList list : listSet) {
+
+            String nameBookList = list.getBook();
+
+            if (nameBookList.equals("book-1")) {
+
+                ordersList.getBook1ASK().add(list);
+
+            } else if (nameBookList.equals("book-2")) {
+
+
+                ordersList.getBook2ASK().add(list);
+
+            } else {
+
+                ordersList.getBook3ASK().add(list);
             }
 
         }

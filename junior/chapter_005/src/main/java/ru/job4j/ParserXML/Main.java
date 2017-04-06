@@ -100,32 +100,67 @@ public class Main {
         long endtimerParse = System.currentTimeMillis();
         System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));
 
-        for (MyList myList : main.order.listSet) {
-            System.out.println(myList);
-        }
+//        for (MyList myList : main.order.listSet) {
+//            System.out.println(myList);
+//        }
         System.out.println("---------------");
 
         main.order.sort(main.order.listMap);
 
-        for (MyList myList : main.order.ordersBID) {
-            System.out.println(myList);
-        }
-        System.out.println("---------------");
-        for (MyList myList : main.order.ordersASK) {
-            System.out.println(myList);
-        }
-        System.out.println("---------------");
+        main.order.cutListBID(main.order.ordersBID);
+        main.order.cutListASK(main.order.ordersASK);
 
-        main.order.compareBidAsk(main.order.ordersBID,main.order.ordersASK);
-
-        for (MyList myList : main.order.ordersBID) {
+        System.out.println("BOOK-1,bid");
+        main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
+        for (MyList myList : main.order.getOrdersList().getBookBID()) {
             System.out.println(myList);
         }
-
-        System.out.println("---------------");
-        for (MyList myList : main.order.ordersASK) {
+        System.out.println("-----");
+        System.out.println("ask");
+        for (MyList myList : main.order.getOrdersList().getBookASK()) {
             System.out.println(myList);
         }
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("BOOK-2,bid");
+        main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
+        for (MyList myList : main.order.getOrdersList().getBookBID()) {
+            System.out.println(myList);
+        }
+        System.out.println("-----");
+        System.out.println("ask");
+        for (MyList myList : main.order.getOrdersList().getBookASK()) {
+            System.out.println(myList);
+        }
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("BOOK-3,bid");
+        main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
+        for (MyList myList : main.order.getOrdersList().getBookBID()) {
+            System.out.println(myList);
+        }
+        System.out.println("-----");
+        System.out.println("ask");
+        for (MyList myList : main.order.getOrdersList().getBookASK()) {
+            System.out.println(myList);
+        }
+//        for (MyList myList : main.order.ordersBID) {
+//            System.out.println(myList);
+//        }
+//        System.out.println("---------------");
+//        for (MyList myList : main.order.ordersASK) {
+//            System.out.println(myList);
+//        }
+//        System.out.println("---------------");
+
+//        main.order.compareBidAsk(main.order.ordersBID,main.order.ordersASK);
+
+//        for (MyList myList : main.order.ordersBID) {
+//            System.out.println(myList);
+//        }
+//
+//        System.out.println("---------------");
+//        for (MyList myList : main.order.ordersASK) {
+//            System.out.println(myList);
+//        }
 
         long timeerEnd = System.currentTimeMillis();
         System.out.println(timeerEnd-timerBegin);
