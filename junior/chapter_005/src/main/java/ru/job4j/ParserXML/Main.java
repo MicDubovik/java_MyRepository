@@ -93,7 +93,7 @@ public class Main {
 
         String fileName2 = "\\Project\\test.xml";
 
-        FileReader fileReader = new FileReader(fileName2);
+        FileReader fileReader = new FileReader(fileName);
 
         main.parse(fileReader);
 
@@ -122,7 +122,7 @@ public class Main {
         }
         System.out.println("-----------------------------------------------------------------------------");
         System.out.println("BOOK-2,bid");
-        main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
+        main.order.compareBidAsk(main.order.getOrdersList().getBook2BID(),main.order.getOrdersList().getBook2ASK());
         for (MyList myList : main.order.getOrdersList().getBookBID()) {
             System.out.println(myList);
         }
@@ -133,7 +133,7 @@ public class Main {
         }
         System.out.println("-----------------------------------------------------------------------------");
         System.out.println("BOOK-3,bid");
-        main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
+        main.order.compareBidAsk(main.order.getOrdersList().getBook3BID(),main.order.getOrdersList().getBook3ASK());
         for (MyList myList : main.order.getOrdersList().getBookBID()) {
             System.out.println(myList);
         }
