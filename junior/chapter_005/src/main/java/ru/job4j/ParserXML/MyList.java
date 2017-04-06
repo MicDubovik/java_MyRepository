@@ -3,18 +3,49 @@ package ru.job4j.ParserXML;
 
 import java.util.Iterator;
 
-public class MyList implements Comparable<MyList>,Iterator{
-
-    private String name; //
+/**
+ * Class for my Order.
+ */
+public class MyList   implements Iterator{
+    /**
+     * Name.
+     */
+    private String name;
+    /**
+     * Book.
+     */
     private String book;
+    /**
+     * Operation.
+     */
     private String operation;
-    private Double price;
+    /**
+     * Price.
+     */
+    private double price;
+    /**
+     * Value.
+     */
     private int value;
-    private Integer orderId;
+    /**
+     * OrderId.
+     */
+    private int orderId;
+    /**
+     * Reference on next element.
+     */
+     private MyList next;
 
-    private MyList next;
-
-    public MyList(String name ,String book, String operation, Double price, int value, int orderId) {
+    /**
+     * Constructor.
+     * @param name
+     * @param book
+     * @param operation
+     * @param price
+     * @param value
+     * @param orderId
+     */
+    public MyList(String name ,String book, String operation, double price, int value, int orderId) {
        this.name =  name;
         this.book = book;
         this.operation = operation;
@@ -23,11 +54,19 @@ public class MyList implements Comparable<MyList>,Iterator{
         this.orderId = orderId;
     }
 
+    /**
+     * Second constructor.
+     * @param orderId
+     */
     public MyList( int orderId) {
         this.book = book;
         this.orderId = orderId;
     }
 
+    /**
+     * Properties for all fields.
+     * @return
+     */
     public MyList getMyList() {
         return next;
     }
@@ -60,11 +99,11 @@ public class MyList implements Comparable<MyList>,Iterator{
         this.operation = operation;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -84,6 +123,10 @@ public class MyList implements Comparable<MyList>,Iterator{
         this.orderId = orderId;
     }
 
+    /**
+     * Override method toString.
+     * @return
+     */
     @Override
     public String toString() {
         return "AddOrder{" +
@@ -95,37 +138,10 @@ public class MyList implements Comparable<MyList>,Iterator{
                 '}';
     }
 
-    @Override
-    public int compareTo( MyList o) {
-        return    this.orderId.compareTo(o.getOrderId());
-    }
-
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MyList myList = (MyList) o;
-
-        if (value != myList.value) return false;
-        if (orderId != myList.orderId) return false;
-        if (book != null ? !book.equals(myList.book) : myList.book != null) return false;
-        if (operation != null ? !operation.equals(myList.operation) : myList.operation != null) return false;
-        return price != null ? price.equals(myList.price) : myList.price == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = book != null ? book.hashCode() : 0;
-        result = 31 * result + (operation != null ? operation.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + value;
-        result = 31 * result + orderId;
-        return result;
-    }
-
+    /**
+     * Implement iterator.
+     * @return
+     */
     @Override
     public boolean hasNext() {
         if (next.next() != null)
@@ -133,9 +149,51 @@ public class MyList implements Comparable<MyList>,Iterator{
         else return false;
     }
 
+    /**
+     * Implement iterator.
+     * @return
+     */
     @Override
     public MyList next() {
 
         return next;
+    }
+
+    /**
+     * Override equals.
+     * @param o
+     * @return
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyList myList = (MyList) o;
+
+        if (Double.compare(myList.price, price) != 0) return false;
+        if (value != myList.value) return false;
+        if (orderId != myList.orderId) return false;
+        if (name != null ? !name.equals(myList.name) : myList.name != null) return false;
+        if (book != null ? !book.equals(myList.book) : myList.book != null) return false;
+        return operation != null ? operation.equals(myList.operation) : myList.operation == null;
+    }
+
+    /**
+     * Override hashCode.
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (book != null ? book.hashCode() : 0);
+        result = 31 * result + (operation != null ? operation.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + value;
+        result = 31 * result + orderId;
+        return result;
     }
 }

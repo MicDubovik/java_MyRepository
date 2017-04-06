@@ -12,10 +12,13 @@ public class Main {
 
 
     Order order = new Order();
-    /**
-     * 2-nd reference on the ASK list from method compare.
-     */
 
+    /**
+     * StreamParser for XML.
+     * @param fr
+     * @throws FileNotFoundException
+     * @throws XMLStreamException
+     */
 
     public void parse(FileReader fr) throws FileNotFoundException, XMLStreamException {
 
@@ -100,15 +103,41 @@ public class Main {
         long endtimerParse = System.currentTimeMillis();
         System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));
 
-//        for (MyList myList : main.order.listSet) {
-//            System.out.println(myList);
-//        }
-        System.out.println("---------------");
 
         main.order.sort(main.order.listMap);
 
         main.order.cutListBID(main.order.ordersBID);
         main.order.cutListASK(main.order.ordersASK);
+
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook1BID()) {
+            System.out.println(arg);
+        }
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook2BID()) {
+            System.out.println(arg);
+        }
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook3BID()) {
+            System.out.println(arg);
+        }
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook1ASK()) {
+            System.out.println(arg);
+        }
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook2ASK()) {
+            System.out.println(arg);
+        }
+        System.out.println("---------------");
+        for (MyList arg : main.order.getOrdersList().getBook3ASK()) {
+            System.out.println(arg);
+        }
+        System.out.println("--------------------------------------------------------------");
+
+        System.out.println("BOOK-1,bid");
+
+
 
         System.out.println("BOOK-1,bid");
         main.order.compareBidAsk(main.order.getOrdersList().getBook1BID(),main.order.getOrdersList().getBook1ASK());
@@ -142,25 +171,8 @@ public class Main {
         for (MyList myList : main.order.getOrdersList().getBookASK()) {
             System.out.println(myList);
         }
-//        for (MyList myList : main.order.ordersBID) {
-//            System.out.println(myList);
-//        }
-//        System.out.println("---------------");
-//        for (MyList myList : main.order.ordersASK) {
-//            System.out.println(myList);
-//        }
-//        System.out.println("---------------");
+        System.out.println("-----------------------------------------------------------------------------");
 
-//        main.order.compareBidAsk(main.order.ordersBID,main.order.ordersASK);
-
-//        for (MyList myList : main.order.ordersBID) {
-//            System.out.println(myList);
-//        }
-//
-//        System.out.println("---------------");
-//        for (MyList myList : main.order.ordersASK) {
-//            System.out.println(myList);
-//        }
 
         long timeerEnd = System.currentTimeMillis();
         System.out.println(timeerEnd-timerBegin);

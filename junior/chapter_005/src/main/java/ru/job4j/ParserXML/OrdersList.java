@@ -4,9 +4,21 @@ import java.util.Comparator;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+/**
+ * OrderList - keeping lists.
+ */
 public class OrdersList {
 
-   Comparator comparator = new Comparator<MyList>() {
+    /**
+     * Constructor.
+     */
+    public OrdersList() {
+    }
+
+    /**
+     * Comparator for Sell lists.
+     */
+    Comparator comparator = new Comparator<MyList>() {
         @Override
         public int compare(MyList o1, MyList o2) {
             if (o1.getPrice() > o2.getPrice()) {
@@ -16,7 +28,9 @@ public class OrdersList {
             } else return 0;
         }
     };
-
+    /**
+     * Comparator for Buy lists.
+     */
     Comparator comparator2 = new Comparator<MyList>() {
         @Override
         public int compare(MyList o1, MyList o2) {
@@ -40,7 +54,10 @@ public class OrdersList {
     private SortedSet<MyList> bookBID = new TreeSet<>(comparator2);
     private SortedSet<MyList> bookASK = new TreeSet<>(comparator);
 
-
+    /**
+     * Properties for all lists.
+     * @return
+     */
     public SortedSet<MyList> getBookBID() {
         return bookBID;
     }
