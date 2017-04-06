@@ -1,16 +1,16 @@
 package ru.job4j.ParserXML;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Order {
 
     private String name;
     private MyList myList;
+    private OrdersList ordersList = new OrdersList();
 
-    SortedSet<MyList> listSet = new TreeSet<>(  new Comparator<MyList>() {
+    Map<Integer, MyList> listMap = new HashMap<>();
+
+    SortedSet<MyList> listSet = new TreeSet<>(new Comparator<MyList>() {
         @Override
         public int compare(MyList o1, MyList o2) {
             if (o1.getPrice() > o2.getPrice()) {
@@ -48,21 +48,32 @@ public class Order {
     public Order() {
     }
 
+    public void addListMapOrder(Integer id, MyList myList) {
+        listMap.put(id, myList);
+
+    }
+
+    public void delListMapOrder(Integer id) {
+
+        listMap.remove(id);
+    }
+
+
     public void addListSetOrder(MyList myList) {
         MyList add = null;
         for (MyList list : listSet) {
             double first = list.getPrice();
             double second = myList.getPrice();
-            if (first==second){
+            if (first == second) {
 
-                add=list;
-                add.setValue(list.getValue()+myList.getValue());break;
-
-
+                add = list;
+                add.setValue(list.getValue() + myList.getValue());
+                break;
             }
         }
         listSet.add(myList);
     }
+
 
     public void delListSetOrder(MyList myList) {
         MyList del = null;
@@ -77,36 +88,50 @@ public class Order {
         listSet.remove(del);
     }
 
-<<<<<<< HEAD
-    public void cutList(SortedSet<MyList> listSet) {
-        SortedSet<MyList> book1 = new TreeSet<>();
-        SortedSet<MyList> book2 = new TreeSet<>();
-        SortedSet<MyList> book3 = new TreeSet<>();
+    public void sort(Map<Integer, MyList> listMap) {
 
-=======
-    public void cutList(SortedSet<MyList> listSet){
->>>>>>> parent of 32c8f0f... up
+        for (MyList list : listMap.values()) {
+
+            if (list.getOperation().equals("BUY")) {
+                this.ordersBID.add(list);
+
+            }
+            else if(list.getOperation().equals("SELL")) {
+                this.ordersASK.add(list);
+
+            }
+        }
+    }
+
+    public void cutList(SortedSet<MyList> listSet) {
 
         for (MyList list : listSet) {
 
             String nameBookList = list.getBook();
-<<<<<<< HEAD
-            if (nameBookList.equals("book-1")) {
 
-                book1.add(list);
-                ordersList.ordersListObj.addlist(book1);
-                book1.add(list);
-            } else if (nameBookList.equals("book-2")){
-                book2.add(list);
-                ordersList.ordersListObj.addlist(book2);
-                book2.add(list);
+            if (nameBookList.equals("book-1")) {
+                for (MyList myList1 : ordersList.getBook1()) {
+                    if (myList1.getPrice()==list.getPrice()){
+                        list.setValue(myList1.getValue()+list.getValue());
+                    }
+                }
+                ordersList.getBook1().add(list);
+
+            } else if (nameBookList.equals("book-2")) {
+                for (MyList myList1 : ordersList.getBook2()) {
+                    if (myList1.getPrice()==list.getPrice()){
+                        list.setValue(myList1.getValue()+list.getValue());
+                    }
+                }
+                ordersList.getBook2().add(list);
+
             } else {
-                book3.add(list);
-                ordersList.ordersListObj.addlist(book3);
-=======
-            if (nameBookList.equals("book-1")){
-                new SortedSet<>()
->>>>>>> parent of 32c8f0f... up
+                for (MyList myList1 : ordersList.getBook3()) {
+                    if (myList1.getPrice()==list.getPrice()){
+                        list.setValue(myList1.getValue()+list.getValue());
+                    }
+                }
+                ordersList.getBook3().add(list);
             }
 
         }
@@ -114,30 +139,7 @@ public class Order {
     }
 
 
-    public void sort(SortedSet<MyList> listsort) {
-
-        Iterator it = listsort.iterator();
-        MyList myList = null;
-        boolean flag = true;
-
-        while (it.hasNext()) {
-
-//
-                myList = (MyList) it.next();
-//                if (myList.getPrice() == myList.next().getPrice() && myList.getOperation().equals(myList.next().getOperation())) {
-//                    myList.setValue(myList.getValue() + myList.next().getValue());
-                    if (myList.getOperation().equals("BUY")) {
-                        this.ordersBID.add(myList);
-
-                    }
-                    if (myList.getOperation().equals("SELL")) {
-                        this.ordersASK.add(myList);
-
-                    }
-                }
-            }
-
-    public SortedSet<MyList> compareBidAsk(SortedSet<MyList> bidlist, SortedSet<MyList> asklist) {
+    public void compareBidAsk(SortedSet<MyList> bidlist, SortedSet<MyList> asklist) {
         /**
          * Iterator for BID list.
          */
@@ -187,73 +189,10 @@ public class Order {
                 break;
             }
         }
-        if (myask.getBook().equals("book-1")) {
-            this.myFinishAsk1 = asklist;
-        } else if (myask.getBook().equals("book-2")) {
-            this.myFinishAsk2 = asklist;
-        } else {
-            this.myFinishAsk3 = asklist;
-        }
 
-        return bidlist;
+        ordersList.getBookBID().addAll(bidlist);
+        ordersList.getBookASK().addAll(asklist);
     }
-
-
-
-
-//    public void summValue(SortedSet<MyList> list) {
-//
-//        Iterator it = list.iterator();
-//        MyList myList = null;
-//        boolean flag = true;
-//
-//        while (it.hasNext()) {
-//            if (flag) {
-//                myList = (MyList) it.next();
-//                if (myList.getPrice() == myList.next().getPrice()) {
-//                    myList.setValue(myList.getValue() + myList.next().getValue());
-//                    myList.next().remove();
-//                }
-//            }
-//        }
-//    }
-
-//    public void listSumVolume(SortedSet<MyList> list) {
-//
-//        SortedSet<MyList> listSumVolume = new TreeSet<>();
-//        SortedSet<MyList> newlistSumVolume = new TreeSet<>();
-//
-//        listSumVolume.addAll(list);
-//
-//        System.out.println();
-//
-//        for (MyList myList : listSumVolume) {
-//            for (MyList myList2 : list) {
-//                double first = myList.getPrice();
-//                double second = myList2.getPrice();
-//
-//                if (!myList.equals(myList2) && first == second) {
-//                    myList.setValue(myList.getValue() + myList2.getValue());
-//                    this.ordersBID.add(myList);
-//                } else {
-//
-//                }
-//
-//            }
-//        }
-//
-//    }
-//    public void cutList(Set<MyList> listSet){
-//        if (listSet.contains())
-//    }
-//    public void addOdrer(Integer name, MyList list) {
-//        ordersAdd.put(name, list);
-//    }
-//
-//
-//    public void deleteOrder(String name, MyList list) {
-//        ordersDel.remove(name, list);
-//    }
 
 
     public String getName() {
@@ -272,4 +211,11 @@ public class Order {
         this.myList = myList;
     }
 
+    public OrdersList getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(OrdersList ordersList) {
+        this.ordersList = ordersList;
+    }
 }
