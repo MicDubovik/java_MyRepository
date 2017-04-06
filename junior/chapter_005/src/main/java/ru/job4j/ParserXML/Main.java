@@ -4,16 +4,123 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+<<<<<<< HEAD
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+=======
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+>>>>>>> Update
 import java.util.*;
 
 public class Main {
+
 
     /**
      * 2-nd reference on the ASK list from method compare.
      */
     SortedSet<MyList> myFinishAsk = new TreeSet<>();
+
+//    TreeMap<String,Order> ordersAdd = new TreeMap<>();
+//    TreeMap<String,Order> ordersDel = new TreeMap<>();
+///
+//
+//    List<MyList> addlist1 = new LinkedList<>();
+//    List<MyList> addlist2 = new LinkedList<>();
+//    List<MyList> addlist3 = new LinkedList<>();
+//    /**
+//     * 3 list DeleteOrder for 3-th book .
+//     */
+//    List<MyDeleteList> deleteLists1 = new LinkedList<>();
+//    List<MyDeleteList> deleteLists2 = new LinkedList<>();
+//    List<MyDeleteList> deleteLists3 = new LinkedList<>();
+
+    Order order = new Order();
+    /**
+     * 2-nd reference on the ASK list from method compare.
+     */
+    SortedSet<MyList> myFinishAsk1 = new TreeSet<>();
+    SortedSet<MyList> myFinishAsk2 = new TreeSet<>();
+    SortedSet<MyList> myFinishAsk3 = new TreeSet<>();
+
+    public void parse(FileReader fr) throws FileNotFoundException, XMLStreamException {
+
+        /**
+         * Create parser for XML.
+         */
+//        FileReader fileReader = new FileReader(fileName);
+
+//        XMLInputFactory factory = XMLInputFactory.newInstance();
+//        XMLStreamReader reader = factory.createXMLStreamReader(fileReader);
+
+
+        XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+
+
+        XMLStreamReader streamReader = inputFactory.createXMLStreamReader(fr);
+
+
+        while (streamReader.getEventType() != XMLStreamConstants.END_DOCUMENT) {
+
+
+                switch (streamReader.next()) {
+
+                    case XMLStreamConstants.START_ELEMENT: {
+
+                        MyList myList = null;
+
+                        if (streamReader.getLocalName().toLowerCase().equals("addorder")) {
+                            String name = "addorder";
+                            String book = streamReader.getAttributeValue(0);
+                            String operation = streamReader.getAttributeValue(1);
+                            double price = Double.parseDouble(streamReader.getAttributeValue(2));
+                            int volume = Integer.parseInt(streamReader.getAttributeValue(3));
+                            int orderId = Integer.parseInt(streamReader.getAttributeValue(4));
+
+
+                            if (book.equals("book-1")) {
+                                myList = new MyList(name, book, operation, price, volume, orderId);
+
+                            } else if (book.equals("book-2")) {
+                                myList = new MyList(name, book, operation, price, volume, orderId);
+
+                            } else {
+                                myList = new MyList(name, book, operation, price, volume, orderId);
+
+                            }
+//
+
+
+//                            if (operation.equals("BUY")){
+
+                                order.addListSetOrder(myList);
+//                            } else {
+//                                order.delListSetOrder(myList);
+//                            }
+
+
+                        } else if (streamReader.getLocalName().toLowerCase().equals("deleteorder")) {
+//
+                            int orderId = Integer.parseInt(streamReader.getAttributeValue(1));
+//
+//                        order.ordersAdd.remove(orderId);
+                            myList = new MyList(orderId);
+                            order.delListSetOrder(myList);
+                        }
+//
+                    }
+                }
+        }
+    }
+
+    /**
+     * Get List without DeleteOrder.№2
+     */
+    public void listDeleteOrderDel() {
+
+    }
+
 
     /**
      * Get List without DeleteOrder.
@@ -23,6 +130,7 @@ public class Main {
      * @return
      */
     public List<MyList> listAfterDeleteFromOrder(List<MyList> addlist, List<MyDeleteList> deletelisr) {
+
 
         List<MyList> newlist = new LinkedList<>();
         List<MyList> newlistAfterDel = addlist;
@@ -35,6 +143,42 @@ public class Main {
         }
         newlistAfterDel.removeAll(newlist);
         return newlistAfterDel;
+
+
+//        Iterator itAdd = addlist.listIterator();
+//        Iterator itDEl = deletelisr.listIterator();
+//        MyList admy = null;
+//        MyList delmy = null;
+//        while (itDEl.hasNext()) {
+//            admy = (MyList) itAdd.next();
+//            delmy = (MyList) itDEl.next();
+//            if (admy.getOrderId() == (delmy.getOrderId())) {
+//                itAdd.remove();
+//                itDEl.remove();
+//            } else {
+//
+//            }
+//
+//        }
+
+
+//        addlist.get().getOrderId();
+/**
+ * First realisation.
+ */
+//      List<MyList> newlist = new LinkedList<>();
+        List<MyList> newlistAfterDel = addlist;
+//        for (MyList aList : addlist) {
+//            for (MyDeleteList dList : deletelisr) {
+//                if (aList.getOrderId() == dList.getOrderId()) {
+//                    newlist.add(aList);
+//                }
+//            }
+//        }
+//        newlistAfterDel.removeAll(newlist);
+        return newlistAfterDel;
+//    }
+
     }
 
     /**
@@ -155,11 +299,23 @@ public class Main {
                 break;
             }
         }
+
         this.myFinishAsk = asklist;
+
+        if (myask.getBook().equals("book-1")) {
+            this.myFinishAsk1 = asklist;
+        } else if (myask.getBook().equals("book-2")) {
+            this.myFinishAsk2 = asklist;
+        } else {
+            this.myFinishAsk3 = asklist;
+        }
+
+
         return bidlist;
     }
 
     public static void main(String[] args) throws XMLStreamException, FileNotFoundException {
+
 
         long timerBegin = System.currentTimeMillis();
 
@@ -234,6 +390,118 @@ public class Main {
                 }
             }
         }
+
+
+        Main main = new Main();
+
+        long starttimerParse = System.currentTimeMillis();
+        System.out.println("Start parse");
+        String fileName = String.format(
+                "%s%s%s", System.getProperty("java.io.tmpdir"), File.separator, "orders.xml");
+        String fileName2 = "\\Project\\test.xml";
+        FileReader fileReader = new FileReader(fileName2);
+        main.parse(fileReader);
+        long endtimerParse = System.currentTimeMillis();
+        System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));
+
+        for (MyList myList : main.order.listSet) {
+            System.out.println(myList);
+        }
+        System.out.println("---------------");
+
+        main.order.sort(main.order.listSet);
+
+        for (MyList myList : main.order.ordersBID) {
+            System.out.println(myList);
+        }
+        System.out.println("---------------");
+        for (MyList myList : main.order.ordersASK) {
+            System.out.println(myList);
+        }
+//        main.order.summValue(main.order.ordersBID);
+//        System.out.println("---------------");
+//        for (MyList myList : main.order.ordersBID) {
+//            System.out.println(myList);
+//        }
+
+
+//        for (Map.Entry<Integer, MyList> item : main.order.ordersAdd.entrySet()) {
+//            System.out.printf("Ключ: %s  Значение: %s \n", item.getKey(), item.getValue().getName());
+//        }
+
+//        System.out.println("Start Delete order from list");
+//        long starttimerDeleteOrders  = System.currentTimeMillis();
+//        List<MyList> newlist1 = main.listAfterDeleteFromOrder(main.addlist1, main.deleteLists1);
+//        List<MyList> newlist2 = main.listAfterDeleteFromOrder(main.addlist2, main.deleteLists2);
+//        List<MyList> newlist3 = main.listAfterDeleteFromOrder(main.addlist3, main.deleteLists3);
+//        long endtimerDeleteOrders  = System.currentTimeMillis();
+//        System.out.println("End time Delete order from list = "+(endtimerDeleteOrders-starttimerDeleteOrders));
+//
+//        System.out.println("Start create BIDorder  list");
+//        long starttimerCreateBID  = System.currentTimeMillis();
+//        List<MyList> bidList1 = main.listBID(newlist1);
+//        List<MyList> bidList2 = main.listBID(newlist2);
+//        List<MyList> bidList3 = main.listBID(newlist3);
+//        long endtimerCreateBID  = System.currentTimeMillis();
+//        System.out.println("End time create BIDorder list = "+(endtimerCreateBID-starttimerCreateBID));
+//
+//        System.out.println("Start create ASKorder  list");
+//        long starttimerCreateASK  = System.currentTimeMillis();
+//        List<MyList> askList1 = main.listASK(newlist3);
+//        List<MyList> askList2 = main.listASK(newlist3);
+//        List<MyList> askList3 = main.listASK(newlist3);
+//        long endtimerCreateASK  = System.currentTimeMillis();
+//        System.out.println("End time create ASKorder list = "+(endtimerCreateASK-starttimerCreateASK));
+//
+//        System.out.println("Start ListSumVolumeBID ");
+//        long starttimerListVolumeBID  = System.currentTimeMillis();
+//        SortedSet<MyList> sortedBID1 = main.listSumVolume(bidList1);
+//        SortedSet<MyList> sortedBID2 = main.listSumVolume(bidList2);
+//        SortedSet<MyList> sortedBID3 = main.listSumVolume(bidList3);
+//        long endtimerListVolumeBID  = System.currentTimeMillis();
+//        System.out.println("End time ListSumVolumeBID = "+(endtimerListVolumeBID-starttimerListVolumeBID));
+//
+//        System.out.println("Start ListSumVolumeASK ");
+//        long starttimerListVolumeASK  = System.currentTimeMillis();
+//        SortedSet<MyList> sortedAsk1 = main.listSumVolume(askList1);
+//        SortedSet<MyList> sortedAsk2 = main.listSumVolume(askList2);
+//        SortedSet<MyList> sortedAsk3 = main.listSumVolume(askList3);
+//        long endtimerListVolumeASK= System.currentTimeMillis();
+//        System.out.println("End time ListSumVolumeASK = "+(endtimerListVolumeASK-starttimerListVolumeASK));
+//
+//        Comparator<MyList> comparator = new Comparator<MyList>() {
+//            @Override
+//            public int compare(MyList o1, MyList o2) {
+//                if (o1.getPrice() < o2.getPrice()) {
+//                    return 1;
+//                } else if (o1.getPrice() > o2.getPrice()) {
+//                    return -1;
+//                } else return 0;
+//            }
+//        };
+
+//        SortedSet<MyList> sortedBid1 = new TreeSet<MyList>(comparator);
+//        SortedSet<MyList> sortedBid2 = new TreeSet<MyList>(comparator);
+//        SortedSet<MyList> sortedBid3 = new TreeSet<MyList>(comparator);
+//
+//        System.out.println("Start sortedBID ");
+//        long starttimerSortedBID  = System.currentTimeMillis();
+//        sortedBid1.addAll(sortedBID1);
+//        sortedBid2.addAll(sortedBID2);
+//        sortedBid3.addAll(sortedBID3);
+//        long endtimerSortedBID = System.currentTimeMillis();
+//        System.out.println("End time ListSumVolumeBID = "+(endtimerSortedBID-starttimerSortedBID));
+//
+//        System.out.println("Start create finish orders  ");
+//        long starttimerfinish  = System.currentTimeMillis();
+//        SortedSet<MyList> lastListBID1 = main.compareBidAsk(sortedBid1, sortedAsk1);
+//        SortedSet<MyList> lastListBID2 = main.compareBidAsk(sortedBid2, sortedAsk2);
+//        SortedSet<MyList> lastListBID3 = main.compareBidAsk(sortedBid3, sortedAsk3);
+//        long endtimerfinish = System.currentTimeMillis();
+//        System.out.println("End time create finish orders  = "+(endtimerfinish-starttimerfinish));
+//        System.out.println("-----------------------------------------------------------");
+//        System.out.println("Full time    = "+(endtimerfinish-starttimerParse));
+
 
 ////        for (MyList myList : addlist1) {
 ////            System.out.println(myList);
@@ -313,7 +581,9 @@ public class Main {
 //        }
 //        System.out.println("------------------------------------------------------------------------");
 
+
         long timeerEnd = System.currentTimeMillis();
         System.out.println(timeerEnd-timerBegin);
+ 
     }
 }

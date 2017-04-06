@@ -1,15 +1,21 @@
 package ru.job4j.ParserXML;
 
-public class MyList implements Comparable<MyList>{
 
-    private static  final String name="AddOrder";
+import java.util.Iterator;
+
+public class MyList implements Comparable<MyList>,Iterator{
+
+    private String name; //
     private String book;
     private String operation;
     private Double price;
     private int value;
-    private int orderId;
+    private Integer orderId;
 
-    public MyList(String book, String operation, Double price, int value, int orderId) {
+    private MyList next;
+
+    public MyList(String name ,String book, String operation, Double price, int value, int orderId) {
+       this.name =  name;
         this.book = book;
         this.operation = operation;
         this.price = price;
@@ -17,7 +23,24 @@ public class MyList implements Comparable<MyList>{
         this.orderId = orderId;
     }
 
-    public static String getName() {
+    public MyList( int orderId) {
+        this.book = book;
+        this.orderId = orderId;
+    }
+
+    public MyList getMyList() {
+        return next;
+    }
+
+    public void setMyList(MyList myList) {
+        this.next = myList;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public  String getName() {
         return name;
     }
 
@@ -53,11 +76,11 @@ public class MyList implements Comparable<MyList>{
         this.value = value;
     }
 
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 
@@ -73,8 +96,8 @@ public class MyList implements Comparable<MyList>{
     }
 
     @Override
-    public int compareTo(MyList o) {
-        return this.price.compareTo(o.getPrice());
+    public int compareTo( MyList o) {
+        return    this.orderId.compareTo(o.getOrderId());
     }
 
 
@@ -101,5 +124,18 @@ public class MyList implements Comparable<MyList>{
         result = 31 * result + value;
         result = 31 * result + orderId;
         return result;
+    }
+
+    @Override
+    public boolean hasNext() {
+        if (next.next() != null)
+            return true;
+        else return false;
+    }
+
+    @Override
+    public MyList next() {
+
+        return next;
     }
 }
