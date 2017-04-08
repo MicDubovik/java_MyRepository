@@ -34,7 +34,7 @@ public class MyList   implements Iterator{
     /**
      * Reference on next element.
      */
-     private MyList next;
+    private MyList next;
 
     /**
      * Constructor.
@@ -46,7 +46,7 @@ public class MyList   implements Iterator{
      * @param orderId
      */
     public MyList(String name ,String book, String operation, double price, int value, int orderId) {
-       this.name =  name;
+        this.name =  name;
         this.book = book;
         this.operation = operation;
         this.price = price;

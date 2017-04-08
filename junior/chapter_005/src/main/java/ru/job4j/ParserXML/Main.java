@@ -34,45 +34,45 @@ public class Main {
         while (streamReader.getEventType() != XMLStreamConstants.END_DOCUMENT) {
 
 
-                switch (streamReader.next()) {
+            switch (streamReader.next()) {
 
-                    case XMLStreamConstants.START_ELEMENT: {
+                case XMLStreamConstants.START_ELEMENT: {
 
-                        MyList myList = null;
+                    MyList myList = null;
 
-                        if (streamReader.getLocalName().toLowerCase().equals("addorder")) {
-                            String name = "addorder";
-                            String book = streamReader.getAttributeValue(0);
-                            String operation = streamReader.getAttributeValue(1);
-                            double price = Double.parseDouble(streamReader.getAttributeValue(2));
-                            int volume = Integer.parseInt(streamReader.getAttributeValue(3));
-                            int orderId = Integer.parseInt(streamReader.getAttributeValue(4));
+                    if (streamReader.getLocalName().toLowerCase().equals("addorder")) {
+                        String name = "addorder";
+                        String book = streamReader.getAttributeValue(0);
+                        String operation = streamReader.getAttributeValue(1);
+                        double price = Double.parseDouble(streamReader.getAttributeValue(2));
+                        int volume = Integer.parseInt(streamReader.getAttributeValue(3));
+                        int orderId = Integer.parseInt(streamReader.getAttributeValue(4));
 
 
-                            if (book.equals("book-1")) {
-                                myList = new MyList(name, book, operation, price, volume, orderId);
+                        if (book.equals("book-1")) {
+                            myList = new MyList(name, book, operation, price, volume, orderId);
 
-                            } else if (book.equals("book-2")) {
-                                myList = new MyList(name, book, operation, price, volume, orderId);
+                        } else if (book.equals("book-2")) {
+                            myList = new MyList(name, book, operation, price, volume, orderId);
 
-                            } else {
-                                myList = new MyList(name, book, operation, price, volume, orderId);
+                        } else {
+                            myList = new MyList(name, book, operation, price, volume, orderId);
 
-                            }
-                                order.addListMapOrder(myList.getOrderId(),myList);
+                        }
+                        order.addListMapOrder(myList.getOrderId(),myList);
 //                                order.addListSetOrder(myList);
 
-                        } else if (streamReader.getLocalName().toLowerCase().equals("deleteorder")) {
+                    } else if (streamReader.getLocalName().toLowerCase().equals("deleteorder")) {
 
-                            int orderId = Integer.parseInt(streamReader.getAttributeValue(1));
+                        int orderId = Integer.parseInt(streamReader.getAttributeValue(1));
 
 //                            myList = new MyList(orderId);
-                            order.delListMapOrder(orderId);
+                        order.delListMapOrder(orderId);
 //                            order.delListSetOrder(myList);
-                        }
-
                     }
+
                 }
+            }
         }
     }
 
@@ -176,6 +176,6 @@ public class Main {
 
         long timeerEnd = System.currentTimeMillis();
         System.out.println(timeerEnd-timerBegin);
- 
+
     }
 }
