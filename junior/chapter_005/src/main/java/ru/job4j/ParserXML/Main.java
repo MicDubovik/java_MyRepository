@@ -33,7 +33,6 @@ public class Main {
 
         while (streamReader.getEventType() != XMLStreamConstants.END_DOCUMENT) {
 
-
             switch (streamReader.next()) {
 
                 case XMLStreamConstants.START_ELEMENT: {
@@ -59,7 +58,7 @@ public class Main {
                             myList = new MyList(name, book, operation, price, volume, orderId);
 
                         }
-                        order.addListMapOrder(myList.getOrderId(),myList);
+                 //       order.addListMapOrder(myList.getOrderId(),myList);
 //                                order.addListSetOrder(myList);
 
                     } else if (streamReader.getLocalName().toLowerCase().equals("deleteorder")) {
@@ -67,10 +66,9 @@ public class Main {
                         int orderId = Integer.parseInt(streamReader.getAttributeValue(1));
 
 //                            myList = new MyList(orderId);
-                        order.delListMapOrder(orderId);
+           //             order.delListMapOrder(orderId);
 //                            order.delListSetOrder(myList);
                     }
-
                 }
             }
         }
@@ -83,7 +81,6 @@ public class Main {
     public static void main(String[] args) throws XMLStreamException, FileNotFoundException {
 
 
-        long timerBegin = System.currentTimeMillis();
 
         Main main = new Main();
 
@@ -98,13 +95,13 @@ public class Main {
 
         FileReader fileReader = new FileReader(fileName);
 
+        long timerBegin = System.currentTimeMillis();
         main.parse(fileReader);
-
         long endtimerParse = System.currentTimeMillis();
         System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));
 
 
-        main.order.sort(main.order.listMap);
+  //      main.order.sort(main.order.listMap);
 
         main.order.cutListBID(main.order.ordersBID);
         main.order.cutListASK(main.order.ordersASK);

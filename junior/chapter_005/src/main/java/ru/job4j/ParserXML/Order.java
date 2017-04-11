@@ -11,18 +11,18 @@ public class Order {
      * Map for keep Integer-orderID and objects Mylist.
      * Using for fast find orderID.
      */
-    Map<Integer, MyList> listMap = new HashMap<>();
+//    Map<Integer, MyList> listMap = new HashMap<>();
 
-//    SortedSet<MyList> listSet = new TreeSet<>(new Comparator<MyList>() {
-//        @Override
-//        public int compare(MyList o1, MyList o2) {
-//            if (o1.getPrice() > o2.getPrice()) {
-//                return 1;
-//            } else if (o1.getPrice() < o2.getPrice()) {
-//                return -1;
-//            } else return 0;
-//        }
-//    });
+    SortedSet<MyList> listSet = new TreeSet<>(new Comparator<MyList>() {
+        @Override
+        public int compare(MyList o1, MyList o2) {
+            if (o1.getPrice() > o2.getPrice()) {
+                return 1;
+            } else if (o1.getPrice() < o2.getPrice()) {
+                return -1;
+            } else return 0;
+        }
+    });
 
     /**
      * Constructor.
@@ -63,52 +63,52 @@ public class Order {
      * @param id
      * @param myList
      */
-    public void addListMapOrder(Integer id, MyList myList) {
-        listMap.put(id, myList);
-
-    }
-
-    /**
-     * Method for delete elements on MapList.
-     * @param id
-     */
-    public void delListMapOrder(Integer id) {
-
-        listMap.remove(id);
-    }
+//    public void addListMapOrder(Integer id, MyList myList) {
+//        listMap.put(id, myList);
+//
+//    }
+//
+//    /**
+//     * Method for delete elements on MapList.
+//     * @param id
+//     */
+//    public void delListMapOrder(Integer id) {
+//
+//        listMap.remove(id);
+//    }
 
     /**
      * Reserve methods add and delete.
      * @param listMap
      */
-//    public void addListSetOrder(MyList myList) {
-//        MyList add = null;
-//        for (MyList list : listSet) {
-//            double first = list.getPrice();
-//            double second = myList.getPrice();
-//            if (first == second) {
-//
-//                add = list;
-//                add.setValue(list.getValue() + myList.getValue());
-//                break;
-//            }
-//        }
-//        listSet.add(myList);
-//    }
-//
-//
-//    public void delListSetOrder(MyList myList) {
-//        MyList del = null;
-//        for (MyList list : listSet) {
-//            int first = list.getOrderId();
-//            int second = myList.getOrderId();
-//            if (first == second) {
-//                del = list;
-//                break;
-//            }
-//        }
-//        listSet.remove(del);
-//    }
+    public void addListSetOrder(MyList myList) {
+        MyList add = null;
+        for (MyList list : listSet) {
+            double first = list.getPrice();
+            double second = myList.getPrice();
+            if (first == second) {
+
+                add = list;
+                add.setValue(list.getValue() + myList.getValue());
+                break;
+            }
+        }
+        listSet.add(myList);
+    }
+
+
+    public void delListSetOrder(MyList myList) {
+        MyList del = null;
+        for (MyList list : listSet) {
+            int first = list.getOrderId();
+            int second = myList.getOrderId();
+            if (first == second) {
+                del = list;
+                break;
+            }
+        }
+        listSet.remove(del);
+    }
 
     /**
      * Method for cut Map on Buy and Sell lists, sort lists and sum value lists with equal price.
