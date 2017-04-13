@@ -1,16 +1,11 @@
 package ru.job4j.ParserXML;
 
 
-import java.util.Iterator;
-
 /**
  * Class for my Order.
  */
-public class MyList   implements Iterator{
-    /**
-     * Name.
-     */
-    private String name;
+public class MyList  {
+
     /**
      * Book.
      */
@@ -31,22 +26,18 @@ public class MyList   implements Iterator{
      * OrderId.
      */
     private int orderId;
-    /**
-     * Reference on next element.
-     */
-    private MyList next;
+
 
     /**
      * Constructor.
-     * @param name
      * @param book
      * @param operation
      * @param price
      * @param value
      * @param orderId
      */
-    public MyList(String name ,String book, String operation, double price, int value, int orderId) {
-        this.name =  name;
+    public MyList(String book, String operation, double price, int value, int orderId) {
+
         this.book = book;
         this.operation = operation;
         this.price = price;
@@ -67,44 +58,17 @@ public class MyList   implements Iterator{
      * Properties for all fields.
      * @return
      */
-    public MyList getMyList() {
-        return next;
-    }
-
-    public void setMyList(MyList myList) {
-        this.next = myList;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public  String getName() {
-        return name;
-    }
 
     public String getBook() {
         return book;
-    }
-
-    public void setBook(String book) {
-        this.book = book;
     }
 
     public String getOperation() {
         return operation;
     }
 
-    public void setOperation(String operation) {
-        this.operation = operation;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
     }
 
     public int getValue() {
@@ -115,12 +79,8 @@ public class MyList   implements Iterator{
         this.value = value;
     }
 
-    public Integer getOrderId() {
+    public int getOrderId() {
         return orderId;
-    }
-
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
     }
 
     /**
@@ -139,28 +99,7 @@ public class MyList   implements Iterator{
     }
 
     /**
-     * Implement iterator.
-     * @return
-     */
-    @Override
-    public boolean hasNext() {
-        if (next.next() != null)
-            return true;
-        else return false;
-    }
-
-    /**
-     * Implement iterator.
-     * @return
-     */
-    @Override
-    public MyList next() {
-
-        return next;
-    }
-
-    /**
-     * Override equals.
+     * Override equals method.
      * @param o
      * @return
      */
@@ -174,21 +113,19 @@ public class MyList   implements Iterator{
         if (Double.compare(myList.price, price) != 0) return false;
         if (value != myList.value) return false;
         if (orderId != myList.orderId) return false;
-        if (name != null ? !name.equals(myList.name) : myList.name != null) return false;
         if (book != null ? !book.equals(myList.book) : myList.book != null) return false;
         return operation != null ? operation.equals(myList.operation) : myList.operation == null;
     }
 
     /**
-     * Override hashCode.
+     * Override hashcode method.
      * @return
      */
     @Override
     public int hashCode() {
         int result;
         long temp;
-        result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (book != null ? book.hashCode() : 0);
+        result = book != null ? book.hashCode() : 0;
         result = 31 * result + (operation != null ? operation.hashCode() : 0);
         temp = Double.doubleToLongBits(price);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
@@ -196,4 +133,5 @@ public class MyList   implements Iterator{
         result = 31 * result + orderId;
         return result;
     }
+
 }

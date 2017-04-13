@@ -16,7 +16,7 @@ public class Main {
 
         String fileName2 = "\\Project\\test.xml";
 
-        FileReader fileReader = new FileReader(fileName2);
+        FileReader fileReader = new FileReader(fileName);
 
         OrderBook orderBook = new OrderBook();
 
@@ -24,7 +24,7 @@ public class Main {
 
         long starttimerParse = System.currentTimeMillis();
 
-        parser.parse(fileName2);
+        parser.parse(fileName);
 
         long endtimerParse = System.currentTimeMillis();
         System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));

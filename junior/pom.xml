@@ -19,6 +19,7 @@
         <module>chapter_003</module>
         <module>chapter_004</module>        
         <module>chapter_005</module>
+        <module>chapter_007</module>
         <!--<module>chapter_012</module>-->
     </modules>
 
@@ -85,24 +86,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-              <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>${project.version}</version>
-                <executions>
-                    <execution>
-                        <id>xjc</id>
-                        <goals>
-                            <goal>xjc</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <target>2.1</target>
-                    ...
-                </configuration>
-             </plugin>
+            </plugin>              
             <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
