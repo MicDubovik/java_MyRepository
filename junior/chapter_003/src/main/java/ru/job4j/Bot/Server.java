@@ -12,13 +12,13 @@ public class Server {
     private Socket socket;
 
 
-    private final String[] asks = {"Hello", "By", "exit", "sure", "necessarily", "possible"};
+    private final String[] asks = {"Hello", "I'm fine ", "ok!", "sure", "necessarily", "possible"};
 
 
 
     public String selectAsk(String[] asks) {
-        Random random = new Random(5);
-        return asks[random.nextInt()];
+        Random random = new Random();
+        return asks[random.nextInt(asks.length)];
     }
 
     public void startServer() throws IOException {
@@ -34,18 +34,15 @@ public class Server {
                 System.out.println("wait command ...");
                 ask = in.readLine();
                 System.out.println(ask);
-                if (ask.equals("by")) {
-                    out.println("By  my friend");
-                    out.println();break;
-                } else if ("hello".equals(ask)) {
+                if ("hello".equals(ask)) {
                     out.println("Hello, dear friend, I'm a oracle.");
-                    out.println();break;
-                } else {
+                    out.println();
+                } else if (!("by".equals(ask))){
                     out.println(selectAsk(asks));
                     out.println();
                 }
-            } while ("by".equals(ask));
-        } catch (IOException e) {
+            } while (!"by".equals(ask));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

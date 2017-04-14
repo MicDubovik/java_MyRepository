@@ -53,7 +53,9 @@ public class Code {
          * Value number for third separated code.
          */
         int value3 = 11;
+
         boolean flag = true;
+
         for (int i = 0; i < list.size() - 1; i++) {
 
             String temp = list.get(0);

@@ -16,22 +16,23 @@ public class Client {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             Scanner console = new Scanner(System.in)) {
 
+            String str;
 
-            String ask = console.nextLine();
             do {
-                if (ask.equals("By")){
+
+                String answer = console.nextLine();
+                if ("by".equals(answer)) {
+                    out.println(answer);
                     break;
                 }
-                out.println(ask);
-                String str ;
+                out.println(answer);
                 while (!(str = in.readLine()).isEmpty()) {
                     System.out.println(str);
                 }
             } while (true);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 
