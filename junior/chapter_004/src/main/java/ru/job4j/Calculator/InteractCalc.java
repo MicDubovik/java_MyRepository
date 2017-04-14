@@ -8,7 +8,7 @@ public class InteractCalc {
     public static void main(String[] args) {
 
 
-        MenuCalc menuCalc = new MenuCalc();
+        MenuCalc menuCalc = new MenuCalc(2);
         menuCalc.menuShow();
         do {
             menuCalc.showOperation();
