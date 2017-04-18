@@ -1,8 +1,13 @@
 package ru.job4j.MultiThreading.Threads;
 
 public class TwoThread {
-
+    /**
+     * Input class for threads.
+     */
     Arguments arguments = new Arguments();
+    /**
+     * Thread for count words.
+     */
     Thread one = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -25,11 +30,13 @@ public class TwoThread {
             }
             System.out.printf("Amounts words : %s%n", arguments.wordCount( arguments.string));
 
-
-
             System.out.printf("Stop count words.%n");
         }
     });
+
+    /**
+     * Thread for count spaces.
+     */
     Thread two = new Thread(new Runnable() {
         @Override
         public void run() {
@@ -50,12 +57,14 @@ public class TwoThread {
             }
              System.out.printf("Amounts spaces : %s%n", arguments.spaceCount( arguments.string));
 
-
-
             System.out.println("Stop count spaces .");
         }
     });
 
+    /**
+     * Main method for start program.
+     * @param args
+     */
     public static void main(String[] args) {
 
         TwoThread threads = new TwoThread();
