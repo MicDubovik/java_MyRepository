@@ -32,7 +32,7 @@ public class Main {
         System.out.println("-----------------------------------------------------------------------------");
 
         order.createBooks(parse.listMap);
-//        order.sumPrice();
+        order.sumPrice();
         order.cutList();
 
         System.out.println("-----------------------------------------------------------------------------");

@@ -30,7 +30,7 @@ public class Main {
         System.out.println("End parse, time is - " + (endtimerParse - starttimerParse));
 
         orderBook.sort(orderBook.getBooks());
-        orderBook.print(orderBook.getBooks());
+//        orderBook.print(orderBook.getBooks());
 //        orderBook.show(orderBook.getBooks());
         long timeend = System.currentTimeMillis();
         System.out.println(endtimerParse - starttimerParse);

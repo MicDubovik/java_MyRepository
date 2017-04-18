@@ -40,7 +40,8 @@ public class Parse {
 
                 case XMLStreamConstants.START_ELEMENT: {
 
-                    if (streamReader.getLocalName().toLowerCase().equals("addorder")) {
+                    if (streamReader.getLocalName().equals("AddOrder")) {
+
 
                         String book = streamReader.getAttributeValue(0);
                         String operation = streamReader.getAttributeValue(1);
@@ -50,7 +51,7 @@ public class Parse {
 
                         listMap.put(orderId, new MyList(book, operation, price, volume, orderId));
 
-                    } else if (streamReader.getLocalName().toLowerCase().equals("deleteorder")) {
+                    } else if (streamReader.getLocalName().equals("DeleteOrder")) {
 
                         int orderId = Integer.parseInt(streamReader.getAttributeValue(1));
 

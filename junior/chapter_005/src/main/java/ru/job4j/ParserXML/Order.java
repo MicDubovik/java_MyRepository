@@ -26,18 +26,18 @@ public class Order {
                 books.put(tmp.getValue().getBook(), new Book());
                 if (tmp.getValue().getOperation().equals("BUY")) {
                     books.get(tmp.getValue().getBook()).getBidBook().add(tmp.getValue());
-                    sumPrice();
+
                 } else {
                     books.get(tmp.getValue().getBook()).getAskBook().add(tmp.getValue());
-                    sumPrice();
+
                 }
             } else {
                 if (tmp.getValue().getOperation().equals("BUY")) {
                     books.get(tmp.getValue().getBook()).getBidBook().add(tmp.getValue());
-                    sumPrice();
+
                 } else {
                     books.get(tmp.getValue().getBook()).getAskBook().add(tmp.getValue());
-                    sumPrice();
+
                 }
 
             }
