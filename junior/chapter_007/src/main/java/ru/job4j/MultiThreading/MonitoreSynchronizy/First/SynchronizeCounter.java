@@ -5,17 +5,15 @@ public class SynchronizeCounter {
      * Value number.
      */
 
-     long value ;
+    private   long value ;
 
     /**
      * Metod value++.
      */
     public  void  increment() {
-        synchronized (this){
+         synchronized (this){
             this.value++;
-        }
-
-
+         }
     }
 
     /**

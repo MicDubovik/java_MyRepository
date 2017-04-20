@@ -8,7 +8,7 @@ public class CallableCounter {
     /**
      * Value.
      */
-    private long value;
+    private  long value;
 
     private static final int num = 10;
 
