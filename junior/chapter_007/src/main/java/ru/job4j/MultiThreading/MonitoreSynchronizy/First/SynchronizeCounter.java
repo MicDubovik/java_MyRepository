@@ -1,20 +1,21 @@
-package ru.job4j.MultiThreading.JMM;
+package ru.job4j.MultiThreading.MonitoreSynchronizy.First;
 
-/**
- * Class Counter for show count number and show problems Multithreading.
- */
-public class Counter {
-
+public class SynchronizeCounter {
     /**
      * Value number.
      */
-    private long value ;
+
+     long value ;
 
     /**
      * Metod value++.
      */
-    public void increment(){
-        this.value++;
+    public  void  increment() {
+        synchronized (this){
+            this.value++;
+        }
+
+
     }
 
     /**
@@ -33,17 +34,17 @@ public class Counter {
         /**
          * Create object counter.
          */
-        Counter counter = new Counter();
+        SynchronizeCounter counter = new SynchronizeCounter();
         /**
          * Create 1000 thread and start .
          */
         for (int i = 0; i < 1000; i++) {
-              new Thread(new SubClass(counter)).start();
+            new Thread(new MyRunnable(counter)).start();
         }
 
 
         try {
-            Thread.currentThread().sleep(500);
+            Thread.currentThread().sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
