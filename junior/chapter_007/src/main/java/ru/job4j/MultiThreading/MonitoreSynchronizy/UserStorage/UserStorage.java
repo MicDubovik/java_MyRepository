@@ -4,14 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserStorage {
-
+    /**
+     * List users.
+     */
     private List<User> userList = new ArrayList<>();
 
-
+    /**
+     * Get users.
+     * @return
+     */
     public List<User> getUserList() {
         return userList;
     }
 
+    /**
+     * Method for transfer money.
+     * @param toUser
+     * @param fromUser
+     * @param value
+     * @return
+     */
     public boolean transfer(User toUser, User fromUser, int value) {
 
         boolean flag = true;
