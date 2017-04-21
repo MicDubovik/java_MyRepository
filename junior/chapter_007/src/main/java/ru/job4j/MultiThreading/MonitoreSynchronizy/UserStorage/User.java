@@ -12,6 +12,7 @@ public class User {
 
     /**
      * Constructor.
+     *
      * @param amount
      */
     public User(int amount) {
@@ -21,6 +22,7 @@ public class User {
 
     /**
      * Get amount.
+     *
      * @return
      */
     public int getAmount() {
@@ -29,23 +31,33 @@ public class User {
 
     /**
      * Synchronised method for add money to user.
+     *
      * @param value
      */
     public void addMoney(int value) {
-          synchronized (this) {
-            this.amount += value;
-          }
+           synchronized (this) {
+
+        this.amount += value;
+
     }
+
+
+     }
 
     /**
      * Synchronised method for subtraction money from user.
+     *
      * @param value
      */
     public void devMoney(int value) {
-        synchronized (this) {
+         synchronized (this) {
+        if (amount >= value) {
+
             this.amount -= value;
         }
-     }
+
+    }
+      }
 }
 
 
