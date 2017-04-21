@@ -28,7 +28,7 @@ public class User {
     }
 
     /**
-     * Add money to user.
+     * Synchronised method for add money to user.
      * @param value
      */
     public void addMoney(int value) {
@@ -38,7 +38,7 @@ public class User {
     }
 
     /**
-     * Subtraction money from user.
+     * Synchronised method for subtraction money from user.
      * @param value
      */
     public void devMoney(int value) {
