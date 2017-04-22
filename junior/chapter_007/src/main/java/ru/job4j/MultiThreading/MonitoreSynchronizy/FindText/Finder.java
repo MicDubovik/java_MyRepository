@@ -11,15 +11,24 @@ import java.util.regex.Pattern;
 
 public class Finder implements Callable<File> {
 
-
+    /**
+     * List for temp result.
+     */
     private List<File> files = new ArrayList<>();
-
-
-
+    /**
+     * Found file.
+     */
     private File file;
-
+    /**
+     * Field   text .
+     */
     private String text;
 
+    /**
+     * Constructor.
+     * @param file
+     * @param text
+     */
     public Finder(File file, String text) {
         this.file = file;
         this.text = text;
@@ -56,8 +65,8 @@ public class Finder implements Callable<File> {
     }
 
     /**
-     * Create new Thread for each files  and find text in files.
-     *
+     * Read file . Find text in files.
+     * Return File.
      * @param text
      */
     public File findTextFiles(String text) {
@@ -110,16 +119,26 @@ public class Finder implements Callable<File> {
     }
 
     public static void main(String[] args) {
-
+        /**
+         * Input args.
+         */
         String text = "find";
         File file = new File("D:/TestDir");
-
+        /**
+         * Create  callable object.
+         */
         Callable<File> callable = new Finder(file, text);
-
+        /**
+         * Create FutureTask and give him callable.
+         */
         FutureTask<File> futureTask = new FutureTask(callable);
-
+        /**
+         * Create ExecutorService.
+         */
         ExecutorService service = Executors.newCachedThreadPool();
-
+        /**
+         * Start threads.
+         */
         service.submit(futureTask);
 
         boolean flag = false;
