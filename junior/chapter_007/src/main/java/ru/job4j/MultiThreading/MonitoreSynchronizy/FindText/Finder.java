@@ -1,8 +1,6 @@
 package ru.job4j.MultiThreading.MonitoreSynchronizy.FindText;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -52,17 +50,7 @@ public class Finder implements Callable<File> {
         }
     }
 
-    /**
-     * Show   files.
-     */
-    public void show() {
 
-        for (File file1 : files) {
-            System.out.println(file1);
-        }
-
-        System.out.println(files.size());
-    }
 
     /**
      * Read file . Find text in files.
@@ -76,11 +64,13 @@ public class Finder implements Callable<File> {
 
         for (File file : files) {
 
-            try (FileReader reader = new FileReader(file)) {
+            try (BufferedReader br = new BufferedReader(
+                    new InputStreamReader(
+                            new FileInputStream(file) ))) {
 
                 int c;
                 List<Character> array = new ArrayList<>();
-                while ((c = reader.read()) != -1) {
+                while ((c = br.read()) != -1) {
 
                     array.add(((char) c));
 
@@ -90,6 +80,7 @@ public class Finder implements Callable<File> {
                 for (Character character : array) {
                     result.append(character);
                 }
+
 
                 Pattern pattern = Pattern.compile(text);
                 Matcher matcher = pattern.matcher(result);

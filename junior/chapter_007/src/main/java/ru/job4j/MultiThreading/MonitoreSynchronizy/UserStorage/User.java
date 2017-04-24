@@ -35,14 +35,14 @@ public class User {
      * @param value
      */
     public void addMoney(int value) {
-           synchronized (this) {
+        synchronized (this) {
 
-        this.amount += value;
+            this.amount += value;
+
+        }
+
 
     }
-
-
-     }
 
     /**
      * Synchronised method for subtraction money from user.
@@ -50,14 +50,14 @@ public class User {
      * @param value
      */
     public void devMoney(int value) {
-         synchronized (this) {
-        if (amount >= value) {
+        synchronized (this) {
+            if (amount >= value) {
 
-            this.amount -= value;
+                this.amount -= value;
+            }
+
         }
-
     }
-      }
 }
 
 
