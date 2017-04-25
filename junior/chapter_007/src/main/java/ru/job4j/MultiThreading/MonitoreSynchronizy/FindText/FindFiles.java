@@ -86,16 +86,36 @@ public class FindFiles {
 
         System.out.println(files.myRunable.getFindFiles());
 
-        ExecutorService executor = Executors.newCachedThreadPool();
+              // Вариант с Runable !!!
+//         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+//
+//             files.myRunable.num = i;
+//
+//             Thread thread = new Thread(files.myRunable);
+//
+//             thread.start();
+//             try {
+//                 thread.join();
+//
+//             } catch (InterruptedException e) {
+//                 e.printStackTrace();
+//             }
+//         }
+//        System.out.println(System.currentTimeMillis()-start);
+//        if (files.myRunable.getTemp() != null) {
+//            System.out.println(files.myRunable.getTemp());
+//        }
+
+        ExecutorService executor = Executors.newSingleThreadExecutor();
         List<Future<File>> list = new ArrayList<Future<File>>();
-//         for (int i = 0; i < files.myRunable.getFindFiles().size()-1; i++) {
+//         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
         files.myRunable.num = 2;
-        Callable<File> callable = files.myRunable;
-        Future<File> submit = executor.submit(callable);
+        Callable<File> worker = files.myRunable;
+        Future<File> submit = executor.submit(worker);
 
         list.add(submit);
-        executor.shutdownNow();
-//         }
+        executor.shutdown();
+//        }
 
         for (Future<File> future : list) {
 

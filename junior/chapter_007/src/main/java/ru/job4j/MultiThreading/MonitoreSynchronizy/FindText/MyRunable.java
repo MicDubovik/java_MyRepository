@@ -15,7 +15,7 @@ public class MyRunable implements Callable {
 
     private File temp;
 
-      int  num = 0;
+     int  num = 0;
 
     boolean flag = false;
 
