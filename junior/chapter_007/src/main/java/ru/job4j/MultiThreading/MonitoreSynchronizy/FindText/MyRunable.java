@@ -87,9 +87,7 @@ public class MyRunable implements Callable {
     public File call() {
 
         File x = addFiles(findFiles.get(this.num));
-//        if (x == null) {
-//            x = new File("d:/");
-//        }
+
         return x;
     }
 }

@@ -108,15 +108,15 @@ public class FindFiles {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         List<Future<File>> list = new ArrayList<Future<File>>();
-//         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
-        files.myRunable.num = 2;
-        Callable<File> worker = files.myRunable;
-        Future<File> submit = executor.submit(worker);
+          for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+        files.myRunable.num = i;
+        Callable<File> callable = files.myRunable;
+        Future<File> submit = executor.submit(callable);
 
         list.add(submit);
-        executor.shutdown();
-//        }
 
+         }
+        executor.shutdown();
         for (Future<File> future : list) {
 
             try {
