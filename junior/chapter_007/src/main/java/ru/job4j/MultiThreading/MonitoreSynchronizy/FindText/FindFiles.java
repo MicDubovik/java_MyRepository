@@ -1,9 +1,13 @@
 package ru.job4j.MultiThreading.MonitoreSynchronizy.FindText;
 
-import java.io.File;
-import java.util.concurrent.Callable;
 
-public class FindFiles implements Callable<File> {
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.concurrent.*;
+
+public class FindFiles {
     /**
      * Text for find in fileName.
      */
@@ -12,10 +16,10 @@ public class FindFiles implements Callable<File> {
      * Input path.
      */
     File file;
-    /**
-     * Temp result for recursion method addFiles.
-     */
-    File result;
+
+    MyRunable myRunable;
+
+    List<File> fileList = new LinkedList<>();
 
     /**
      * Constructor.
@@ -24,81 +28,103 @@ public class FindFiles implements Callable<File> {
      * @param file
      */
     public FindFiles(String text, File file) {
+        this.myRunable = new MyRunable(text);
         this.text = text;
         this.file = file;
     }
     // Если понадобится перебор по дискам.
-    /**
-     * Array contain name path a-z.
-     *
-     * @param num
-     * @return
-     */
-    public char isAvaliblePath(int num) {
 
-        char[] arrayPath = new char[26];
+//    /**
+//     * Array contain name path a-z.
+//     *
+//     * @param num
+//     * @return
+//     */
+//    public char isAvaliblePath(int num) {
+//
+//        char[] arrayPath = new char[26];
+//
+//        char alpha = 'a';
+//        for (char i = 0; i < 26; i++) {
+//            arrayPath[i] = alpha++;
+//        }
+//
+//        char pathName = arrayPath[num];
+//
+//        return pathName;
+//    }
+//
+//
 
-        char alpha = 'a';
-        for (char i = 0; i < 26; i++) {
-            arrayPath[i] = alpha++;
-        }
+    public void cutDirectory(File file) {
 
-        char pathName = arrayPath[num];
+        for (File file1 : file.listFiles()) {
 
-        return pathName;
-    }
-
-    /**
-     * Method find and compare file with text.
-     *
-     * @param fileIn
-     * @return
-     */
-    public File addFiles(File fileIn) {
-
-        if (result == null) {
-            for (File file1 : fileIn.listFiles()) {
-
-                if (file1.getName().indexOf(text) < 0 && !file1.getName().equals("$RECYCLE.BIN")) {
-                    if (file1.isDirectory()) {
-
-                        addFiles(file1);
-
-                    }
-                } else if (file1.getName().equals("$RECYCLE.BIN")) {
-
-
-                } else {
-                    result = file1;
-                }
+            // убираю $RECYCLE.BIN и System Volume Information по причине прав доступа.
+            if (file1.isDirectory() && !file1.getName().equals("$RECYCLE.BIN") && !file1.getName().equals("System Volume Information")) {
+                this.myRunable.getFindFiles().add(file1);
+//                this.fileList.add(file1);
+                System.out.println(file1);
             }
         }
-
-        return result;
-    }
-
-
-    @Override
-    public File call() throws Exception {
-        return addFiles(file);
     }
 
 
     public static void main(String[] args) {
         // Однопоточный режим.
-        String text = "FindFiles";
+        String text = "CalculatorTest";
 
         File file = new File("d:/");
 
         FindFiles files = new FindFiles(text, file);
-        long start = System.currentTimeMillis();
-        File temp = files.addFiles(file);
-        System.out.println(System.currentTimeMillis() - start);
-        System.out.println(temp.getAbsolutePath());
+//        long start = System.currentTimeMillis();
+//        File temp = files.addFiles(file);                        // для одногопотока
+//        System.out.println(System.currentTimeMillis() - start);
+//        System.out.println(temp.getAbsolutePath());              // для одного потока
+
+        files.cutDirectory(file);
+
+        System.out.println(files.myRunable.getFindFiles());
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        List<Future<File>> list = new ArrayList<Future<File>>();
+//         for (int i = 0; i < files.myRunable.getFindFiles().size()-1; i++) {
+        files.myRunable.num = 2;
+        Callable<File> callable = files.myRunable;
+        Future<File> submit = executor.submit(callable);
+
+        list.add(submit);
+        executor.shutdownNow();
+//         }
+
+        for (Future<File> future : list) {
+
+            try {
+                if (future.get() != null) {
+                    System.out.println(future.get());
+                    return;
+                } else {
+                    System.out.println("file not found!!!");
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 
 }
+
+
+
+
+
+
+
 
 
 

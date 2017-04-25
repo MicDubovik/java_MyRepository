@@ -1,23 +1,52 @@
 package ru.job4j.MultiThreading.Test;
 
-public class Main {
-    private static final int NTHREDS = 10;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main implements Runnable{
+
+    List<Integer> fileList = new ArrayList<>();
+
+    List<Integer>  integerList = new ArrayList<>();
+
+    Integer num ;
+
+    public void addToList(Integer[] num){
+
+        for (Integer integer : num) {
+            fileList.add(integer);
+        }
+    }
+
+
+    @Override
+    public void run() {
+        Integer in = fileList.remove(0);
+        System.out.println(Thread.currentThread().getName()+"add "+in);
+        integerList.add(in);
+    }
 
     public static void main(String[] args) throws InterruptedException {
 
-        Thread.currentThread().join();
+        File file = new File("d:/");
+
+        Integer[] num =new Integer[] {1,2,3,3,45,6};
+
+        Main main = new Main();
+
+        main.addToList(num);
+
+        for (int i = 0; i < main.fileList.size(); i++) {
+
+            new Thread(main).start();
+        }
+
+        Thread.sleep(500);
+
+        System.out.println("filelist :"+main.fileList);
+        System.out.println("integerList :"+main.integerList);
     }
-//        ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
-//        for (int i = 0; i < 500; i++) {
-//            Runnable worker = new MyRunnable(10000000 + i);
-//            executor.execute(worker);
-//        }
-//        // This will make the executor accept no new threads
-//        // and finish all existing threads in the queue
-//        executor.shutdown();
-//        // Wait until all threads are finish
-//
-//        executor.awaitTermination(10,TimeUnit.SECONDS);
-//        System.out.println("Finished all threads");
-//    }
+
+
 }
