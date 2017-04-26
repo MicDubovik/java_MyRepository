@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-public class MyRunable implements Callable {
+public class MyRunable implements Callable ,Runnable{
 
     private List<File> findFiles;
 
@@ -17,7 +17,7 @@ public class MyRunable implements Callable {
 
      int  num = 0;
 
-    boolean flag = false;
+   volatile boolean flag = false;
 
     public MyRunable(String text ) {
         this.text = text;
@@ -59,26 +59,26 @@ public class MyRunable implements Callable {
 
         if (result == null) {
             for (File file1 : fileIn.listFiles()) {
-//                    while (!Thread.currentThread().isInterrupted()) {
 
-                if (file1.getName().indexOf(text) < 0) {
 
-                    if (file1.isDirectory()) {
+                    if (file1.getName().indexOf(text) < 0) {
 
-                        addFiles(file1);
+                        if (file1.isDirectory()) {
 
+                            addFiles(file1);
+
+                        }
+                    } else if (file1.getName().equals("$RECYCLE.BIN")) {
+
+
+                    } else if (file1.getName().indexOf(text) >= 0) {
+                        result = file1;
+                        flag = true;
+                        Thread.currentThread().interrupt();
                     }
-                } else if (file1.getName().equals("$RECYCLE.BIN")) {
-
-
-                } else if (file1.getName().indexOf(text) >= 0) {
-                    result = file1;
-                    flag = true;
-                    Thread.currentThread().interrupt();
                 }
             }
-        }
-//        }
+
 
         return result;
     }
@@ -89,5 +89,18 @@ public class MyRunable implements Callable {
         File x = addFiles(findFiles.get(this.num));
 
         return x;
+    }
+
+    @Override
+    public void run() {
+
+            System.out.println("Start thread :"+Thread.currentThread().getName());
+            this.temp = addFiles(findFiles.get(this.num));
+
+            System.out.println("Stop thread :"+Thread.currentThread().getName());
+
+
+
+
     }
 }

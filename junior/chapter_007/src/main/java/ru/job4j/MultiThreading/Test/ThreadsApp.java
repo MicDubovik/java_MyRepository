@@ -17,7 +17,9 @@ class Store{
     public synchronized void get() {
         while (product<1) {
             try {
+                System.out.println("Wait number from buffer");
                 wait();
+                System.out.println("Take number from buffer");
             }
             catch (InterruptedException e) {
             }
@@ -30,7 +32,9 @@ class Store{
     public synchronized void put() {
         while (product>=3) {
             try {
+                System.out.println("Wait number from producer");
                 wait();
+                System.out.println("Put number in buffer");
             }
             catch (InterruptedException e) {
             }
