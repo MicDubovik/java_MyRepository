@@ -1,13 +1,25 @@
 package ru.job4j.MultiThreading.Wait.ProducerConsumer;
 
+/**
+ * Class buffer for numbers.
+ */
 public class Buffer {
-
+    /**
+     * Temp field.
+     */
     private int number;
 
+    /**
+     * Constructor.
+     */
     public Buffer() {
         this.number = 0;
     }
 
+    /**
+     * Synchronized method for put number into buffer.
+     * @return
+     */
     public synchronized boolean put() {
         while (number > 1) {
             try {
@@ -25,6 +37,10 @@ public class Buffer {
         return true;
     }
 
+    /**
+     * Synchronized method for get number from buffer.
+     * @return
+     */
     public synchronized boolean get() {
         while (number < 1) {
             try {

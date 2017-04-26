@@ -1,13 +1,29 @@
 package ru.job4j.MultiThreading.Wait.ProducerConsumer;
 
+/**
+ * Class Consumer . Getting numbers.
+ */
 public class Consumer implements Runnable {
+    /**
+     * Fielad Buffer.
+     */
     Buffer buffer;
+    /**
+     * Field for put number.
+     */
     int number;
 
+    /**
+     * Constructor.
+     * @param buffer
+     */
     public Consumer(Buffer buffer) {
         this.buffer = buffer;
     }
 
+    /**
+     * Method second thread for getting  numbers from buffer.
+     */
     @Override
     public void run() {
         System.out.println("Start thread consumer");
@@ -15,8 +31,6 @@ public class Consumer implements Runnable {
            if (buffer.get() ){
             number++;
         }
-
-//        System.out.println("Get number from buffer");
     }
 }
 

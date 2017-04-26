@@ -1,5 +1,8 @@
 package ru.job4j.MultiThreading.Wait.ProducerConsumer;
 
+/**
+ * Class main for start app.
+ */
 public class Main {
 
     public static void main(String[] args) {
