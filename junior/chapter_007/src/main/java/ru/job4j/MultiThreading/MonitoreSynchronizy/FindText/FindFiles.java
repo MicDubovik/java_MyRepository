@@ -88,7 +88,7 @@ public class FindFiles {
         // Вариант с Runable !!!
 //         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
 //
-//             files.myRunable.num = i;
+//             files.myRunable.getNum() = i;
 //
 //             Thread thread = new Thread(files.myRunable);
 //
@@ -123,7 +123,7 @@ public class FindFiles {
             files.myRunable.setNum(13);
             tasks.add(files.myRunable);
         }
-
+        System.out.printf("%s - number directories",files.myRunable.getFindFiles().size());
         try {
             List<Future<File>> futureList = executor.invokeAll(tasks);
             executor.shutdownNow();
