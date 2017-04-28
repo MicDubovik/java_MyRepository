@@ -4,13 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Worker implements Runnable {
-
+    /**
+     * Field for contact with buffer(QueueTasks).
+     */
     QueueTasks asks;
 
-
+    /**
+     * List for control executed tasks.
+     */
     List<Integer> integerList = new ArrayList<>();
 
-
+    /**
+     * Construcnor.
+     * @param asks
+     */
     public Worker(QueueTasks asks) {
 
         this.asks = asks;
