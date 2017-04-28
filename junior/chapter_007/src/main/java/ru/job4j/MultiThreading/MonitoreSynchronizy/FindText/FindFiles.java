@@ -2,8 +2,10 @@ package ru.job4j.MultiThreading.MonitoreSynchronizy.FindText;
 
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.*;
 
 public class FindFiles {
     /**
@@ -61,7 +63,7 @@ public class FindFiles {
             // убираю $RECYCLE.BIN и System Volume Information по причине прав доступа.
             if (file1.isDirectory() && !file1.getName().equals("$RECYCLE.BIN") && !file1.getName().equals("System Volume Information")) {
                 this.myRunable.getFindFiles().add(file1);
-//                this.fileList.add(file1);
+
                 System.out.println(file1);
             }
         }
@@ -83,38 +85,63 @@ public class FindFiles {
         files.cutDirectory(file);
 
 
-
         // Вариант с Runable !!!
-         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+//         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+//
+//             files.myRunable.num = i;
+//
+//             Thread thread = new Thread(files.myRunable);
+//
+//             thread.start();
+//             try {
+//                 thread.join();
+//
+//             } catch (InterruptedException e) {
+//                 e.printStackTrace();
+//             }
+//         }
+////        System.out.println(System.currentTimeMillis()-start);
+//        if (files.myRunable.getTemp() != null) {
+//            System.out.println(files.myRunable.getTemp());
+//        }
 
-             files.myRunable.num = i;
+        ExecutorService executor = Executors.newSingleThreadExecutor();
 
-             Thread thread = new Thread(files.myRunable);
-
-             thread.start();
-             try {
-                 thread.join();
-
-             } catch (InterruptedException e) {
-                 e.printStackTrace();
-             }
-         }
-//        System.out.println(System.currentTimeMillis()-start);
-        if (files.myRunable.getTemp() != null) {
-            System.out.println(files.myRunable.getTemp());
-        }
-
-//        ExecutorService executor = Executors.newSingleThreadExecutor();
-//        List<Future<File>> list = new ArrayList<Future<File>>();
-////        for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
-//            files.myRunable.num = 3;
+        List<Future<File>> list = new ArrayList<Future<File>>();
+//        for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+//            files.myRunable.setNum(i);
+//
 //            Callable<File> callable = files.myRunable;
 //            Future<File> submit = executor.submit(callable);
 //
 //            list.add(submit);
 //
-////        }
-//        executor.shutdown();
+//        }
+
+        List<MyRunable> tasks = new ArrayList<>();
+        for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
+            files.myRunable.setNum(13);
+            tasks.add(files.myRunable);
+        }
+
+        try {
+            List<Future<File>> futureList = executor.invokeAll(tasks);
+            executor.shutdownNow();
+            for (Future<File> future : futureList) {
+                if (future.get() != null) {
+                    System.out.println(future.get());
+                    return;
+                } else {
+                    System.out.println("file not found!!!");
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+//
 //        for (Future<File> future : list) {
 //
 //            try {
@@ -130,8 +157,8 @@ public class FindFiles {
 //            } catch (ExecutionException e) {
 //                e.printStackTrace();
 //            }
-//
-//        }
+
+//    }
 
     }
 

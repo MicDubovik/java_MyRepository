@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-public class MyRunable implements Callable ,Runnable{
+public class MyRunable implements Callable<File>, Runnable {
 
     private List<File> findFiles;
 
@@ -15,11 +15,11 @@ public class MyRunable implements Callable ,Runnable{
 
     private File temp;
 
-     int  num = 0;
+     private int num = 0;
 
-   volatile boolean flag = false;
+    volatile boolean flag = false;
 
-    public MyRunable(String text ) {
+    public MyRunable(String text) {
         this.text = text;
         this.findFiles = new ArrayList<>();
     }
@@ -27,6 +27,7 @@ public class MyRunable implements Callable ,Runnable{
     public List<File> getFindFiles() {
         return findFiles;
     }
+
 
     public void setFindFiles(List<File> findFiles) {
         this.findFiles = findFiles;
@@ -48,6 +49,12 @@ public class MyRunable implements Callable ,Runnable{
         this.num = num;
     }
 
+    public void inter(){
+        if (flag){
+            Thread.currentThread().interrupt();
+        }
+    }
+
     /**
      * Method find and compare file with text.
      *
@@ -60,7 +67,7 @@ public class MyRunable implements Callable ,Runnable{
         if (result == null) {
             for (File file1 : fileIn.listFiles()) {
 
-
+                //while (!Thread.currentThread().isInterrupted()) {
                     if (file1.getName().indexOf(text) < 0) {
 
                         if (file1.isDirectory()) {
@@ -74,10 +81,12 @@ public class MyRunable implements Callable ,Runnable{
                     } else if (file1.getName().indexOf(text) >= 0) {
                         result = file1;
                         flag = true;
-                        Thread.currentThread().interrupt();
+                         inter();
+                        System.out.printf("%s interrupted",Thread.currentThread().getName());
                     }
-                }
+                //}
             }
+        }
 
 
         return result;
@@ -94,12 +103,10 @@ public class MyRunable implements Callable ,Runnable{
     @Override
     public void run() {
 
-            System.out.println("Start thread :"+Thread.currentThread().getName());
-            this.temp = addFiles(findFiles.get(this.num));
+        System.out.println("Start thread :" + Thread.currentThread().getName());
+        this.temp = addFiles(findFiles.get(this.num));
 
-            System.out.println("Stop thread :"+Thread.currentThread().getName());
-
-
+        System.out.println("Stop thread :" + Thread.currentThread().getName());
 
 
     }
