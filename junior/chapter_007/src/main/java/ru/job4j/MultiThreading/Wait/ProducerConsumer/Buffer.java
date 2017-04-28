@@ -21,7 +21,7 @@ public class Buffer {
      * @return
      */
     public synchronized boolean put() {
-        while (number > 1) {
+        while (number > 2) {
             try {
                 System.out.println("Wait number from producer");
                 wait();
