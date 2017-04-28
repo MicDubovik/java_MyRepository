@@ -10,9 +10,12 @@ public class Main {
 
         List<Worker> workerList = new ArrayList<>();
         List<Thread> threadList = new ArrayList<>();
+
          QueueTasks queueAsks = new QueueTasks();
+
          Task tasker = new Task(queueAsks);
-         int num = Runtime.getRuntime().availableProcessors();
+
+       final int num = Runtime.getRuntime().availableProcessors();
         for (int i = 0; i < num; i++) {
             workerList.add(new Worker(queueAsks));
         }

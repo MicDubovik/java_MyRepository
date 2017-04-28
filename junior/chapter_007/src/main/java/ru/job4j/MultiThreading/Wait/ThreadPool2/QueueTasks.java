@@ -6,16 +6,20 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class QueueTasks {
     /**
-     * Temp field.
+     * Temp buffer list.
      */
     private BlockingQueue<Integer> tempTasks;
-
+    /**
+     * Boolean flag for stop execute.
+     */
     boolean flag = false;
-
-    final private int core;
-
+    /**
+     * Variable for count tasks.
+     */
     int i = 0;
-
+    /**
+     * Temp variable for task.
+     */
     private int task = 0;
 
     /**
@@ -24,9 +28,13 @@ public class QueueTasks {
     public QueueTasks() {
 
         this.tempTasks = new LinkedBlockingQueue<>();
-        this.core = Runtime.getRuntime().availableProcessors();
+
     }
 
+    /**
+     * Get for list tasks.
+     * @return
+     */
     public Queue<Integer> getTempAsks() {
         return tempTasks;
     }

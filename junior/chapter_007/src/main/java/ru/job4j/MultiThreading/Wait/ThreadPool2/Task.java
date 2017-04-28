@@ -1,30 +1,35 @@
 package ru.job4j.MultiThreading.Wait.ThreadPool2;
 
-import java.util.ArrayDeque;
-import java.util.Queue;
 import java.util.Random;
 
 public class Task implements Runnable {
-
+    /**
+     * Field for contact with buffer(QueueTasks).
+     */
     QueueTasks asks;
-
-    Queue<Integer> taskList = new ArrayDeque<>();
-
-    int temp=0;
-
+    /**
+     * Counter tasks.
+     */
     int num = 0;
-
-    int x = 0;
-
+    /**
+     * Variable for task and for add task into buffer.
+     */
+    int x =0;
 
     Random random = new Random();
 
+    /**
+     * Constructor.
+     * @param asks
+     */
     public Task(QueueTasks asks) {
 
         this.asks = asks;
     }
 
-
+    /**
+     * Creator for tasks.
+     */
     public void createAsk() {
 
         try {
@@ -39,7 +44,7 @@ public class Task implements Runnable {
 
         System.out.printf("%s create %s tasks\n", Thread.currentThread().getName(), num);
 
-        if (num == 50) {
+        if (num == 10) {
             asks.flag = true;
         }
 

@@ -3,22 +3,34 @@ package ru.job4j.MultiThreading.Wait.ThreadPool;
 import java.util.Random;
 
 public class Task implements Runnable {
-
+    /**
+     * Field for contact with buffer(QueueTasks).
+     */
     QueueTasks asks;
-
+    /**
+     * Counter tasks.
+     */
     int num = 0;
-
+    /**
+     * Variable for task and for add task into buffer.
+     */
     int x =0;
 
 
     Random random = new Random();
 
+    /**
+     * Constructor.
+     * @param asks
+     */
     public Task(QueueTasks asks) {
 
         this.asks = asks;
     }
 
-
+    /**
+     * Creator tasks.
+     */
     public void createAsk() {
 
             try {
@@ -31,7 +43,7 @@ public class Task implements Runnable {
 
 
             System.out.printf("%s create %s tasks\n",Thread.currentThread().getName(), num);
-
+                // ограничиваю число задач
              if(num==10){
                  asks.flag = true;
              }
