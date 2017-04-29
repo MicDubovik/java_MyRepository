@@ -2,6 +2,8 @@ package ru.job4j.MultiThreading.Bomberman;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class Field {
     /**
@@ -19,7 +21,7 @@ public class Field {
     /**
      * Field consist from list cells.
      */
-    private List<Celling> cellList;
+    private BlockingQueue<Celling> cellList;
 
     /**
      * Constructor.
@@ -30,7 +32,7 @@ public class Field {
         this.size1 = size1;
         this.size2 = size2;
         this.stoneList = new ArrayList<>();
-        this.cellList = new ArrayList<>(size1 * size2);
+        this.cellList = new LinkedBlockingQueue<>(size1*size2);
     }
 
     public int getSize1() {
@@ -57,11 +59,11 @@ public class Field {
         this.stoneList = stoneList;
     }
 
-    public List<Celling> getCellList() {
+    public synchronized BlockingQueue<Celling> getCellList() {
         return cellList;
     }
 
-    public void setCellList(List<Celling> cellList) {
+    public synchronized void setCellList(BlockingQueue<Celling> cellList) {
         this.cellList = cellList;
     }
 
@@ -76,10 +78,10 @@ public class Field {
     }
 
     /**
-     *  Flag for occupied cell.
+     *  Flag if cell occupied stone.
      * @param stones
      */
-    public void occupied(List<Stone> stones) {
+    public  void occupied(List<Stone> stones) {
         for (Celling cell : cellList) {
             for (Stone stone : stones) {
                 if (cell.getX() == stone.getPosStH() && cell.getY() == stone.getPosStV()) {

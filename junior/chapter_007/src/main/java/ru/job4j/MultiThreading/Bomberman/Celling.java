@@ -5,7 +5,7 @@ package ru.job4j.MultiThreading.Bomberman;
 /**
  * Create cell as LinkedList Node.
  */
-public class Celling {
+public  class Celling {
 
     private final int maxSize = 10;
     private final int minSize = 0;

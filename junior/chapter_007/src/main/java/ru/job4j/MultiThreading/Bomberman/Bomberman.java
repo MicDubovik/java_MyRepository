@@ -38,9 +38,10 @@ public class Bomberman implements Runnable {
      * @param flag
      */
     public void moveRight(Boolean flag) {
-
-        if (myPos.getRight() != null && !myPos.getRight().isOccupied()) {
-            this.myPos = myPos.getRight();
+        synchronized (this) {
+            if (myPos.getRight() != null && !myPos.getRight().isOccupied()) {
+                this.myPos = myPos.getRight();
+            }
         }
     }
     /**
@@ -48,9 +49,10 @@ public class Bomberman implements Runnable {
      * @param flag
      */
     public void moveLeft(Boolean flag) {
-
-        if (myPos.getLeft() != null && !myPos.getLeft().isOccupied()) {
-            this.myPos = myPos.getLeft();
+        synchronized (this) {
+            if (myPos.getLeft() != null && !myPos.getLeft().isOccupied()) {
+                this.myPos = myPos.getLeft();
+            }
         }
     }
     /**
@@ -58,9 +60,10 @@ public class Bomberman implements Runnable {
      * @param flag
      */
     public void moveUp(Boolean flag) {
-
-        if (myPos.getUp() != null && !myPos.getUp().isOccupied()) {
-            this.myPos = myPos.getUp();
+        synchronized (this) {
+            if (myPos.getUp() != null && !myPos.getUp().isOccupied()) {
+                this.myPos = myPos.getUp();
+            }
         }
     }
     /**
@@ -68,9 +71,11 @@ public class Bomberman implements Runnable {
      * @param flag
      */
     public void moveDown(Boolean flag) {
+        synchronized (this) {
+            if (myPos.getDown() != null && !myPos.getDown().isOccupied()) {
+                this.myPos = myPos.getDown();
+            }
 
-        if (myPos.getDown() != null && !myPos.getDown().isOccupied()) {
-            this.myPos = myPos.getDown();
         }
     }
 
