@@ -124,6 +124,7 @@ public class FindFiles {
             tasks.add(files.myRunable);
         }
         System.out.printf("%s - number directories",files.myRunable.getFindFiles().size());
+
         try {
             List<Future<File>> futureList = executor.invokeAll(tasks);
             executor.shutdownNow();
