@@ -2,8 +2,7 @@ package ru.job4j.MultiThreading.Bomberman;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Field {
     /**
@@ -21,7 +20,7 @@ public class Field {
     /**
      * Field consist from list cells.
      */
-    private BlockingQueue<Celling> cellList;
+    private CopyOnWriteArrayList<Celling> cellList;
 
     /**
      * Constructor.
@@ -32,7 +31,7 @@ public class Field {
         this.size1 = size1;
         this.size2 = size2;
         this.stoneList = new ArrayList<>();
-        this.cellList = new LinkedBlockingQueue<>(size1*size2);
+        this.cellList = new CopyOnWriteArrayList<Celling>();
     }
 
     public int getSize1() {
@@ -59,11 +58,11 @@ public class Field {
         this.stoneList = stoneList;
     }
 
-    public synchronized BlockingQueue<Celling> getCellList() {
+    public synchronized CopyOnWriteArrayList<Celling> getCellList() {
         return cellList;
     }
 
-    public synchronized void setCellList(BlockingQueue<Celling> cellList) {
+    public synchronized void setCellList(CopyOnWriteArrayList<Celling> cellList) {
         this.cellList = cellList;
     }
 
