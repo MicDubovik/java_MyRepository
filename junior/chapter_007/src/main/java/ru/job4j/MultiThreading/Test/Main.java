@@ -1,6 +1,5 @@
 package ru.job4j.MultiThreading.Test;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class Main implements Runnable{
 
     public static void main(String[] args) throws InterruptedException {
 
-        File file = new File("d:/");
+//        File file = new File("d:/");
 
         Integer[] num =new Integer[] {1,2,3,3,45,6};
 
@@ -48,6 +47,8 @@ public class Main implements Runnable{
 
         System.out.println("filelist :"+main.fileList);
         System.out.println("integerList :"+main.integerList);
+        
+
     }
 
 

@@ -2,18 +2,21 @@ package ru.job4j.MultiThreading.Bomberman;
 
 import java.util.Random;
 
-public class Monster implements IMonster{
+public class Monster implements IMonster,Runnable {
+
+    private Field field;
 
     private String name;
 
-    private int posH;
-
-    private int posV;
+    private Celling pos;
 
 
-    public Monster(String name ) {
+    Random random = new Random();
+
+
+    public Monster( Field field) {
         this.name = name;
-
+        this.field = field;
     }
 
     public String getName() {
@@ -24,35 +27,85 @@ public class Monster implements IMonster{
         this.name = name;
     }
 
-    public int getPosH() {
-        return posH;
-    }
 
-    public void setPosH(int positionH) {
-        this.posH = positionH;
-    }
+    public void primaryPos() {
+        int posRandom = random.nextInt(field.getCellList().size());
+        boolean posBool = this.field.getCellList().get(posRandom).isOccupied();
 
-    public int getPosV() {
-        return posV;
-    }
+        do {
+            this.pos = field.getCellList().get(posRandom);
 
-    public void setPosV(int positionV) {
-        this.posV = positionV;
-    }
-
-    public void move(){
-        Random random = new Random();
-
+        } while (posBool);
 
     }
 
-    public static void main(String[] args) {
+    public void move(Boolean flag) {
 
-        Random random = new Random( );
 
-        for (int i = 0; i < 10; i++) {
-            System.out.printf("%s num\n",random.nextInt(5));
+        while (flag) {
+            int course = random.nextInt(5);
+            switch (course) {
+                case 0:
+                    do {
+                        if (pos.getRight()!=null){
+                            this.pos = pos.getRight();
+                        } else return;
+
+
+                    } while (!pos.isOccupied()  );
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 1:
+                    do {
+                        if (pos.getLeft()==null){
+                            this.pos = pos.getLeft();
+                        } else return;
+
+                    } while (!pos.isOccupied());
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 2:
+                    do {
+                        if (pos.getUp()==null){
+                            this.pos = pos.getUp();
+                        } else return;
+
+                    }while (!pos.isOccupied());
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    do {
+                        if (pos.getDown()==null){
+                            this.pos = pos.getDown();
+                        } else return;
+
+                    }while (!pos.isOccupied());
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
         }
+    }
+
+    @Override
+    public void   run()   {
+        boolean flag = false;
+        move(flag);
 
     }
 }
