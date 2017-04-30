@@ -10,7 +10,12 @@ public class Start {
 
         Field  field = new Field(64,64);
 
-        Runnable bomber = new Bomberman("Vasya");
+        field.fillCell();
+        field.addStone(6);
+        field.occupied();
+
+
+        Runnable bomber = new Bomberman("Vasya",6,4);
 
         Thread one = new Thread(bomber);
 

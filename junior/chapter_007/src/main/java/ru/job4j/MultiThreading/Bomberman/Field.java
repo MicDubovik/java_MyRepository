@@ -20,7 +20,7 @@ public class Field {
     /**
      * Field consist from list cells.
      */
-    private CopyOnWriteArrayList<Celling> cellList;
+    private CopyOnWriteArrayList<Cell> cellList;
 
     /**
      * Constructor.
@@ -31,7 +31,7 @@ public class Field {
         this.size1 = size1;
         this.size2 = size2;
         this.stoneList = new ArrayList<>();
-        this.cellList = new CopyOnWriteArrayList<Celling>();
+        this.cellList = new CopyOnWriteArrayList<Cell>();
     }
 
     public int getSize1() {
@@ -58,12 +58,23 @@ public class Field {
         this.stoneList = stoneList;
     }
 
-    public synchronized CopyOnWriteArrayList<Celling> getCellList() {
+    public synchronized CopyOnWriteArrayList<Cell> getCellList() {
         return cellList;
     }
 
-    public synchronized void setCellList(CopyOnWriteArrayList<Celling> cellList) {
+    public synchronized void setCellList(CopyOnWriteArrayList<Cell> cellList) {
         this.cellList = cellList;
+    }
+
+    /**
+     * For to fill listCell .
+     */
+    public void fillCell(){
+        for (int i = 0; i < size1; i++) {
+            for (int j = 0; j < size2; j++) {
+                cellList.add(new Cell(i,j));
+            }
+        }
     }
 
     /**
@@ -78,12 +89,12 @@ public class Field {
 
     /**
      *  Flag if cell occupied stone.
-     * @param stones
+     *
      */
-    public  void occupied(List<Stone> stones) {
-        for (Celling cell : cellList) {
-            for (Stone stone : stones) {
-                if (cell.getX() == stone.getPosStH() && cell.getY() == stone.getPosStV()) {
+    public  void occupied() {
+        for (Cell cell : cellList) {
+            for (Stone stone : this.stoneList) {
+                if (cell.getH() == stone.getPosStH() && cell.getV() == stone.getPosStV()) {
                     cell.setOccupied(true);
                 }
             }

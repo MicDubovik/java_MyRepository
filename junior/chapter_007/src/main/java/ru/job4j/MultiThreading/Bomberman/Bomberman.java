@@ -3,7 +3,7 @@ package ru.job4j.MultiThreading.Bomberman;
 /**
  * Bomberman.
  */
-public class Bomberman implements Runnable {
+public class Bomberman extends Cell implements Runnable  {
     /**
      * Name.
      */
@@ -19,7 +19,9 @@ public class Bomberman implements Runnable {
     /**
      * Reference on Cell.
       */
-    private Celling myPos;
+
+
+    private Field field;
     /**
      * Operation for select course move.
      */
@@ -29,41 +31,67 @@ public class Bomberman implements Runnable {
      * Constructor.
      * @param name
      */
-    public Bomberman(String name) {
+    public Bomberman(String name,int x , int y) {
+        super(x,y);
+
         this.name = name;
+
     }
 
-    /**
-     * Move  right.
-     * @param flag
-     */
-    public void moveRight(Boolean flag) {
-        synchronized (this) {
-            if (myPos.getRight() != null && !myPos.getRight().isOccupied()) {
-                this.myPos = myPos.getRight();
+
+    public void moveRight() {
+
+            boolean toRight=false;
+            Cell temp =new Cell(this.getH()+1,this.getV());
+
+            for (Cell cell : field.getCellList()) {
+                if (cell.equals(temp)){
+                    if (cell.isOccupied()){
+                        toRight = true;
+                    }
+                }
             }
-        }
+            if (this.getH()  <this.getMAXSIZE()  && !toRight ) {
+                this.setH(getH()+1);
+            }
+
     }
     /**
      * Move  left.
-     * @param flag
+     *
      */
-    public void moveLeft(Boolean flag) {
-        synchronized (this) {
-            if (myPos.getLeft() != null && !myPos.getLeft().isOccupied()) {
-                this.myPos = myPos.getLeft();
+    public void moveLeft( ) {
+        boolean toLeft=false;
+        Cell temp =new Cell(this.getH()-1,this.getV());
+
+        for (Cell cell : field.getCellList()) {
+            if (cell.equals(temp)){
+                if (cell.isOccupied()){
+                    toLeft = true;
+                }
             }
+        }
+        if (this.getH()  >this.getMINSIZE()  && !toLeft ) {
+            this.setH(getH()-1);
         }
     }
     /**
      * Move up.
-     * @param flag
+     *
      */
-    public void moveUp(Boolean flag) {
-        synchronized (this) {
-            if (myPos.getUp() != null && !myPos.getUp().isOccupied()) {
-                this.myPos = myPos.getUp();
+    public void moveUp() {
+        boolean toUp=false;
+        Cell temp =new Cell(this.getH(),this.getV()+1);
+
+        for (Cell cell : field.getCellList()) {
+            if (cell.equals(temp)){
+                if (cell.isOccupied()){
+                    toUp = true;
+                }
             }
+        }
+        if (this.getV()  <this.getMAXSIZE()  && !toUp ) {
+            this.setV(getV()+1);
         }
     }
     /**
@@ -71,11 +99,18 @@ public class Bomberman implements Runnable {
      * @param flag
      */
     public void moveDown(Boolean flag) {
-        synchronized (this) {
-            if (myPos.getDown() != null && !myPos.getDown().isOccupied()) {
-                this.myPos = myPos.getDown();
-            }
+        boolean toDown=false;
+        Cell temp =new Cell(this.getH(),this.getV()-1);
 
+        for (Cell cell : field.getCellList()) {
+            if (cell.equals(temp)){
+                if (cell.isOccupied()){
+                    toDown = true;
+                }
+            }
+        }
+        if (this.getV()  > this.getMINSIZE()  && !toDown ) {
+            this.setV(getV()-1);
         }
     }
 
@@ -91,11 +126,11 @@ public class Bomberman implements Runnable {
     public void run() {
         while (this.stopMove) {
             if (this.operation == 0) {
-                moveRight(this.flag);
+                moveRight();
             } else if (this.operation == 1) {
-                moveLeft(this.flag);
+                moveLeft();
             } else if (this.operation == 2) {
-                moveUp(this.flag);
+                moveUp();
             } else {
                 moveDown(flag);
             }

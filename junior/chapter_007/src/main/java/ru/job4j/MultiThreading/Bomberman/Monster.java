@@ -2,7 +2,7 @@ package ru.job4j.MultiThreading.Bomberman;
 
 import java.util.Random;
 
-public class Monster implements IMonster,Runnable {
+public class Monster implements Runnable {
     /**
      * Reference to  the field.
      */
@@ -10,7 +10,7 @@ public class Monster implements IMonster,Runnable {
     /**
      * Position monster.
      */
-    private Celling pos;
+    private Cell pos;
     /**
      * Volatile flag=true if here stay monster.
      */
@@ -23,11 +23,13 @@ public class Monster implements IMonster,Runnable {
 
     /**
      * Constructor.
+     *
      * @param field
      */
-    public Monster( Field field) {
+    public Monster(Field field) {
 
         this.field = field;
+        startPos();
     }
 
     /**
@@ -42,29 +44,42 @@ public class Monster implements IMonster,Runnable {
             this.pos.setOccupied(true);
 
         } while (posBool);
-
     }
+
 
     /**
      * Method for move monster.
+     *
      * @param flag
      */
-    public  void move(Boolean flag) {
+    public void move(Boolean flag) {
 
+        boolean occup = false;
 
         while (flag) {
             int course = random.nextInt(5);
             switch (course) {
                 case 0:
                     do {
-                        if (pos.getRight()!=null ){
-                            this.pos = pos.getRight();
+                        Cell temp = new Cell(pos.getH() + 1, pos.getV());
+
+                        for (Cell cell : field.getCellList()) {
+                            if (cell.equals(temp)) {
+                                if (cell.isOccupied()) {
+                                    occup = true;
+                                }
+                            }
+                        }
+                        if (pos.getH() + 1 <= pos.getMAXSIZE() && !occup) {
+
+                            this.pos.setOccupied(false);
+                            this.pos.setH(pos.getH() + 1);
                             this.pos.setOccupied(true);
-                            this.pos.getLeft().setOccupied(false);
+
                         } else return;
 
 
-                    } while (!pos.getRight().isOccupied());
+                    } while (!occup);
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -73,13 +88,25 @@ public class Monster implements IMonster,Runnable {
                     break;
                 case 1:
                     do {
-                        if (pos.getLeft()==null){
-                            this.pos = pos.getLeft();
+                        Cell temp = new Cell(pos.getH() - 1, pos.getV());
+
+                        for (Cell cell : field.getCellList()) {
+                            if (cell.equals(temp)) {
+                                if (cell.isOccupied()) {
+                                    occup = true;
+                                }
+                            }
+                        }
+                        if (pos.getH() - 1 >= pos.getMINSIZE() && !occup) {
+
+                            this.pos.setOccupied(false);
+                            this.pos.setH(pos.getH() -1);
                             this.pos.setOccupied(true);
-                            this.pos.getRight().setOccupied(false);
+
                         } else return;
 
-                    } while (!pos.getLeft().isOccupied());
+                    }
+                    while (!occup);
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -88,13 +115,25 @@ public class Monster implements IMonster,Runnable {
                     break;
                 case 2:
                     do {
-                        if (pos.getUp()==null){
-                            this.pos = pos.getUp();
+                        Cell temp = new Cell(pos.getH(), pos.getV()+1);
+
+                        for (Cell cell : field.getCellList()) {
+                            if (cell.equals(temp)) {
+                                if (cell.isOccupied()) {
+                                    occup = true;
+                                }
+                            }
+                        }
+                        if (pos.getV() + 1 <= pos.getMAXSIZE() && !occup) {
+
+                            this.pos.setOccupied(false);
+                            this.pos.setV(pos.getV() + 1);
                             this.pos.setOccupied(true);
-                            this.pos.getDown().setOccupied(false);
+
                         } else return;
 
-                    }while (!pos.getUp().isOccupied());
+
+                    } while (!occup);
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -103,13 +142,25 @@ public class Monster implements IMonster,Runnable {
                     break;
                 case 3:
                     do {
-                        if (pos.getDown()==null){
-                            this.pos = pos.getDown();
+                        Cell temp = new Cell(pos.getH(), pos.getV()-1);
+
+                        for (Cell cell : field.getCellList()) {
+                            if (cell.equals(temp)) {
+                                if (cell.isOccupied()) {
+                                    occup = true;
+                                }
+                            }
+                        }
+                        if (pos.getV() - 1 >= pos.getMINSIZE() && !occup) {
+
+                            this.pos.setOccupied(false);
+                            this.pos.setV(pos.getV() -1);
                             this.pos.setOccupied(true);
-                            this.pos.getUp().setOccupied(false);
+
                         } else return;
 
-                    }while (!pos.getDown().isOccupied());
+                    }
+                    while (!occup);
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException e) {
@@ -118,10 +169,11 @@ public class Monster implements IMonster,Runnable {
                     break;
             }
         }
+
     }
 
     @Override
-    public void   run()   {
+    public void run() {
         boolean flag = false;
         move(flag);
 
