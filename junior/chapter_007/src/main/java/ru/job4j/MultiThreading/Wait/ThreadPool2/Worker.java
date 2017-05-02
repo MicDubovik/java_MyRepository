@@ -23,6 +23,12 @@ public class Worker implements Runnable {
         this.asks = asks;
     }
 
+    public boolean worker(){
+        if(asks.getTempAsks().size()==0){
+            return false ;
+        }else return true;
+    }
+
 
     @Override
     public void run() {

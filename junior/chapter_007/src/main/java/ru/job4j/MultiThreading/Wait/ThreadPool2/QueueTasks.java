@@ -43,32 +43,23 @@ public class QueueTasks {
         return task;
     }
 
+
     /**
-     * Synchronized method for put number into buffer.
+     * Synchronized method putting task into buffer.
      *
      * @return
      */
     public   boolean put() {
         synchronized (this) {
-            while (this.tempTasks.size() > 5) {
-                try {
-                    System.out.println("Wait Ask from Boss");
-                    wait();
-                    System.out.println("Put ask in buffer");
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return false;
-            }
 
+             notify();
 
-            notify();
             return true;
         }
     }
 
     /**
-     * Synchronized method for get number from buffer.
+     * Synchronized method  getting tasks from buffer for workers.
      *
      * @return
      */
@@ -90,7 +81,7 @@ public class QueueTasks {
             i++;
             System.out.printf("%s get %s task\n", Thread.currentThread().getName(), i);
             System.out.printf("%s Remove %s task\n", Thread.currentThread().getName(), i);
-            notify();
+             notify();
             return true;
         }
     }
