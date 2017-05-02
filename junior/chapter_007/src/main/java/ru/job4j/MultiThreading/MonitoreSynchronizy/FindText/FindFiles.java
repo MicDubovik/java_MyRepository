@@ -2,6 +2,7 @@ package ru.job4j.MultiThreading.MonitoreSynchronizy.FindText;
 
 
 import java.io.File;
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,7 +57,7 @@ public class FindFiles {
 //
 //
 
-    public void cutDirectory(File file) {
+    public void cutDirectory(File file)   {
 
         for (File file1 : file.listFiles()) {
 
@@ -70,7 +71,7 @@ public class FindFiles {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args)   {
         // Однопоточный режим.
         String text = "FindFiles";
 
@@ -82,7 +83,10 @@ public class FindFiles {
 //        System.out.println(System.currentTimeMillis() - start);
 //        System.out.println(temp.getAbsolutePath());              // для одного потока
 
-        files.cutDirectory(file);
+
+
+            files.cutDirectory(file);
+
 
 
         // Вариант с Runable !!!
