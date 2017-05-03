@@ -5,55 +5,64 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 
-import java.util.Scanner;
+import java.util.Map;
+
 
 /**
- * Created by Katy on 02.05.2017.
+ * Parser directory.
  */
-public class MyFinder {
-    public static void main(String[] args) throws IOException {
+public class MyFinder implements Runnable {
+    /**
+     * Temp field for keeping nameDirectory.
+     */
+    String tempDirectory;
+    /**
+     * List for keeping files.
+     */
+    LinkedList<Path> fileList;
+    /**
+     * Map for keeping files and context.
+     */
+    Map<Path, String> contentList;
+    /**
+     * Buffer reference.
+     */
+    Buffer buffer;
 
-        LinkedList<Path> fileList = new LinkedList<>();
+    /**
+     * Constructor.
+     * @param tempDirectory
+     * @param buffer
+     */
+    public MyFinder(String tempDirectory,  Buffer buffer) {
+        this.tempDirectory = tempDirectory;
+        this.buffer = buffer;
+        this.fileList = new LinkedList<>();
+        this.contentList = new HashMap<>();
 
-        System.out.println("Welcome to FileFinder !!! ");
-        System.out.println("Enter disk partition for search: ");
+    }
 
-        Scanner scanner = new Scanner(System.in);
-        String tempDirectory = null;
-        if (scanner.hasNext()) {
-            tempDirectory = scanner.next();
-        }
+    /**
+     * Find "doc" and "txt" files.
+     * @throws IOException
+     */
+    public void finderFiles() throws IOException {
         String directory = tempDirectory + ":\\";
-        System.out.printf("Directory %s \n", directory);
-        System.out.println("Enter fileName for search: ");
 
-        String text = null;
-        if (scanner.hasNext()) {
-            text = scanner.next();
-        }
-
-        String finalText = text;
-        System.out.printf("File for search %s \n", finalText);
-
+//        String directory = "d:\\";
         Path start = FileSystems.getDefault().getPath(directory);
         Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
+
             @Override
             public FileVisitResult visitFile(Path file,
                                              BasicFileAttributes attrs) throws IOException {
 
-                if (file.toString().toLowerCase().contains(finalText.toLowerCase())){
-                    System.out.println(file);
-                    return FileVisitResult.TERMINATE;
+                if (file.toFile().isFile() && (file.toString().endsWith("doc") || file.toString().endsWith("txt"))) {
+                    fileList.add(file);
                 }
-                // Можем добавить необходимые файлы в лист и потом из листа забрать для чтения,
-                // но опять же одновременно читать несколько файлов мы не можем.
-                // Мы лишь можем сократить время удалив ненужные для обработки файлы.
-                // Не вижу что здесь можно делать параллельно , если не имею возможности
-                // доступа к нескольким файлам.
-
-//                fileList.add(file);
 
                 return FileVisitResult.CONTINUE;
             }
@@ -64,8 +73,32 @@ public class MyFinder {
                 return FileVisitResult.CONTINUE;
             }
         });
+    }
 
+    /**
+     * Read content from files.
+     * @throws IOException
+     */
+    public void reader() throws IOException {
+        for (Path path : fileList) {
+
+                byte[] cont = Files.readAllBytes(path);
+
+                String content = new String(cont);
+                contentList.put(path, content);
+
+        }
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Start finder");
+        buffer.paths.putAll(contentList);
 
     }
+
 }
+
+
+
 
