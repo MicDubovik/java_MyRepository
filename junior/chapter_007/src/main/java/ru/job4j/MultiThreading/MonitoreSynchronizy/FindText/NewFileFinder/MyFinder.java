@@ -52,7 +52,7 @@ public class MyFinder implements Runnable {
     public void finderFiles() throws IOException {
          String directory = tempDirectory + ":\\";
 
-//         String directory = "d:\\TestDir";
+//          String directory = "d:\\TestDir";
         Path start = FileSystems.getDefault().getPath(directory);
         Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
 

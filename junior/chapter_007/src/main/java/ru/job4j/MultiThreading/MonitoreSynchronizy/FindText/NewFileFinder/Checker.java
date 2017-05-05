@@ -50,7 +50,7 @@ public class Checker implements Runnable {
         if (content.getContext().contains(text) && !buffer.it) {
 
 
-            System.out.printf("%s - found file with content %s \n File: %s\n", Thread.currentThread().getName(), text, content.getName().toAbsolutePath());
+            System.out.printf("%s - found file with content :%s \n %s\n", Thread.currentThread().getName(), text, content.getName().toAbsolutePath());
 
 
             buffer.it = true;
@@ -66,7 +66,7 @@ public class Checker implements Runnable {
      */
     @Override
     public void run() {
-        System.out.println("Start checker");
+//        System.out.println("Start checker");
         while (buffer.paths.size() > 0 && !buffer.it) {
 
             boolean up = buffer.get();

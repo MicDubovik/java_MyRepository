@@ -11,8 +11,8 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Start {
 
-    String tempDirectory ;
-    String text ;
+    String tempDirectory;
+    String text;
 
     public void execute() {
         System.out.println("-----Welcome to FileFinder-------");
@@ -33,7 +33,7 @@ public class Start {
         }
 
         String finalText = text;
-        System.out.printf("File for search %s \n", finalText);
+        System.out.printf("Start searching .\n Please wait ... \n");
     }
 
     public static void main(String[] args) {
@@ -70,12 +70,19 @@ public class Start {
 
         one.start();
 
+
+
+
         for (Thread thread : threads) {
 
             thread.start();
-
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-
-
+        if (!buffer.it)
+            System.out.println("File not found !");
     }
 }
