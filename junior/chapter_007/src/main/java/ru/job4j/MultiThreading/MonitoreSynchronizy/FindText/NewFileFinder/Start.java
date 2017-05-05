@@ -72,7 +72,9 @@ public class Start {
         for (Thread thread : threads) {
 
             thread.start();
+
         }
+
 
     }
 }

@@ -50,9 +50,9 @@ public class MyFinder implements Runnable {
      * @throws IOException
      */
     public void finderFiles() throws IOException {
-        String directory = tempDirectory + ":\\";
+         String directory = tempDirectory + ":\\";
 
-//        String directory = "d:\\";
+//         String directory = "d:\\TestDir";
         Path start = FileSystems.getDefault().getPath(directory);
         Files.walkFileTree(start, new SimpleFileVisitor<Path>() {
 
