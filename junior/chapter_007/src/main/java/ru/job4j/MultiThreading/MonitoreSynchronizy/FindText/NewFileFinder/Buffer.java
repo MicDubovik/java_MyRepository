@@ -26,6 +26,8 @@ public class Buffer {
      */
     private Content task;
 
+    boolean it =false;
+
     /**
      * Constructor.
      */

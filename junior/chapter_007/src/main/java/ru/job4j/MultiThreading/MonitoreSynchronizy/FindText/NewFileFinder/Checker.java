@@ -40,7 +40,6 @@ public class Checker implements Runnable {
     }
 
 
-
     /**
      * Method for check content.
      *
@@ -48,12 +47,13 @@ public class Checker implements Runnable {
      */
     public void checker(Content content) {
 
-        if (content.getContext().contains(text) && !interrupt) {
+        if (content.getContext().contains(text) && !buffer.it) {
 
 
             System.out.printf("%s - found file with content %s \n File: %s\n", Thread.currentThread().getName(), text, content.getName().toAbsolutePath());
 
-            interrupt = true;
+
+            buffer.it = true;
 
             Thread.currentThread().interrupt();
 
@@ -61,11 +61,13 @@ public class Checker implements Runnable {
 
     }
 
-
+    /**
+     *
+     */
     @Override
     public void run() {
         System.out.println("Start checker");
-        while (buffer.paths.size() > 0 && !interrupt) {
+        while (buffer.paths.size() > 0 && !buffer.it) {
 
             boolean up = buffer.get();
             if (up) {
@@ -73,7 +75,7 @@ public class Checker implements Runnable {
                 content.setName(buffer.getTask().getName());
                 content.setContext(buffer.getTask().getContext());
 
-               checker(content);
+                checker(content);
 
             }
         }

@@ -58,6 +58,7 @@ public class Start {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         Thread one = new Thread(finder);
 
         List<Thread> threads = new ArrayList<>();
