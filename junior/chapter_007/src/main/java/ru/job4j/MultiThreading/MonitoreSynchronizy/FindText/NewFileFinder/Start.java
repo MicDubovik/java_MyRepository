@@ -25,7 +25,7 @@ public class Start {
         }
         String directory = tempDirectory + ":\\";
         System.out.printf("Directory %s \n", directory);
-        System.out.println("Enter fileName for search: ");
+        System.out.println("Enter text for search: ");
 
 
         if (scanner.hasNext()) {

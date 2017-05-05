@@ -48,12 +48,8 @@ public class Checker implements Runnable {
      */
     public void checker(Content content) {
 
-        if (content.getContext().contains(text)) {
-            if (Thread.currentThread().isInterrupted() ) {
+        if (content.getContext().contains(text) && !interrupt) {
 
-                return;
-
-            }
 
             System.out.printf("%s - found file with content %s \n File: %s\n", Thread.currentThread().getName(), text, content.getName().toAbsolutePath());
 
