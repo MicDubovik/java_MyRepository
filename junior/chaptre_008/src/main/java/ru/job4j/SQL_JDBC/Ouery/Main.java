@@ -96,5 +96,8 @@ public class Main {
 
 //         ...
 //         ...
+
+        // реальный запрос из моей таблицы
+    //    SELECT * FROM orders inner JOIN attachment ON  (orders.attachment_id = attachment.attach_id)  WHERE description_attach  LIKE '%har%'   ;
     }
 }
