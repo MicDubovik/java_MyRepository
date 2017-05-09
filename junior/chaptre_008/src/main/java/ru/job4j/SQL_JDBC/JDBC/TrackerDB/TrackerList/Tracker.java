@@ -1,4 +1,6 @@
-package ru.job4j.TrackerList;
+package ru.job4j.SQL_JDBC.JDBC.TrackerDB.TrackerList;
+
+import ru.job4j.SQL_JDBC.JDBC.TrackerDB.TrackerList.Database.InitDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +11,12 @@ import java.util.Random;
  * Класс обертка для работы с классом заявок
  */
 public class Tracker {
+
     private List<Item> items = new ArrayList<>();
     private static final Random RN = new Random();
+
+    InitDB initDB = new InitDB("items_db", "localhost", "5432", "postgres", "123");
+
 
     /**
      * Добавление заявки
