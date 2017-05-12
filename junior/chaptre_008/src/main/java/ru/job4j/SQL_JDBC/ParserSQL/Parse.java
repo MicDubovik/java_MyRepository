@@ -43,6 +43,11 @@ public class Parse   implements Job {
     // установить в true , если запуск первый .
     boolean isfirst = true;
 
+    /**
+     * Method for parse url.
+     * @throws IOException
+     * @throws ParseException
+     */
     public void parse() throws IOException, ParseException {
 
         do {
@@ -122,7 +127,7 @@ public class Parse   implements Job {
 //    }
 
     /**
-     * Shedule-method
+     * Schedule-method
      * @param jobExecutionContext
      * @throws JobExecutionException
      */
@@ -139,7 +144,9 @@ public class Parse   implements Job {
         }
 //        parse.show();
         parse.split();
-
+        /**
+         * Write String into log.
+         */
         for (String s : parse.mynewList) {
             log.warn(s);
         }
