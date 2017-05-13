@@ -40,8 +40,9 @@ public class Parse   implements Job {
     int numPage = 1;
     boolean flag = true;
 
-    // установить в true , если запуск первый .
-    boolean isfirst = true;
+    // установить в true , если запуск не первый .
+    // Устанавливается в true , при выполнении метода split().
+    boolean isfirst = false;
 
     /**
      * Method for parse url.
@@ -105,7 +106,7 @@ public class Parse   implements Job {
      * Method for split String.
      */
     public void split(){
-
+        this.flag=true;
         for (MyFile myFile : myFileList) {
           String file =  myFile.getName()+"////"+myFile.getTime()+"////"+myFile.getUrl();
             mynewList.add(file);
