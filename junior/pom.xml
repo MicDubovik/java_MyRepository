@@ -13,6 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Quartz scheduling framework -->
         <quartz.scheduling.version>2.2.1</quartz.scheduling.version>
+        <spring.version>3.2.5.RELEASE</spring.version>
+        <javax.servlet>3.0.1</javax.servlet>
     </properties>
 
     <modules>
@@ -23,6 +25,8 @@
         <module>chapter_005</module>
         <module>chapter_007</module>
         <module>chaptre_008</module>
+        <module>webModule</module>
+
         <!--<module>chapter_012</module>-->
     </modules>
 
@@ -65,6 +69,7 @@
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -89,7 +94,14 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>              
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
             <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
