@@ -143,6 +143,7 @@ public class Parse   implements Job {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        // раскомментировать для просмотра списка в консоли
 //        parse.show();
         parse.split();
         /**

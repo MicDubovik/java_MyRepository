@@ -26,7 +26,7 @@ public class MyFirstServlet extends HttpServlet {
     /**
      * List.
      */
-    private List<String> users = new CopyOnWriteArrayList<>();
+    private List<String> users = new CopyOnWriteArrayList<String>();
 
     /**
      * DoGET.
@@ -39,11 +39,10 @@ public class MyFirstServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          resp.setContentType("text/html");
-//        String login = req.getParameter("login");
-//        PrintWriter writer = new PrintWriter(resp.getOutputStream());
-//        writer.append("Hello Servlet! ,HI "+this.users);
-//        writer.flush();
-        resp.getWriter().write("Hello from Servlet!!!");
+        PrintWriter writer = new PrintWriter(resp.getOutputStream());
+        writer.append("Hello Servlet! ,HI "+this.users);
+        writer.flush();
+
     }
 
     /**
@@ -57,6 +56,7 @@ public class MyFirstServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         this.users.add(req.getParameter("login"));
+        System.out.println("Users "+this.users);
         doGet(req,resp);
     }
 }
