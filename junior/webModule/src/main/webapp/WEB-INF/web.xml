@@ -32,4 +32,33 @@
 
 
 
+    <servlet>
+        <servlet-name>AddUsers</servlet-name>
+        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.AddUsers</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUsers</servlet-name>
+        <url-pattern>/AddUsers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateUsers</servlet-name>
+        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.UpdateUsers</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateUsers</servlet-name>
+        <url-pattern>/UpdateUsers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUsers</servlet-name>
+        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.DeleteUsers</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUsers</servlet-name>
+        <url-pattern>/DeleteUsers</url-pattern>
+    </servlet-mapping>
+
+
+
 </web-app>

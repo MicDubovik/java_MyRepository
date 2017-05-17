@@ -96,7 +96,7 @@ public class MyUsers extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text,html");
-        String name = req.getParameter("name");
+
         String login = req.getParameter("login");
 
 
