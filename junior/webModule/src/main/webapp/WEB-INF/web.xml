@@ -30,6 +30,24 @@
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>FirstPage</servlet-name>
+        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.FirstPage</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FirstPage</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowUsers</servlet-name>
+        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.ShowUsers</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowUsers</servlet-name>
+        <url-pattern>/show</url-pattern>
+    </servlet-mapping>
+
 
 
     <servlet>

@@ -27,6 +27,9 @@ Input data for add user: <br>
     <input type="submit" value="edit">
 
 </form>
-<a href="showUsers.jsp">Show all users.</a>
+<a href="<%= request.getContextPath()%>/show">Show all users.</a><br>
+
+
+
 </body>
 </html>

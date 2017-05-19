@@ -18,6 +18,7 @@ public class AddUsers extends HttpServlet {
      */
     InitDB initDB = new InitDB();
 
+
     /**
      * DoPost.
      * @param req
@@ -32,6 +33,8 @@ public class AddUsers extends HttpServlet {
         String login = req.getParameter("login");
         String email = req.getParameter("email");
 
+
+
         try {
             this.initDB.getPool().getConnection();
         } catch (SQLException e) {
@@ -45,7 +48,8 @@ public class AddUsers extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        resp.sendRedirect("index.jsp");
+
+        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
 
     }
 }

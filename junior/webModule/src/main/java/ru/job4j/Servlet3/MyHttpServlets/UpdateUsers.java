@@ -34,6 +34,6 @@ public class UpdateUsers extends HttpServlet {
             e.printStackTrace();
         }
 
-        resp.sendRedirect("index.jsp");
+        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
     }
 }
