@@ -1,7 +1,3 @@
-<%@ page import="ru.job4j.Servlet3.DbConnect.User" %>
-<%@ page import="ru.job4j.Servlet3.DbConnect.InitDB" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -33,7 +29,6 @@
             <td><c:out value="${u.date}"></c:out></td>
         </tr>
     </c:forEach>
-
 
 </table>
 

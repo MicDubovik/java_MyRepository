@@ -32,7 +32,7 @@
 
     <servlet>
         <servlet-name>FirstPage</servlet-name>
-        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.FirstPage</servlet-class>
+        <servlet-class>ru.job4j.Servlet3.HttpServlets.FirstPage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>FirstPage</servlet-name>
@@ -41,7 +41,7 @@
 
     <servlet>
         <servlet-name>ShowUsers</servlet-name>
-        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.ShowUsers</servlet-class>
+        <servlet-class>ru.job4j.Servlet3.HttpServlets.ShowUsers</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowUsers</servlet-name>
@@ -52,7 +52,7 @@
 
     <servlet>
         <servlet-name>AddUsers</servlet-name>
-        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.AddUsers</servlet-class>
+        <servlet-class>ru.job4j.Servlet3.HttpServlets.AddUsers</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddUsers</servlet-name>
@@ -61,7 +61,7 @@
 
     <servlet>
         <servlet-name>UpdateUsers</servlet-name>
-        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.UpdateUsers</servlet-class>
+        <servlet-class>ru.job4j.Servlet3.HttpServlets.UpdateUsers</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UpdateUsers</servlet-name>
@@ -70,7 +70,7 @@
 
     <servlet>
         <servlet-name>DeleteUsers</servlet-name>
-        <servlet-class>ru.job4j.Servlet3.MyHttpServlets.DeleteUsers</servlet-class>
+        <servlet-class>ru.job4j.Servlet3.HttpServlets.DeleteUsers</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DeleteUsers</servlet-name>

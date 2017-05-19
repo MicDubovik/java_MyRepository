@@ -1,4 +1,4 @@
-package ru.job4j.Servlet3.MyHttpServlets;
+package ru.job4j.Servlet3.HttpServlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
