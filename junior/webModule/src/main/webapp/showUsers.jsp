@@ -1,6 +1,7 @@
-<%@ page import="java.sql.Connection" %>
-<%@ page import="ru.job4j.Servlet3.DbConnect.StartConnect" %>
-<%@ page import="ru.job4j.Servlet3.DbConnect.User" %><%--
+
+<%@ page import="ru.job4j.Servlet3.DbConnect.User" %>
+<%@ page import="ru.job4j.Servlet3.DbConnect.InitDB" %>
+<%@ page import="java.sql.SQLException" %><%--
   Created by IntelliJ IDEA.
   User: Katy
   Date: 17.05.2017
@@ -28,10 +29,14 @@
         <th>date</th>
     </tr>
     <%
-        StartConnect connect = new StartConnect();
-        connect.startToDB();
-        connect.getInitDB().getAllUsers();
-        for (User user : connect.getInitDB().getUserList()) {%>
+        InitDB initDB = new InitDB();
+        try {
+            initDB.getPool().getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        initDB.getAllUsers();
+       for (User user : initDB.getUserList()) {%>
         <tr>
             <td><%=user.getId()%></td>
             <td><%=user.getName()%></td>
@@ -41,7 +46,7 @@
         </tr>
 
        <% }
-        connect.close();
+        initDB.getPool().getConnection().close();
     %>
 </table>
 
