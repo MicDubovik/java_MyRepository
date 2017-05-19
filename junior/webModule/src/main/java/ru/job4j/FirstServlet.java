@@ -3,9 +3,7 @@ package ru.job4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.jws.WebService;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,11 +16,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by Katy on 13.05.2017.
  */
 
-public class MyFirstServlet extends HttpServlet {
+public class FirstServlet extends HttpServlet {
     /**
      * Logger.
      */
-    private static final Logger MYLOGGER = LoggerFactory.getLogger(MyFirstServlet.class);
+    private static final Logger MYLOGGER = LoggerFactory.getLogger(FirstServlet.class);
     /**
      * List.
      */

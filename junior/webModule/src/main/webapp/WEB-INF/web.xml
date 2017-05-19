@@ -13,20 +13,20 @@
         <!--<welcome-file>default.jsp</welcome-file>-->
     <!--</welcome-file-list>-->
 <servlet>
-        <servlet-name>MyFirstServlet</servlet-name>
-        <servlet-class>ru.job4j.MyFirstServlet</servlet-class>
+        <servlet-name>FirstServlet</servlet-name>
+        <servlet-class>ru.job4j.FirstServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MyFirstServlet</servlet-name>
+        <servlet-name>FirstServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>MyUsers</servlet-name>
-        <servlet-class>ru.job4j.HTTP.MyHttpServlets.MyUsers</servlet-class>
+        <servlet-name>Users</servlet-name>
+        <servlet-class>ru.job4j.HTTP.DBHttpServlets.Users</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MyUsers</servlet-name>
+        <servlet-name>Users</servlet-name>
         <url-pattern>/users</url-pattern>
     </servlet-mapping>
 

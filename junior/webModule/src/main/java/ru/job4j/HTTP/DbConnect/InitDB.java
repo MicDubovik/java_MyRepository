@@ -8,51 +8,31 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Created by Katy on 07.05.2017.
  */
 public class InitDB {
+
     /**
-     * Table name.
+     * Pool.
      */
-    private String tablename;
-    /**
-     * Preparedstatment.
-     */
-    PreparedStatement ps = null;
-    /**
-     * DB.
-     */
-    Db db;
+    ConnectionPool pool = new ConnectionPool();
 
     /**
      * Structure table.
      */
-    Structure structure = new Structure("name","login","email");
+     Structure structure = new Structure("name","login","email");
     /**
      * List users.
      */
     List<User> userList = new CopyOnWriteArrayList<>();
+    /**
+     * Table name.
+     */
+    String tableName = "servlet";
 
     /**
-     * Constructor.
-     * @param dbName
-     * @param host
-     * @param port
-     * @param user
-     * @param pass
-     * @param tablename
+     * Constructor
      */
-    public InitDB(String dbName, String host, String port, String user, String pass,String tablename) {
-
-
-        this.db = new Db(dbName, host, port, user, pass);
-        this.tablename=tablename;
+    public InitDB()  {
     }
 
-    /**
-     * getDB
-     * @return
-     */
-    public Db getDb() {
-        return db;
-    }
 
     /**
      * Get List users.
@@ -63,40 +43,25 @@ public class InitDB {
     }
 
     /**
-     * Create connection.
+     * Get pool.
+     * @return
      */
-    public void createConnection() throws ClassNotFoundException {
-
-        this.db.initProperties();
-        this.db.connectToBD();
-
-
+    public ConnectionPool getPool() {
+        return pool;
     }
 
-          // для создания таблицы
-//    public void createTable(String tableName) {
-//
-//        this.tablename = tableName;
-//        String createTable = "CREATE TABLE " + tableName +
-//                " ( id Serial PRIMARY KEY ,
-//                name VARCHAR (30),
-//                login VARCHAR (40) UNIQUE ,
-//                email VARCHAR (50) UNIQUE ,
-//                time TIMESTAMP DEFAULT CURRENT_TIMESTAMP )";
-//        try {
-//
-//            Statement stmt = db.getConnection().createStatement();
-//            stmt.execute(createTable);
-//        } catch (SQLException e) {
-//            System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
-//        }
-//    }
-
-    public void addUser(String name, String login,String email) {
+    /**
+     * Add user.
+     * @param name
+     * @param login
+     * @param email
+     */
+    public void addUser(String name, String login, String email) {
         String query = "INSERT  INTO tableName ("+structure.getName()+","+structure.getLogin()+","+structure.getEmail()+") VALUES(?,?,?)";
-        String newQuery = query.replace("tableName", this.tablename);
-        try {
-            this.ps = this.db.getConnection().prepareStatement(newQuery);
+        String newQuery = query.replace("tableName", this.tableName);
+        try(Connection conn = pool.getConnection();
+            PreparedStatement ps = conn.prepareStatement(newQuery)) {
+
 
             ps.setString(1, name);
             ps.setString(2, login);
@@ -108,13 +73,18 @@ public class InitDB {
         }
     }
 
+    /**
+     * Update user.
+     * @param name
+     * @param login
+     */
     public void updateUserName(String name,String login) {
 
         String update = "UPDATE  tableName SET "+structure.getName()+" =? WHERE login=?";
-        String newQuery = update.replace("tableName", this.tablename);
+        String newQuery = update.replace("tableName",this.tableName);
 
-        try {
-            this.ps = this.db.getConnection().prepareStatement(newQuery);
+        try(Connection conn = pool.getConnection();
+            PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
             ps.setString(1, name);
             ps.setString(2, login);
@@ -125,12 +95,16 @@ public class InitDB {
         }
     }
 
+    /**
+     * Get all users.
+     * @return
+     */
     public ResultSet getAllUsers() {
         ResultSet resultSet = null;
         String query = "SELECT * FROM tableName";
-        String newQuery = query.replace("tableName", this.tablename);
-        try {
-            this.ps = this.db.getConnection().prepareStatement(newQuery);
+        String newQuery = query.replace("tableName",this.tableName);
+        try(Connection conn = pool.getConnection();
+            PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
             resultSet = ps.executeQuery();
         } catch (SQLException e) {
@@ -140,12 +114,16 @@ public class InitDB {
         return resultSet;
     }
 
+    /**
+     * Delete user by login.
+     * @param login
+     */
     public void deleteUserByLogin(String login) {
         String query = "DELETE  FROM tableName WHERE "+structure.getLogin()+"=?";
-        String newQuery = query.replace("tableName", this.tablename);
+        String newQuery = query.replace("tableName",this.tableName);
 
-        try {
-            this.ps = this.db.getConnection().prepareStatement(newQuery);
+        try(Connection conn = pool.getConnection();
+            PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
             ps.setString(1, login);
             ps.executeUpdate();
@@ -154,7 +132,10 @@ public class InitDB {
         }
     }
 
-
+    /**
+     * Show all users.
+     * @param res
+     */
     public void showResult(ResultSet res) {
 
         try {
