@@ -9,11 +9,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by Katy on 16.05.2017.
+ * Admin page for Update user.
  */
 public class AdminUpdateUsers extends HttpServlet {
 
     InitDB initDB = new InitDB();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text,html");
@@ -32,7 +38,7 @@ public class AdminUpdateUsers extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
+            doGet(req,resp);
+//        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }
 }

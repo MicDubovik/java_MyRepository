@@ -18,6 +18,10 @@ public class AddUsers extends HttpServlet {
      */
     InitDB initDB = new InitDB();
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
+    }
 
     /**
      * DoPost.
@@ -48,7 +52,8 @@ public class AddUsers extends HttpServlet {
             e.printStackTrace();
         }
 
-        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
+         doGet(req,resp);
+
 
     }
 }

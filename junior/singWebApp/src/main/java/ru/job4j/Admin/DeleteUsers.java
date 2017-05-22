@@ -18,7 +18,7 @@ public class DeleteUsers extends HttpServlet{
 
     InitDB initDB = new InitDB();
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
                 resp.setContentType("text,html");
         String name = req.getParameter("name");
         String login = req.getParameter("login");

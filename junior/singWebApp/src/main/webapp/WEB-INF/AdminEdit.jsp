@@ -13,7 +13,7 @@ Input data for add user: <br>
     Email :<input type="text" name="email"/><br>
     <input type="submit" value="send">
 </form>
-<form action="DeleteUsers" method="get">
+<form action="DeleteUsers" method="post">
     Delete user: <br>
     Input login for delete user
     <input type="text" name="login" >
