@@ -26,6 +26,7 @@
         <module>chapter_007</module>
         <module>chaptre_008</module>
         <module>webModule</module>
+        <module>singWebApp</module>
 
         <!--<module>chapter_012</module>-->
     </modules>

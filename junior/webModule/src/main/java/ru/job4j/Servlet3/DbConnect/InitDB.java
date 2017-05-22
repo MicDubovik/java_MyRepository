@@ -63,7 +63,7 @@ public class InitDB {
         String query = "INSERT  INTO tableName ("+structure.getName()+","+structure.getLogin()+","+structure.getEmail()+") VALUES(?,?,?)";
         String newQuery = query.replace("tableName", this.tableName);
         try(Connection conn = pool.getConnection();
-        PreparedStatement ps = conn.prepareStatement(newQuery)) {
+            PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
 
             ps.setString(1, name);
@@ -111,15 +111,15 @@ public class InitDB {
 
             res = ps.executeQuery();
 
-                while (res.next()) {
-                    User user = new User();
-                    user.setId(res.getString("id"));
-                    user.setName(res.getString("name"));
-                    user.setLogin(res.getString("login"));
-                    user.setEmail(res.getString("email"));
-                    user.setDate(res.getString("date"));
-                    userList.add(user);
-                }
+            while (res.next()) {
+                User user = new User();
+                user.setId(res.getString("id"));
+                user.setName(res.getString("name"));
+                user.setLogin(res.getString("login"));
+                user.setEmail(res.getString("email"));
+                user.setDate(res.getString("date"));
+                userList.add(user);
+            }
 
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
@@ -169,4 +169,3 @@ public class InitDB {
     }
 
 }
-

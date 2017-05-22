@@ -1,4 +1,4 @@
-package ru.job4j.Servlet3.DbConnect;
+package ru.job4j.DbConnect;
 
 /**
  * Structure table.
@@ -9,11 +9,14 @@ public class Structure {
     private String login;
     private String email;
     private String date;
+    private String password;
+    private String role;
 
-    public Structure(String name, String login, String email) {
+    public Structure(String name, String login,String password, String email) {
         this.name = name;
         this.login = login;
         this.email = email;
+        this.password = password;
     }
 
     public String getLogin() {
@@ -55,5 +58,21 @@ public class Structure {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

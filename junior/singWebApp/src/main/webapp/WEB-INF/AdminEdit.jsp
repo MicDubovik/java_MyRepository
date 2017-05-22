@@ -9,6 +9,7 @@ Input data for add user: <br>
 <form action="AddUsers" method="post">
     Name :<input type="text" name="name"/>
     Login :<input type="text" name="login"/>
+    Password :<input type="text" name="password"/><br>
     Email :<input type="text" name="email"/><br>
     <input type="submit" value="send">
 </form>
@@ -18,7 +19,7 @@ Input data for add user: <br>
     <input type="text" name="login" >
     <input type="submit" value="delete">
 </form>
-<form action="UpdateUsers" method="post">
+<form action="AdminUpdateUsers" method="post">
     Edit user: <br>
     Input user login:
     <input type="text" name="login"><br>
@@ -27,7 +28,12 @@ Input data for add user: <br>
     <input type="submit" value="edit">
 
 </form>
-<a href="<%= request.getContextPath()%>/show">Show all users.</a><br>
+<form action="Signout" method="get">
+    <input type="submit" value="Sign out">
+</form>
+<a href="<%=request.getContextPath()%>/show">Show all users.</a><br>
+
+
 
 </body>
 </html>

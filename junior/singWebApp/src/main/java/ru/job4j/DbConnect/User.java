@@ -1,4 +1,4 @@
-package ru.job4j.Servlet3.DbConnect;
+package ru.job4j.DbConnect;
 
 /**
  * Created by Katy on 15.05.2017.
@@ -9,6 +9,8 @@ public class User {
     private String login;
     private String email;
     private String date;
+    private String password;
+    private String role;
 
 
     public User() {
@@ -62,12 +64,30 @@ public class User {
 
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
                 ", email='" + email + '\'' +
                 ", date='" + date + '\'' +
                 '}';

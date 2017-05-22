@@ -1,6 +1,6 @@
-package ru.job4j.Servlet3.HttpServlets;
+package ru.job4j.Admin;
 
-import ru.job4j.Servlet3.DbConnect.InitDB;
+import ru.job4j.DbConnect.InitDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -26,7 +26,7 @@ public class ShowUsers extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        req.getRequestDispatcher("/WEB-INF/showUsers.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/showUsers.jsp").forward(req, resp);
 
     }
 }

@@ -1,4 +1,4 @@
-package ru.job4j.Servlet3.DbConnect;
+package ru.job4j.DbConnect;
 
 
 import org.apache.commons.dbcp.BasicDataSource;
@@ -11,9 +11,9 @@ import java.sql.SQLException;
  */
 public class ConnectionPool {
 
-    private BasicDataSource source = new BasicDataSource();
+   private BasicDataSource source = new BasicDataSource();
 
-    private Connection connection;
+   private Connection connection;
 
 
     public ConnectionPool()   {

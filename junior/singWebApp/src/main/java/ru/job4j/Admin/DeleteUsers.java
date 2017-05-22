@@ -1,6 +1,8 @@
-package ru.job4j.Servlet3.HttpServlets;
+package ru.job4j.Admin;
 
-import ru.job4j.Servlet3.DbConnect.InitDB;
+
+
+import ru.job4j.DbConnect.InitDB;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +19,7 @@ public class DeleteUsers extends HttpServlet{
     InitDB initDB = new InitDB();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text,html");
+                resp.setContentType("text,html");
         String name = req.getParameter("name");
         String login = req.getParameter("login");
         try {
@@ -33,6 +35,6 @@ public class DeleteUsers extends HttpServlet{
             e.printStackTrace();
         }
 
-        req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }
 }
