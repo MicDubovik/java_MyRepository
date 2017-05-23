@@ -7,13 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 /**
- * Created by Katy on 19.05.2017.
+ * ShowUsers.
  */
 public class ShowUsers extends HttpServlet {
-
+    /**
+     * DoGet.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         InitDB initDB = new InitDB();

@@ -10,12 +10,24 @@ import java.io.IOException;
  * Created by Katy on 21.05.2017.
  */
 public class AuthFilter implements Filter {
-
+    /**
+     * init.
+     * @param filterConfig
+     * @throws ServletException
+     */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
 
+    /**
+     * doFilter.
+     * @param req
+     * @param resp
+     * @param chain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request = ((HttpServletRequest) req);
@@ -41,7 +53,9 @@ public class AuthFilter implements Filter {
 
     }
 
-
+    /**
+     * destroy.
+     */
     @Override
     public void destroy() {
 

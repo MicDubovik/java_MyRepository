@@ -13,9 +13,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Created by Katy on 13.05.2017.
+ * FirstServlet.
  */
-
 public class FirstServlet extends HttpServlet {
     /**
      * Logger.

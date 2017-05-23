@@ -11,15 +11,23 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by Katy on 21.05.2017.
+ * UserCheck.
  */
 public class UserCheck extends HttpServlet {
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
 
+    /**
+     * doGet.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
         if (req.getSession().getAttribute("role").equals("1")) {
             req.getRequestDispatcher("WEB-INF/AdminEdit.jsp").forward(req, resp);

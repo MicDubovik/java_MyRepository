@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Created by Katy on 07.05.2017.
+ * Create db connection.
  */
 public class InitDB {
 

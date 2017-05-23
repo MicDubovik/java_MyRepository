@@ -16,7 +16,7 @@ import java.sql.SQLException;
 
 
 /**
- * Created by Katy on 15.05.2017.
+ * Users.
  */
 
 public class Users extends HttpServlet {
@@ -29,6 +29,11 @@ public class Users extends HttpServlet {
      */
      InitDB initDB = new InitDB();
 
+    /**
+     * Constructor.
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public Users() throws SQLException, ClassNotFoundException {
     }
 

@@ -1,4 +1,4 @@
 /**
- * Created by Katy on 17.05.2017.
+ * HttpServlets.
  */
 package ru.job4j.Servlet3.HttpServlets;

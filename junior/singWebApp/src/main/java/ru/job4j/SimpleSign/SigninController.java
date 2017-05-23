@@ -15,9 +15,18 @@ import java.sql.SQLException;
  * Created by Katy on 21.05.2017.
  */
 public class SigninController extends HttpServlet {
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
 
+    /**
+     * doGet.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -25,6 +34,13 @@ public class SigninController extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/signin.jsp").forward(req, resp);
     }
 
+    /**
+     * doPost.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String login = req.getParameter("login");
@@ -39,7 +55,6 @@ public class SigninController extends HttpServlet {
 
                         session.setAttribute("login", login);
                         session.setAttribute("role", user.getRole());
-
 
                     }
 

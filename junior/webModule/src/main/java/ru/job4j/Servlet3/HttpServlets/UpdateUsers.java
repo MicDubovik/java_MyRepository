@@ -7,14 +7,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 /**
- * Created by Katy on 16.05.2017.
+ * UpdateUsers.
  */
 public class UpdateUsers extends HttpServlet {
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
+
+    /**
+     * DoPost.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text,html");

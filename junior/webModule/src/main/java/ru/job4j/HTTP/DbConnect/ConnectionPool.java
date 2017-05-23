@@ -8,15 +8,21 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Created by Katy on 18.05.2017.
+ * ConnectionPool.
  */
 public class ConnectionPool {
-
+    /**
+     * BasicDataSource.
+     */
    private BasicDataSource source = new BasicDataSource();
-
+    /**
+     * Connection.
+     */
    private Connection connection;
 
-
+    /**
+     * Constructor.
+     */
     public ConnectionPool()   {
         try {
             Class.forName("org.postgresql.Driver");
@@ -31,6 +37,11 @@ public class ConnectionPool {
 
     }
 
+    /**
+     * Get.
+     * @return
+     * @throws SQLException
+     */
     public Connection getConnection() throws SQLException {
         return connection = source.getConnection( );
     }

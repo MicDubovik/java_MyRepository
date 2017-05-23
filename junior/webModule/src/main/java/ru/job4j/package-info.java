@@ -1,4 +1,4 @@
 /**
- * Created by Katy on 13.05.2017.
+ * Servlet.
  */
 package ru.job4j;

@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
+
 
 /**
- * Created by Katy on 16.05.2017.
+ * AddUsers.
  */
 public class AddUsers extends HttpServlet {
     /**

@@ -44,7 +44,6 @@ public class AdminUpdateUsers extends HttpServlet {
 
         this.initDB.updateUserName(name,login);
 
-
             doGet(req,resp);
 //        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }

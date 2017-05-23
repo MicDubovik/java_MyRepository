@@ -13,17 +13,25 @@ import java.sql.SQLException;
  * Created by Katy on 16.05.2017.
  */
 public class UpdateUser extends HttpServlet {
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
+
+    /**
+     * doPost.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text,html");
         String name = req.getParameter("name");
         String login = ((String) req.getSession().getAttribute("login"));
 
-
         this.initDB.updateUserName(name,login);
-
 
         req.getRequestDispatcher("/WEB-INF/UserEdit.jsp").forward(req,resp);
     }
