@@ -69,13 +69,13 @@ public class InitDB {
         try (Connection conn = pool.getConnection();
              PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
-
             ps.setString(1, name);
             ps.setString(2, login);
             ps.setString(3, password);
             ps.setString(4, email);
 
             ps.execute();
+            ps.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
             isexist=true;
@@ -101,6 +101,7 @@ public class InitDB {
             ps.setString(2, login);
 
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
         }
@@ -111,7 +112,7 @@ public class InitDB {
      *
      * @return
      */
-    public ResultSet getAllUsers() {
+    public void getAllUsers() {
         ResultSet res = null;
         String query = "SELECT * FROM tableName";
         String newQuery = query.replace("tableName", this.tableName);
@@ -133,11 +134,11 @@ public class InitDB {
                 userList.add(user);
             }
 
+            ps.close();
+
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
         }
-
-        return res;
     }
 
     /**
@@ -154,6 +155,7 @@ public class InitDB {
 
             ps.setString(1, login);
             ps.executeUpdate();
+            ps.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
         }
@@ -190,6 +192,7 @@ public class InitDB {
 
 
             }
+            ps.close();
 
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());

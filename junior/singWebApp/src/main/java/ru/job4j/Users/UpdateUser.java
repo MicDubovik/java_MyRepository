@@ -21,18 +21,9 @@ public class UpdateUser extends HttpServlet {
         String name = req.getParameter("name");
         String login = ((String) req.getSession().getAttribute("login"));
 
-        try {
-            this.initDB.getPool().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         this.initDB.updateUserName(name,login);
 
-        try {
-            this.initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         req.getRequestDispatcher("/WEB-INF/UserEdit.jsp").forward(req,resp);
     }

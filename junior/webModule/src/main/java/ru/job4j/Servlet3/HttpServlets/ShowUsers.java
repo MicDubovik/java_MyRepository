@@ -18,14 +18,9 @@ public class ShowUsers extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         InitDB initDB = new InitDB();
 
-        try {
-            initDB.getPool().getConnection();
             initDB.getAllUsers();
             req.setAttribute("users",initDB.getUserList());
-            initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         req.getRequestDispatcher("/WEB-INF/showUsers.jsp").forward(req, resp);
 
     }

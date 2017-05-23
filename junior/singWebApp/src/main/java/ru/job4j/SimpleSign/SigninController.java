@@ -30,8 +30,7 @@ public class SigninController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        try {
-            initDB.getPool().getConnection();
+
             User user = initDB.getUserByLogin(login);
             if (user.getLogin()!= null) {
                 if (initDB.CheckPass(user, login, password)) {
@@ -43,7 +42,7 @@ public class SigninController extends HttpServlet {
 
 
                     }
-                    initDB.getPool().getConnection().close();
+
                     resp.sendRedirect(String.format("%s/", req.getContextPath()));
                 }
 
@@ -51,10 +50,5 @@ public class SigninController extends HttpServlet {
                 req.setAttribute("error", "Credential invalid");
                 doGet(req, resp);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
     }
 }

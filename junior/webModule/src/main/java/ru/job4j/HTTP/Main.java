@@ -16,45 +16,46 @@ public class Main {
 
 
     public Main() throws SQLException, ClassNotFoundException {
+
     }
 
 
     public void doget() throws SQLException {
 
-        this.initDB.getPool().getConnection();
+
         this.initDB.getAllUsers();
         for (User user : this.initDB.getUserList()) {
             System.out.println(user);
         }
 
-        this.initDB.getPool().getConnection().close();
+
 
 
     }
 
     public void dopost(String name, String login, String email) throws SQLException {
 
-        this.initDB.getPool().getConnection();
+
         this.initDB.addUser(name, login, email);
-        this.initDB.getPool().getConnection().close();
+
     }
 
     public void doput() throws SQLException {
-        String name = "Ivan";
+        String name = "Ivanos";
         String login = "vano";
 
-        this.initDB.getPool().getConnection();
+
         this.initDB.updateUserName(name, login);
-        this.initDB.getPool().getConnection().close();
+
     }
 
     public void dodelete() throws SQLException {
 
         String login = "REjapetr";
 
-        this.initDB.getPool().getConnection();
+
         this.initDB.deleteUserByLogin(login);
-        this.initDB.getPool().getConnection().close();
+
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -64,7 +65,7 @@ public class Main {
 //        main.dopost("AShan", "AShno", "Ashno@mail.ru");
 //        main.dopost("REPjetr", "REjapetr", "prjeetr@mail.ru");
 
-//         main.doget();
+          main.doget();
 
 //        main.doput();
 //        main.doget();

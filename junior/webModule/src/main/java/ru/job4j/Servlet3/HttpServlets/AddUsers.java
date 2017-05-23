@@ -33,21 +33,7 @@ public class AddUsers extends HttpServlet {
         String login = req.getParameter("login");
         String email = req.getParameter("email");
 
-
-
-        try {
-            this.initDB.getPool().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
         this.initDB.addUser(name,login,email);
-
-        try {
-            this.initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
 

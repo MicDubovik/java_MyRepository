@@ -71,6 +71,7 @@ public class InitDB {
             ps.setString(3, email);
 
             ps.execute();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
@@ -93,6 +94,7 @@ public class InitDB {
             ps.setString(2, login);
 
             ps.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
@@ -102,7 +104,7 @@ public class InitDB {
      * Get all users.
      * @return
      */
-    public ResultSet getAllUsers() {
+    public void getAllUsers() {
         ResultSet res = null;
         String query = "SELECT * FROM tableName";
         String newQuery = query.replace("tableName",this.tableName);
@@ -120,12 +122,10 @@ public class InitDB {
                 user.setDate(res.getString("date"));
                 userList.add(user);
             }
-
+                conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
-
-        return res;
     }
 
     /**
@@ -141,31 +141,9 @@ public class InitDB {
 
             ps.setString(1, login);
             ps.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
     }
-
-    /**
-     * Show all users.
-     * @param res
-     */
-    public void showResult(ResultSet res) {
-
-        try {
-            while (res.next()) {
-                User user = new User();
-                user.setId(res.getString("id"));
-                user.setName(res.getString("name"));
-                user.setLogin(res.getString("login"));
-                user.setEmail(res.getString("email"));
-                user.setDate(res.getString("date"));
-                userList.add(user);
-            }
-        } catch (SQLException e) {
-            System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
-        }
-
-    }
-
 }

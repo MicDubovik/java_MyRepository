@@ -25,7 +25,7 @@ public class InitDB {
     /**
      * Table name.
      */
-    String tableName = "servlet";
+    String tableName = "servlet2";
 
     /**
      * Constructor
@@ -68,6 +68,7 @@ public class InitDB {
             ps.setString(3, email);
 
             ps.execute();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
@@ -90,6 +91,7 @@ public class InitDB {
             ps.setString(2, login);
 
             ps.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
@@ -99,19 +101,28 @@ public class InitDB {
      * Get all users.
      * @return
      */
-    public ResultSet getAllUsers() {
-        ResultSet resultSet = null;
+    public void getAllUsers() {
+        ResultSet res = null;
         String query = "SELECT * FROM tableName";
         String newQuery = query.replace("tableName",this.tableName);
         try(Connection conn = pool.getConnection();
             PreparedStatement ps = conn.prepareStatement(newQuery)) {
 
-            resultSet = ps.executeQuery();
+            res = ps.executeQuery();
+            while (res.next()) {
+                User user = new User();
+                user.setId(res.getString("id"));
+                user.setName(res.getString("name"));
+                user.setLogin(res.getString("login"));
+                user.setEmail(res.getString("email"));
+                user.setDate(res.getString("date"));
+                userList.add(user);
+            }
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
-        showResult(resultSet);
-        return resultSet;
+
     }
 
     /**
@@ -127,32 +138,10 @@ public class InitDB {
 
             ps.setString(1, login);
             ps.executeUpdate();
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
         }
     }
-
-    /**
-     * Show all users.
-     * @param res
-     */
-    public void showResult(ResultSet res) {
-
-        try {
-            while (res.next()) {
-                User user = new User();
-                user.setId(res.getString("id"));
-                user.setName(res.getString("name"));
-                user.setLogin(res.getString("login"));
-                user.setEmail(res.getString("email"));
-                user.setDate(res.getString("date"));
-                userList.add(user);
-            }
-        } catch (SQLException e) {
-            System.out.printf("You have problem: %s ,please try again\n",e.getMessage());
-        }
-
-    }
-
 }
 

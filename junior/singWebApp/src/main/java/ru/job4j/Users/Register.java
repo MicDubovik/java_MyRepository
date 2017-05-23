@@ -28,18 +28,10 @@ public class Register extends HttpServlet {
        String password = req.getParameter("password");
        String email = req.getParameter("email");
 
-        try {
-            this.initDB.getPool().getConnection();
-           if (!this.initDB.addUser(name,login,email,password)){
-               this.initDB.getPool().getConnection().close();
-           } else {
+           if (this.initDB.addUser(name,login,email,password)){
                req.setAttribute("error", "User already exist");
                doGet(req, resp);
            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
        resp.sendRedirect(String.format("%s/Signin",req.getContextPath()));
     }
