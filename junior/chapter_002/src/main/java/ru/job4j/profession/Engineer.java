@@ -1,15 +1,22 @@
 package ru.job4j.profession;
 
 /**
- * Created by Katy on 27.02.2017.
+ * Engineer.
  */
 public class Engineer extends Profession {
-
+    /**
+     * Profession.
+     */
     private String profession;
 
+    /**
+     * Constructor.
+     */
     public Engineer() {
     }
-
+    /**
+     * Constructor.
+     */
     public Engineer(String profession) {
         this.profession = profession;
     }
@@ -27,6 +34,9 @@ public class Engineer extends Profession {
         this.profession = profession;
     }
 
+    /**
+     * Working.
+     */
     public  void produce(){
         System.out.println("Готовый продукт");
 

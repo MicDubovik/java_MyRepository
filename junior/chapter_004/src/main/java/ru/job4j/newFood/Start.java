@@ -2,7 +2,15 @@ package ru.job4j.newFood;
 
 import java.text.ParseException;
 
+/**
+ * Start.
+ */
 public class Start {
+    /**
+     * main.
+     * @param args
+     * @throws ParseException
+     */
     public static void main(String[] args) throws ParseException {
 
         Food food = new Food("Milk", "20.03.2017", "10.03.2017", 100, 0);
@@ -26,14 +34,6 @@ public class Start {
         System.out.println( select.countDays(food));
         System.out.println( select.countDays(food2));
         System.out.println( select.countDays(food3));
-//        shop.getShopProducts();
-//        for (Food arg : shop.getShopProducts()) {
-//
-//                System.out.print(arg.getName());
-//
-//            System.out.println();
-//
-//        }
 
     }
 }

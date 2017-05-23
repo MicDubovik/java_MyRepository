@@ -4,8 +4,15 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * Server.
+ */
 public class Server {
-
+    /**
+     * main.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         ServerSocket server = new ServerSocket(3000);

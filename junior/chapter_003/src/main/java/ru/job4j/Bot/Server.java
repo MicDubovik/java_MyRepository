@@ -8,19 +8,32 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Random;
 
+/**
+ * Server.
+ */
 public class Server {
+    /**
+     * Socket.
+     */
     private Socket socket;
-
-
+    /**
+     * Array asks.
+     */
     private final String[] asks = {"Hello", "I'm fine ", "ok!", "sure", "necessarily", "possible"};
 
-
-
+    /**
+     * selectAsk.
+     * @param asks
+     * @return
+     */
     public String selectAsk(String[] asks) {
         Random random = new Random();
         return asks[random.nextInt(asks.length)];
     }
-
+    /**
+     * startServer.
+     * @throws IOException
+     */
     public void startServer() throws IOException {
         ServerSocket server = new ServerSocket(5000);
         Socket socket = server.accept();

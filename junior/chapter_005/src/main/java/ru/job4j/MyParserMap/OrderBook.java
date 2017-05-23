@@ -2,34 +2,69 @@ package ru.job4j.MyParserMap;
 
 import java.util.*;
 
+/**
+ * OrderBook.
+ */
 public class OrderBook {
-
+    /**
+     * HashMap<Book, HashSet<Order>> books.
+     */
     private HashMap<Book, HashSet<Order>> books;
 
 
-
+    /**
+     * Constructor.
+     */
     public OrderBook() {
         this.books = new HashMap<>();
     }
 
+    /**
+     * Get.
+     *
+     * @return
+     */
     public HashMap<Book, HashSet<Order>> getBooks() {
         return books;
     }
 
+    /**
+     * Set.
+     *
+     * @param books
+     */
     public void setBooks(HashMap<Book, HashSet<Order>> books) {
         this.books = books;
     }
 
+    /**
+     * Add book.
+     *
+     * @param book
+     * @param order
+     */
     public void addBook(Book book, Order order) {
 
         books.get(book).add(order);
     }
 
+    /**
+     * Delete book.
+     *
+     * @param book
+     * @param order
+     */
     public void deleteBook(Book book, Order order) {
         books.get(book).remove(order);
     }
 
-
+    /**
+     * Sort order.
+     *
+     * @param buy
+     * @param sel
+     * @param order
+     */
     public void sortOrder(Map<Double, Integer> buy, Map<Double, Integer> sel, Order order) {
         if (sel.containsKey(order.getPrice())) {
             if (sel.get(order.getPrice()) < order.getVolume()) {
@@ -53,6 +88,11 @@ public class OrderBook {
         }
     }
 
+    /**
+     * Sort.
+     *
+     * @param orders
+     */
     public void sort(HashMap<Book, HashSet<Order>> orders) {
         for (Book book : orders.keySet()) {
             Map<Double, Integer> buy = book.getBookBuy();
@@ -68,6 +108,13 @@ public class OrderBook {
         }
     }
 
+    /**
+     * compareBidAsk.
+     *
+     * @param bidlist
+     * @param asklist
+     * @return
+     */
     public List<SortedSet<Order>> compareBidAsk(Map<Double, Integer> bidlist, Map<Double, Integer> asklist) {
 
         Comparator comparator = new Comparator<Order>() {
@@ -99,20 +146,17 @@ public class OrderBook {
         SortedSet<Order> ask = new TreeSet<>(comparator2);
 
 
-
         List<SortedSet<Order>> resultList = new ArrayList<>();
-
-
 
 
         for (Map.Entry<Double, Integer> temp : bidlist.entrySet()) {
             Order mybid = new Order();
 
-                mybid.setPrice(temp.getKey());
-                mybid.setVolume(temp.getValue());
-                mybid.setOperation("str ");
-                mybid.setOrderId(1);
-                bid.add(mybid);
+            mybid.setPrice(temp.getKey());
+            mybid.setVolume(temp.getValue());
+            mybid.setOperation("str ");
+            mybid.setOrderId(1);
+            bid.add(mybid);
 
         }
         for (Map.Entry<Double, Integer> temp : asklist.entrySet()) {
@@ -165,6 +209,10 @@ public class OrderBook {
         return resultList;
     }
 
+    /**
+     * print.
+     * @param orders
+     */
     public void print(HashMap<Book, HashSet<Order>> orders) {
         List<SortedSet<Order>> mapList = null;
         for (Book book : orders.keySet()) {
@@ -182,6 +230,10 @@ public class OrderBook {
         }
     }
 
+    /**
+     * Show.
+     * @param orders
+     */
     public void show(HashMap<Book, HashSet<Order>> orders) {
         for (Book book : orders.keySet()) {
             System.out.println("Book name- " + book.getName());

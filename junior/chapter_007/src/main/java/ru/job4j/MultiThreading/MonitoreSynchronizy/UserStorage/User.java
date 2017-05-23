@@ -1,5 +1,8 @@
 package ru.job4j.MultiThreading.MonitoreSynchronizy.UserStorage;
 
+/**
+ * User.
+ */
 public class User {
     /**
      * Field amount.
@@ -40,8 +43,6 @@ public class User {
             this.amount += value;
 
         }
-
-
     }
 
     /**
@@ -55,7 +56,6 @@ public class User {
 
                 this.amount -= value;
             }
-
         }
     }
 }

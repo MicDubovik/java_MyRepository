@@ -11,7 +11,11 @@ public class Bishop extends Figure {
     }
 
 
-
+    /**
+     * Move.
+     * @param newposition
+     * @return
+     */
     @Override
     public Cell move( Cell newposition) {
 

@@ -3,23 +3,47 @@ package ru.job4j.TrackerList;
 import java.util.HashMap;
 
 /**
- * Created by Katy on 27.02.2017.
+ * StartUI.
  */
 public class StartUI {
+    /**
+     * Input.
+     */
     private Input input;
+    /**
+     * HashMap<Integer, UserAction>.
+     */
     private HashMap<Integer, UserAction> number;
+    /**
+     * Tracker.
+     */
     Tracker tracker;
+    /**
+     * MenuTracker.
+     */
     MenuTracker menu;
 
+    /**
+     * Constructor.
+     * @param input
+     */
     public StartUI(Input input) {
         this.input = input;
     }
 
+    /**
+     * Constructor.
+     * @param input
+     * @param tracker
+     */
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
 
+    /**
+     * Init.
+     */
     public void init() {
         menu = new MenuTracker(input, tracker);
         number = menu.fillActions();
@@ -34,7 +58,10 @@ public class StartUI {
         } while (!"y".equals(this.input.ask("Exit ?(y/n):")));
     }
 
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
        Item item = new Item();
         Tracker tracker = new Tracker();

@@ -1,14 +1,18 @@
 package ru.job4j.Test;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Cell.
  */
 public class Cell {
     int x;
     int y;
     String status;
 
-
+    /**
+     * Constructor.
+     * @param x
+     * @param y
+     */
     public Cell(int x, int y) {
         this.x = x;
         this.y = y;

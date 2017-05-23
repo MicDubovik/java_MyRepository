@@ -2,20 +2,35 @@ package ru.job4j.Set;
 
 import java.util.Iterator;
 
+/**
+ * SimpleSet<E>.
+ * @param <E>
+ */
 public class SimpleSet<E> implements ISetIntarface<E>, Iterator {
 
-
+    /**
+     * Index.
+     */
     private int index;
 
     //    List<E> mySets = new ArrayList<>();
-
+    /**
+     * Array objects.
+     */
     private Object[] mySets = new Object[10];
 
-
+    /**
+     * Setter.
+     * @param mySets
+     */
     public void setMySets(Object[] mySets) {
         this.mySets = mySets;
     }
 
+    /**
+     * hasNext.
+     * @return
+     */
     @Override
     public boolean hasNext() {
         boolean result = false;
@@ -29,6 +44,10 @@ public class SimpleSet<E> implements ISetIntarface<E>, Iterator {
         return result;
     }
 
+    /**
+     * next.
+     * @return
+     */
     @Override
     public E next() {
         if (hasNext()) {
@@ -38,6 +57,10 @@ public class SimpleSet<E> implements ISetIntarface<E>, Iterator {
         }
     }
 
+    /**
+     * Add.
+     * @param e
+     */
     @Override
     public void add(E e) {
         boolean flag = false;
@@ -56,29 +79,4 @@ public class SimpleSet<E> implements ISetIntarface<E>, Iterator {
         }
     }
 
-//    public static void main(String[] args) throws Exception {
-//
-//        SimpleSet<String> simpleSet = new SimpleSet();
-//
-//        String str = "Hello";
-//        String str2 = "World";
-//
-//        simpleSet.add( str);
-//        simpleSet.add(str2);
-//        simpleSet.add(str);
-//
-//        for (String s : simpleSet.mySets) {
-//            System.out.println(s);
-//        }
-//        int i=0;
-//        while (simpleSet.hasNext()){
-//            simpleSet.next();
-//            System.out.println(simpleSet.mySets.get(i));
-//            i++;
-//        }
-//
-//
-//
-//
-//    }
 }

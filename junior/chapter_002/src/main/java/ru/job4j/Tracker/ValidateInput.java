@@ -1,13 +1,15 @@
 package ru.job4j.Tracker;
 
 /**
- *
+ *ValidateInput
  */
 public class ValidateInput extends ConsoleInput {
-
-
-
-
+    /**
+     * Ask.
+     * @param question
+     * @param number
+     * @return
+     */
     public int ask(String question, int[] number) {
         boolean invalid = true;
         int value = -1;

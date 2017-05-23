@@ -3,6 +3,11 @@ package ru.job4j.Map;
 import java.util.Arrays;
 import java.util.Iterator;
 
+/**
+ * Directory<T,V>.
+ * @param <T>
+ * @param <V>
+ */
 public class Directory<T,V> implements IDirectory<T,V> {
 
     /**
@@ -88,13 +93,6 @@ public class Directory<T,V> implements IDirectory<T,V> {
     public V get(T key) {
         return this.array[getIndex(key)].getValue();
     }
-
-    /**
-     * Delete.
-     * @return boolean.
-     */
-
-
 
     /**
      * Delete.

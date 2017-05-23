@@ -3,14 +3,21 @@ package ru.job4j.MultiThreading.Wait.ThreadPool;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+/**
+ * QueueTasks.
+ */
 public class QueueTasks {
     /**
      * Temp field.
      */
     private Queue<Integer> tempTasks;
-
+    /**
+     * boolean flag.
+     */
     boolean flag = false;
-
+    /**
+     * Number core.
+     */
     final private int core;
 
     int i = 0;

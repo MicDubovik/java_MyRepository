@@ -2,6 +2,9 @@ package ru.job4j.Food;
 
 import java.text.ParseException;
 
+/**
+ * Main.
+ */
 public class Main {
 
     /**
@@ -29,6 +32,11 @@ public class Main {
         return strategy;
     }
 
+    /**
+     * method main.
+     * @param args
+     * @throws ParseException
+     */
     public static void main(String[] args) throws ParseException {
 
         Food food = new Food("Milk", 5, "10.03.2017", 100, 0);

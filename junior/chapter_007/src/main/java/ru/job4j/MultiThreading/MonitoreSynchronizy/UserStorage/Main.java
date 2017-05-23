@@ -1,8 +1,13 @@
 package ru.job4j.MultiThreading.MonitoreSynchronizy.UserStorage;
 
+/**
+ * Main.
+ */
 public class Main {
-
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
 

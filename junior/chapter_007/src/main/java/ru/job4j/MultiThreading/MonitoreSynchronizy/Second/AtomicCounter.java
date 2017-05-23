@@ -5,6 +5,9 @@ import ru.job4j.MultiThreading.MonitoreSynchronizy.First.SynchronizeCounter;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+/**
+ * AtomicCounter.
+ */
 public class AtomicCounter {
     /**
      * Value number.

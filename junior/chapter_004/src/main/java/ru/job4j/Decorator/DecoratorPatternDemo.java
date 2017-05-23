@@ -1,5 +1,8 @@
 package ru.job4j.Decorator;
 
+/**
+ * DecoratorPatternDemo.
+ */
 public class DecoratorPatternDemo {
     public static void main(String[] args) {
 

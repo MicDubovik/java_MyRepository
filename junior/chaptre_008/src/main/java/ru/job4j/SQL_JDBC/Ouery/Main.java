@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Katy on 06.05.2017.
+ * Main.
  */
 public class Main {
     /**

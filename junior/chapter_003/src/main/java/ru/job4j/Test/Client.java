@@ -3,8 +3,15 @@ package ru.job4j.Test;
 import java.io.*;
 import java.net.Socket;
 
+/**
+ * Client.
+ */
 public class Client {
-
+    /**
+     * main.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         Socket socket = new Socket("127.0.0.1", 3000);

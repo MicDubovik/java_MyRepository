@@ -1,4 +1,4 @@
 /**
- * Created by Katy on 17.05.2017.
+ * Connect to db.
  */
 package ru.job4j.DbConnect;

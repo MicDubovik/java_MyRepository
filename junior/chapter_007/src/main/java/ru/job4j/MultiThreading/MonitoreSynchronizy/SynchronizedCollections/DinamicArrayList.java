@@ -24,11 +24,18 @@ public class DinamicArrayList<E> implements SimpleContainer<E> {
      */
     private int index;
 
+    /**
+     * Constructor.
+     */
     public DinamicArrayList( ) {
         this.objects =new Object[DEFAULT_SIZE];
 
     }
 
+    /**
+     * Constructor.
+     * @param size
+     */
     public DinamicArrayList( int size) {
 
         this.objects = new Object[size];

@@ -7,10 +7,12 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * Created by Katy on 01.03.2017.
+ * StartUITest.
  */
 public class StartUITest {
-
+    /**
+     * Test.
+     */
     @Test
     public void getAllTest() {
 

@@ -2,6 +2,9 @@ package ru.job4j.Sort;
 
 import java.util.Comparator;
 
+/**
+ * SortByHashCode.
+ */
 public class SortByHashCode implements Comparator<User> {
 
     /**

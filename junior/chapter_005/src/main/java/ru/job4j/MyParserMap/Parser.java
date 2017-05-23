@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * Parser xml file.
+ */
 public class Parser {
     /**
      * HashMap of book and books"name for parsing.

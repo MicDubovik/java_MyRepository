@@ -12,28 +12,28 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by Katy on 16.05.2017.
+ * DeleteUsers.
  */
 public class DeleteUsers extends HttpServlet{
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
+
+    /**
+     * doPost.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
                 resp.setContentType("text,html");
         String name = req.getParameter("name");
         String login = req.getParameter("login");
-        try {
-            this.initDB.getPool().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        this.initDB.deleteUserByLogin(login);
 
-        try {
-            this.initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        this.initDB.deleteUserByLogin(login);
 
         req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }

@@ -1,5 +1,8 @@
 package ru.job4j.MultiThreading.NonBlock;
 
+/**
+ * OplimisticException.
+ */
 public class OplimisticException extends RuntimeException {
 
         /**

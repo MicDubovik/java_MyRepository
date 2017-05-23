@@ -3,13 +3,22 @@ package ru.job4j.MultiThreading.MonitoreSynchronizy.SynchronizedCollections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
+/**
+ * MyLinkedList<E>.
+ * @param <E>
+ */
 public class MyLinkedList<E> implements SimpleLinkedCont<E> {
-
+    /**
+     * Size.
+     */
     private int size = 0;
-
+    /**
+     * Reference to  firstEntry.
+     */
     private Entry<E> firstEntry;
-
+    /**
+     * Reference to lastEntry.
+     */
     private Entry<E> lastEntry;
 
     /**
@@ -165,9 +174,15 @@ public class MyLinkedList<E> implements SimpleLinkedCont<E> {
         }
     }
 
+    /**
+     * class Entry<E> .
+     * @param <E>
+     */
     private class Entry<E> {
 
-
+        /**
+         *  Value entry.
+         */
         private E Entry;
         /**
          * Reference to previous Entry.

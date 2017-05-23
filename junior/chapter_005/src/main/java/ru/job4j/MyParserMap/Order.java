@@ -1,16 +1,33 @@
 package ru.job4j.MyParserMap;
 
+/**
+ * Order.
+ */
 public class Order {
-
+    /**
+     * operation.
+     */
     private String operation;
-
+    /**
+     * price.
+     */
     private double price;
-
+    /**
+     * volume.
+     */
     private int volume;
-
+    /**
+     * orderId.
+     */
     private int orderId;
 
-
+    /**
+     * Constructor.
+     * @param operation
+     * @param price
+     * @param volume
+     * @param orderId
+     */
     public Order(String operation, double price, int volume, int orderId) {
         this.operation = operation;
         this.price = price;
@@ -18,45 +35,86 @@ public class Order {
         this.orderId = orderId;
     }
 
+    /**
+     * Constructor.
+     * @param orderId
+     */
     public Order(int orderId) {
         this.orderId = orderId;
     }
 
+    /**
+     * Constructor.
+     */
     public Order() {
     }
 
+    /**
+     * Get.
+     * @return
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Set.
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public int getVolume() {
         return volume;
     }
 
+    /**
+     * Set.
+     * @param volume
+     */
     public void setVolume(int volume) {
         this.volume = volume;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public String getOperation() {
         return operation;
     }
 
+    /**
+     * Set.
+     * @param operation
+     */
     public void setOperation(String operation) {
         this.operation = operation;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public int getOrderId() {
         return orderId;
     }
 
+    /**
+     * Set.
+     * @param orderId
+     */
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
+    /**
+     * equals.
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,6 +128,10 @@ public class Order {
         return operation != null ? operation.equals(order.operation) : order.operation == null;
     }
 
+    /**
+     * hashCode.
+     * @return
+     */
     @Override
     public int hashCode() {
         int result;
@@ -82,6 +144,10 @@ public class Order {
         return result;
     }
 
+    /**
+     * toString.
+     * @return
+     */
     @Override
     public String toString() {
         return "Order{" +

@@ -1,10 +1,12 @@
 package ru.job4j.SQL_JDBC.Ouery;
 
 /**
- * Created by Katy on 06.05.2017.
+ * Orders.
  */
 public class Orders {
-
+    /**
+     * attachment_id.
+     */
     String attachment_id;
 
 }

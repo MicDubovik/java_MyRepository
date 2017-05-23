@@ -81,7 +81,6 @@ public class TwoThread {
             e.printStackTrace();
         }
 
-
         System.out.println(" End work all threads");
 
     }

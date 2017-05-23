@@ -2,8 +2,16 @@ package ru.job4j.MapForBank;
 
 import java.util.HashMap;
 
+/**
+ * ValidateInput
+ */
 class ValidateInput extends ConsoleInputBank {
-
+    /**
+     * Ask.
+     * @param question
+     * @param number
+     * @return
+     */
     public int ask(String question, HashMap<Integer, UserActionBank> number) {
 
         boolean invalid = true;

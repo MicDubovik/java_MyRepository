@@ -2,6 +2,9 @@ package ru.job4j.MultiThreading.Wait.ThreadPool2;
 
 import java.util.Random;
 
+/**
+ * Task.
+ */
 public class Task implements Runnable {
     /**
      * Field for contact with buffer(QueueTasks).

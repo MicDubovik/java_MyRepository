@@ -7,13 +7,23 @@ import java.util.Iterator;
  */
 
 public class IteratorForArray implements Iterator {
-
+    /**
+     * Array values.
+     */
     private int[][] values;
-
+    /**
+     * First index.
+     */
     private int index1;
+    /**
+     * Second index.
+     */
     private int index2;
 
-
+    /**
+     * Constructor.
+     * @param values
+     */
     public IteratorForArray(int[][] values) {
         this.values = values;
     }

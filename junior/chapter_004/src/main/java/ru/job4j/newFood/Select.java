@@ -4,8 +4,16 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Select
+ */
 public class Select implements SelectProduct {
-
+    /**
+     * countDays.
+     * @param food
+     * @return
+     * @throws ParseException
+     */
     public int countDays(Food food) throws ParseException {
 
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
@@ -33,9 +41,6 @@ public class Select implements SelectProduct {
         int daysExpSubCreate = (int) (dExpSubCreate / (24 * 60 * 60 * 1000));
 
         int percent = 100 * (daysNowSubCreate)/daysExpSubCreate;
-
-
-
 
         return percent;
     }

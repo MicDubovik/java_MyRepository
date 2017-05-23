@@ -3,6 +3,10 @@ package ru.job4j.Tree;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MySimpleTree<E>.
+ * @param <E>
+ */
 public class MySimpleTree<E> implements ITree<E> {
 
     /**

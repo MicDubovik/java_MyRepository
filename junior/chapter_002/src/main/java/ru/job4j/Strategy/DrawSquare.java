@@ -1,9 +1,13 @@
 package ru.job4j.Strategy;
 
 /**
- * Created by Katy on 02.03.2017.
+ * DrawSquare.
  */
 public class DrawSquare implements Shape{
+    /**
+     * Drow.
+     * @return
+     */
     public String draw() {
         String square = "----------"+"\n"+"|        |"+"\n"+"|        |"+"\n"+"|        |"+"\n"+"----------" ;
 

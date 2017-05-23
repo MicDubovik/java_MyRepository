@@ -8,13 +8,19 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
+/**
+ * Client.
+ */
 public class Client {
-
+    /**
+     * startClient.
+     * @throws IOException
+     */
     public void startClient() throws IOException {
         Socket socket = new Socket(InetAddress.getByName("127.0.0.1"), 5000);
-        try(PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            Scanner console = new Scanner(System.in)) {
+        try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+             Scanner console = new Scanner(System.in)) {
 
             String str;
 

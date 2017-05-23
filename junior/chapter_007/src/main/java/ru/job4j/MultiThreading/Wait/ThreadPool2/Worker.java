@@ -3,6 +3,9 @@ package ru.job4j.MultiThreading.Wait.ThreadPool2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Worker.
+ */
 public class Worker implements Runnable {
     /**
      * Field for contact with buffer(QueueTasks).
@@ -23,13 +26,19 @@ public class Worker implements Runnable {
         this.asks = asks;
     }
 
+    /**
+     * worker.
+     * @return
+     */
     public boolean worker(){
         if(asks.getTempAsks().size()==0){
             return false ;
         }else return true;
     }
 
-
+    /**
+     * run.
+     */
     @Override
     public void run() {
         while (!asks.flag || asks.getTempAsks().size()>0) {

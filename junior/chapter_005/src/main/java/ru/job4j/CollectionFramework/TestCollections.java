@@ -2,9 +2,17 @@ package ru.job4j.CollectionFramework;
 
 import java.util.*;
 
+/**
+ * TestCollections
+ */
 public class TestCollections {
-
-
+    /**
+     * addю
+     * @param collection
+     * @param line
+     * @param amount
+     * @return
+     */
     public long add(Collection<String> collection, String line, int amount) {
 
         long start = System.currentTimeMillis();
@@ -16,6 +24,14 @@ public class TestCollections {
         return timeConsumedMillis;
 
     }
+
+    /**
+     * deleteю
+     * @param collection
+     * @param line
+     * @param amount
+     * @return
+     */
     public long delete(Collection<String> collection, String line, int amount) {
         long start = System.nanoTime();
         for (int i = 0; i < amount; i++) {
@@ -26,6 +42,10 @@ public class TestCollections {
         return timeConsumedMillis;
     }
 
+    /**
+     * ьфштю
+     * @param args
+     */
     public static void main(String[] args) {
 
         List<String> list = new ArrayList<>();

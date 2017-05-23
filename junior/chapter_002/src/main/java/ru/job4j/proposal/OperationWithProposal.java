@@ -7,10 +7,18 @@ import java.util.Scanner;
  *
  */
 public class OperationWithProposal {
+    /**
+     * Array proposal.
+     */
     Proposal[] proposals;
-
+    /**
+     * Input.
+     */
     Scanner scan = new Scanner(System.in);
 
+    /**
+     * Constructor.
+     */
     public OperationWithProposal() {
 
     }

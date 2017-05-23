@@ -3,10 +3,16 @@ package ru.job4j.Abuses;
 import java.io.*;
 
 /**
- * Created by Katy on 09.03.2017.
+ * Abuses.
  */
 public class Abuses {
-
+    /**
+     * Drop.
+     * @param in
+     * @param out
+     * @param abuse
+     * @throws IOException
+     */
     void dropAbuses(InputStream in, OutputStream out, String[] abuse) throws IOException {
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(in));

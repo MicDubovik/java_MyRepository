@@ -8,18 +8,37 @@ import java.util.List;
  * Класс обертка
  */
 public class MenuTracker {
-
+    /**
+     * Input.
+     */
     private Input input;
+    /**
+     * Tracker.
+     */
     private Tracker tracker;
+    /**
+     * List<UserAction> actions.
+     */
     private List<UserAction> actions = new ArrayList<>();
+    /**
+     * HashMap<Integer, UserAction>
+     */
     private HashMap<Integer, UserAction> possibleAction = new HashMap<>();
 
-
+    /**
+     * Constructor.
+     * @param input
+     * @param tracker
+     */
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
 
+    /**
+     * FillActions.
+     * @return
+     */
     public HashMap<Integer, UserAction> fillActions() {
         this.actions.add(new AddItem());
         this.actions.add(new ShowAllItems());
@@ -36,12 +55,19 @@ public class MenuTracker {
         return possibleAction;
     }
 
+    /**
+     * Select.
+     * @param key
+     */
     public void select(int key) {
 
         this.possibleAction.get(key).execute(this.input,this.tracker);
 
     }
 
+    /**
+     * Show.
+     */
     public void show() {
         for (UserAction action : actions) {
             if (action != null) {
@@ -50,10 +76,17 @@ public class MenuTracker {
         }
     }
 
+    /**
+     * ShowTasks.
+     * @param item
+     */
     private void showTasks(Item item) {
         System.out.println(item.getId() + " " + item.getName() + " " + item.getDescription() + " " + item.getComment());
     }
 
+    /**
+     * class AddItem.
+     */
     private class AddItem extends BaseAction {
 
         /**
@@ -87,6 +120,9 @@ public class MenuTracker {
 
     }
 
+    /**
+     * class EditItem.
+     */
     private class EditItem extends BaseAction {
 
         /**
@@ -123,7 +159,9 @@ public class MenuTracker {
 
     }
 
-
+    /**
+     * class ShowAllItems.
+     */
     private class ShowAllItems extends BaseAction {
 
         /**
@@ -146,6 +184,9 @@ public class MenuTracker {
 
     }
 
+    /**
+     * class FindItemById.
+     */
     private class FindItemById extends BaseAction {
 
         FindItemById() {
@@ -177,7 +218,9 @@ public class MenuTracker {
 
     }
 
-
+    /**
+     * class FindItemByComment.
+     */
     private class FindItemByComment extends BaseAction {
 
         public FindItemByComment() {
@@ -205,6 +248,9 @@ public class MenuTracker {
 
     }
 
+    /**
+     * class DeleteItem.
+     */
     private class DeleteItem extends BaseAction {
 
         DeleteItem() {
@@ -225,7 +271,9 @@ public class MenuTracker {
 
     }
 
-
+    /**
+     * class AddComment.
+     */
     private class AddComment extends BaseAction {
 
         public AddComment() {

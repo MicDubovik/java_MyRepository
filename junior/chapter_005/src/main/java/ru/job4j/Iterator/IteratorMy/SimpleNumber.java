@@ -2,15 +2,33 @@ package ru.job4j.Iterator.IteratorMy;
 
 import java.util.Iterator;
 
+/**
+ * SimpleNumber
+ */
 public class SimpleNumber implements Iterator {
-
+    /**
+     * Array values.
+     */
     private int[] values;
+    /**
+     * Index.
+     */
     private int index;
 
+    /**
+     * Constructor.
+     *
+     * @param values
+     */
     public SimpleNumber(int[] values) {
         this.values = values;
     }
 
+    /**
+     * hasNext.
+     *
+     * @return
+     */
     @Override
     public boolean hasNext() {
 
@@ -24,6 +42,11 @@ public class SimpleNumber implements Iterator {
 
     }
 
+    /**
+     * Next.
+     *
+     * @return
+     */
     @Override
     public Object next() {
 
@@ -38,6 +61,12 @@ public class SimpleNumber implements Iterator {
         return result;
     }
 
+    /**
+     * Check.
+     *
+     * @param num
+     * @return
+     */
     public boolean check(int num) {
 
         boolean result = true;
@@ -53,7 +82,6 @@ public class SimpleNumber implements Iterator {
         }
         return result;
     }
-
 
 }
 

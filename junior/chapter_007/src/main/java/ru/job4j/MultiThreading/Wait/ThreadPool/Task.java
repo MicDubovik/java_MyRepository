@@ -2,6 +2,9 @@ package ru.job4j.MultiThreading.Wait.ThreadPool;
 
 import java.util.Random;
 
+/**
+ * Task.
+ */
 public class Task implements Runnable {
     /**
      * Field for contact with buffer(QueueTasks).
@@ -14,13 +17,14 @@ public class Task implements Runnable {
     /**
      * Variable for task and for add task into buffer.
      */
-    int x =0;
+    int x = 0;
 
 
     Random random = new Random();
 
     /**
      * Constructor.
+     *
      * @param asks
      */
     public Task(QueueTasks asks) {
@@ -33,36 +37,36 @@ public class Task implements Runnable {
      */
     public void createAsk() {
 
-            try {
-                Thread.sleep(random.nextInt(800) + 300);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            num++;
-              x = random.nextInt(100);
+        try {
+            Thread.sleep(random.nextInt(800) + 300);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        num++;
+        x = random.nextInt(100);
 
 
-            System.out.printf("%s create %s tasks\n",Thread.currentThread().getName(), num);
-                // ограничиваю число задач
-             if(num==10){
-                 asks.flag = true;
-             }
+        System.out.printf("%s create %s tasks\n", Thread.currentThread().getName(), num);
+        // ограничиваю число задач
+        if (num == 10) {
+            asks.flag = true;
+        }
 
     }
 
-
+    /**
+     * run.
+     */
     @Override
     public void run() {
 
-        while (!asks.flag ) {
+        while (!asks.flag) {
             createAsk();
-//            if (asks.getTempAsks().size() > 0) {
-                if (asks.put()) {
-                    System.out.printf("%s Add task %s to buffer\n",Thread.currentThread().getName(),num);
-                    asks.getTempAsks().add(num);
-                }
-//            }
 
+            if (asks.put()) {
+                System.out.printf("%s Add task %s to buffer\n", Thread.currentThread().getName(), num);
+                asks.getTempAsks().add(num);
+            }
         }
     }
 }

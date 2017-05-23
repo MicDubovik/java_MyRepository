@@ -6,11 +6,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * Created by Katy on 10.03.2017.
+ * FileSort.
  */
 public class FileSort implements ISort {
-
-
+    /**
+     * sort.
+     * @param source
+     * @param distance
+     * @throws IOException
+     */
     @Override
     public void sort(File source, File distance) throws IOException {
         try {FileReader reader = new FileReader(source) ;
@@ -99,7 +103,11 @@ public class FileSort implements ISort {
         }
     }
 
-
+    /**
+     * main.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         FileSort newfile = new FileSort();
 
@@ -109,8 +117,5 @@ public class FileSort implements ISort {
         newfile.sort(source,distance);
 
     }
-/**
- *   Файл создается , но не пойму , почему в него не пишется отсортированный  массив строк .
- */
 
 }

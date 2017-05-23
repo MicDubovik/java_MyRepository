@@ -55,7 +55,10 @@ public class SortClass {
 
     }
 
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
         List<User> users = new ArrayList<>();

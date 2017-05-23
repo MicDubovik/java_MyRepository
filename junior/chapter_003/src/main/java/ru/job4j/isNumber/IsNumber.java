@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.util.Scanner;
 
 /**
- * Created by Katy on 09.03.2017.
+ * IsNumber.
  */
 public class IsNumber {
 

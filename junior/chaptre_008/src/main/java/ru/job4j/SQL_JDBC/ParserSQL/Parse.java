@@ -113,20 +113,6 @@ public class Parse   implements Job {
         }
     }
 
-//    public static void main(String[] args) throws IOException, ParseException {
-//        Parse parse = new Parse();
-//
-//            parse.parse();
-//
-////        parse.show();
-//        parse.splt();
-//        for (String s : parse.mynewList) {
-//            log.info(s);
-//        }
-//        System.out.println("====================================================");
-//        System.out.println(parse.mynewList.get(40));
-//    }
-
     /**
      * Schedule-method
      * @param jobExecutionContext
@@ -152,7 +138,6 @@ public class Parse   implements Job {
         for (String s : parse.mynewList) {
             log.warn(s);
         }
-
     }
 }
 

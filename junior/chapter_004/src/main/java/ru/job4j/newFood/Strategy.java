@@ -2,8 +2,16 @@ package ru.job4j.newFood;
 
 import java.text.ParseException;
 
+/**
+ * Strategy.
+ */
 public class Strategy {
-
+    /**
+     * selectStrategyMethod.
+     * @param food
+     * @return
+     * @throws ParseException
+     */
     public IStorage selectStrategyMethod(Food food) throws ParseException {
         IStorage storage = null;
         Select select = new Select();
@@ -23,6 +31,12 @@ public class Strategy {
         return storage;
     }
 
+    /**
+     * newSelectStrategyMethod.
+     * @param food
+     * @return
+     * @throws ParseException
+     */
     public IStorage newSelectStrategyMethod(Food food) throws ParseException {
         IStorage storage = null;
         Select select = new Select();

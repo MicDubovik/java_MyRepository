@@ -3,13 +3,22 @@ package ru.job4j.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
+/**
+ * MyLinkedList.
+ * @param <E>
+ */
 public class MyLinkedList<E> implements SimpleLinkedCont<E> {
-
+    /**
+     * Size.
+     */
     private int size = 0;
-
+    /**
+     * Reference to firstEntry.
+     */
     private Entry<E> firstEntry;
-
+    /**
+     * Reference to lastEntry.
+     */
     private Entry<E> lastEntry;
 
     /**
@@ -165,6 +174,10 @@ public class MyLinkedList<E> implements SimpleLinkedCont<E> {
         }
     }
 
+    /**
+     * Generic class Entry<E>
+     * @param <E>
+     */
     private class Entry<E> {
 
 

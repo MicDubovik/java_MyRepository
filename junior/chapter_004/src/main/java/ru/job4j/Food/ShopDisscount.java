@@ -1,7 +1,12 @@
 package ru.job4j.Food;
 
+/**
+ * ShopDisscount.
+ */
 public class ShopDisscount extends Food implements IStrategy  {
-
+    /**
+     * List products.
+     */
     private Food[] shopproducts = new Shop[100];
 
     /**

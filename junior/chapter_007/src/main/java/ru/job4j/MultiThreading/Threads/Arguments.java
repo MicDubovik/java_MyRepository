@@ -1,5 +1,8 @@
 package ru.job4j.MultiThreading.Threads;
 
+/**
+ * Arguments.
+ */
 public class Arguments {
     /**
      * Input string.

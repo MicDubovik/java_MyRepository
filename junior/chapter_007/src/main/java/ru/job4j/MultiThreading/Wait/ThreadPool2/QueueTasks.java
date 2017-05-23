@@ -4,6 +4,9 @@ import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * QueueTasks.
+ */
 public class QueueTasks {
     /**
      * Temp buffer list.

@@ -1,30 +1,47 @@
 package ru.job4j.newFood;
 
+/**
+ * Refregerator
+ */
 public class Refregerator implements IStorage {
+    /**
+     * Array food.
+     */
+    private Food[] refrProducts = new Food[100];
 
-
-
-   private Food[] refrProducts = new Food[100];
-
-
-    public Refregerator(  ) {
+    /**
+     * Constructor.
+     */
+    public Refregerator() {
 
     }
 
+    /**
+     * addFood.
+     * @param food
+     * @return
+     */
     @Override
     public Food[] addFood(Food food) {
         for (int i = 0; i < 100; i++) {
             if (this.refrProducts[i] == null) {
                 this.refrProducts[i] = new Food();
-                this.refrProducts[i] = food;break;
+                this.refrProducts[i] = food;
+                break;
             }
         }
         System.out.println("Продукт добавлен в Refregerator (для переработки) ");
         return refrProducts;
     }
-    public Food[] removeProduct(Food food){
+
+    /**
+     * removeProduct.
+     * @param food
+     * @return
+     */
+    public Food[] removeProduct(Food food) {
         for (int i = 0; i < 100; i++) {
-            if (this.refrProducts[i]== null){
+            if (this.refrProducts[i] == null) {
                 this.refrProducts[i] = null;
                 break;
             }
@@ -32,7 +49,5 @@ public class Refregerator implements IStorage {
         System.out.println("Продукт удален с  Shop ");
         return refrProducts;
     }
-
-
 
 }

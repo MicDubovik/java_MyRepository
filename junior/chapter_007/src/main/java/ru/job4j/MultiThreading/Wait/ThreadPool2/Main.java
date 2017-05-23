@@ -3,9 +3,15 @@ package ru.job4j.MultiThreading.Wait.ThreadPool2;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main.
+ */
 public class Main {
 
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
         List<Worker> workerList = new ArrayList<>();

@@ -9,9 +9,10 @@ import java.io.FileReader;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Parser xml.
+ */
 public class Parse {
-
-
 
     Map<Integer, MyList> listMap = new HashMap<>();
 

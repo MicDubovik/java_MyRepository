@@ -5,15 +5,28 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by Katy on 11.03.2017.
+ * ConsoleChat.
  */
 public class ConsoleChat {
-
-
+    /**
+     * Ask.
+     */
     private String ask;
+    /**
+     * Con.
+     */
     static final String CON = "con";
+    /**
+     * stop.
+     */
     static final String STOP = "stop";
+    /**
+     * end.
+     */
     static final String END = "end";
+    /**
+     * StringBuilder
+     */
     StringBuilder sb;
 
     /**
@@ -64,10 +77,18 @@ public class ConsoleChat {
         System.out.println(sb.substring(start, start + length));
     }
 
+    /**
+     * Get.
+     * @return
+     */
     public String getAsk() {
         return ask;
     }
 
+    /**
+     * Set.
+     * @param ask
+     */
     public void setAsk(String ask) {
         this.ask = ask;
     }
@@ -97,7 +118,11 @@ public class ConsoleChat {
 
     }
 
-
+    /**
+     * Main.
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         ConsoleChat chat = new ConsoleChat();

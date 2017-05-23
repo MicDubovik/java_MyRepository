@@ -2,6 +2,9 @@ package ru.job4j.ParserXML;
 
 import java.util.*;
 
+/**
+ * Order.
+ */
 public class Order {
     /**
      * Map for keep books by name.

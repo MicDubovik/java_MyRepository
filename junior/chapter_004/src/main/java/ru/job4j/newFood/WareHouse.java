@@ -1,19 +1,29 @@
 package ru.job4j.newFood;
 
+/**
+ * WareHouse
+ */
 public class WareHouse implements IStorage {
+    /**
+     * List products.
+     */
+    protected Food[] wareProducts = new Food[100];
 
-
-
-   protected Food[] wareProducts =  new Food[100];
-
-
-    public WareHouse( ) {
+    /**
+     *Constructor.
+     */
+    public WareHouse() {
 
     }
 
-    public Food[] addFood(Food food){
+    /**
+     * addFood.
+     * @param food
+     * @return
+     */
+    public Food[] addFood(Food food) {
         for (int i = 0; i < 100; i++) {
-            if (this.wareProducts[i]== null){
+            if (this.wareProducts[i] == null) {
                 wareProducts[i] = new Food();
                 this.wareProducts[i] = food;
                 break;
@@ -22,9 +32,15 @@ public class WareHouse implements IStorage {
         System.out.println("Продукт добавлен в Warehouse ");
         return wareProducts;
     }
-    public Food[] removeProduct(Food food){
+
+    /**
+     * removeProduct.
+     * @param food
+     * @return
+     */
+    public Food[] removeProduct(Food food) {
         for (int i = 0; i < 100; i++) {
-            if (this.wareProducts[i]== null){
+            if (this.wareProducts[i] == null) {
                 this.wareProducts[i] = null;
                 break;
             }

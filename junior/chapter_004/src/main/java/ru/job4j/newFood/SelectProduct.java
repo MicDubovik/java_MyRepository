@@ -7,6 +7,11 @@ import java.text.ParseException;
  */
 
 public interface SelectProduct {
-
+    /**
+     * countDays.
+     * @param food
+     * @return
+     * @throws ParseException
+     */
     int countDays(Food food) throws ParseException;
 }

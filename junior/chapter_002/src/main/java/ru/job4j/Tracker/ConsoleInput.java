@@ -3,21 +3,32 @@ package ru.job4j.Tracker;
 import java.util.Scanner;
 
 /**
- * Created by Katy on 01.03.2017.
+ * ConsoleInput.
  */
 public class ConsoleInput implements Input {
-
+    /**
+     * Input.
+     */
     private Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Ask.
+     * @param question
+     * @return
+     */
     @Override
     public String ask(String question) {
         System.out.println(question);
         return scanner.nextLine();
     }
 
-
-
-
+    /**
+     * Ask.
+     * @param question
+     * @param number
+     * @return
+     * @throws MenuOutExeption
+     */
     @Override
     public int ask(String question, int[] number) throws MenuOutExeption {
 

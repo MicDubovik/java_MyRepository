@@ -57,6 +57,11 @@ public class Book {
         return sellBooks;
     }
 
+    /**
+     * equals
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -69,6 +74,10 @@ public class Book {
         return name.equals(book.name);
     }
 
+    /**
+     * hashCode.
+     * @return
+     */
     @Override
     public int hashCode() {
         return name.hashCode();

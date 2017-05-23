@@ -7,13 +7,21 @@ import java.util.Scanner;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * Created by Katy on 03.05.2017.
+ * Start.
  */
 public class Start {
-
+    /**
+     * tempDirectory.
+     */
     String tempDirectory;
+    /**
+     * text.
+     */
     String text;
 
+    /**
+     * execute.
+     */
     public void execute() {
         System.out.println("-----Welcome to FileFinder-------");
         System.out.println("Enter disk partition for search: ");
@@ -36,6 +44,10 @@ public class Start {
         System.out.printf("Start searching .\n Please wait ... \n");
     }
 
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
 
@@ -46,7 +58,6 @@ public class Start {
         Buffer buffer = new Buffer(new ReentrantLock());
 
         MyFinder finder = new MyFinder(start.tempDirectory, buffer);
-
 
         try {
             finder.finderFiles();
@@ -69,9 +80,6 @@ public class Start {
         }
 
         one.start();
-
-
-
 
         for (Thread thread : threads) {
 

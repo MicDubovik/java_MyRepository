@@ -1,4 +1,4 @@
 /**
- * Iterator.
+ * Create Iterator.
  */
 package ru.job4j.Iterator.IteratorMy;

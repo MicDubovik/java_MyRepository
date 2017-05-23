@@ -1,9 +1,12 @@
 package ru.job4j.Strategy;
 
 /**
- * Created by Katy on 02.03.2017.
+ * Interface Shape.
  */
 public interface Shape {
-
+    /**
+     * Drow.
+     * @return
+     */
     String draw();
 }

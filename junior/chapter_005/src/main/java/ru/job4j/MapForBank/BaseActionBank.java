@@ -1,5 +1,8 @@
 package ru.job4j.MapForBank;
 
+/**
+ * abstract class BaseActionBank.
+ */
 public abstract class BaseActionBank implements UserActionBank {
 
     /**

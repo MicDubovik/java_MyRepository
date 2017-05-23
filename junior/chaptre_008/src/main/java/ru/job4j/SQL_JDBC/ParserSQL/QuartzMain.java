@@ -7,6 +7,12 @@ import org.quartz.impl.StdSchedulerFactory;
  * My scheduler for app.
  */
 public class QuartzMain {
+    /**
+     * main.
+     *
+     * @param args
+     * @throws SchedulerException
+     */
     public static void main(String[] args) throws SchedulerException {
 
         JobDetail job = JobBuilder.newJob(Parse.class).build();
@@ -17,7 +23,6 @@ public class QuartzMain {
         sc.start();
 
         sc.scheduleJob(job, t3);
-
 
     }
 }

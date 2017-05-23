@@ -1,10 +1,25 @@
 package ru.job4j.TrackerList;
 
 /**
- * Created by Katy on 02.03.2017.
+ * UserAction .
  */
 public interface UserAction {
+    /**
+     * key.
+     * @return
+     */
     int key();
+
+    /**
+     * execute.
+     * @param input
+     * @param tracker
+     */
     void execute(Input input,Tracker tracker);
+
+    /**
+     * info.
+     * @return
+     */
     String info();
 }

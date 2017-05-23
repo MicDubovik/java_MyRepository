@@ -1,20 +1,31 @@
 package ru.job4j.Test;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Figure.
  */
 public abstract class Figure {
-
+    /**
+     * Name.
+     */
     String name;
+    /**
+     * Position.
+     */
     Cell position;
 
-   // Cell  position;
-
-
+    /**
+     * Constructor.
+     */
     public Figure() {
     }
 
-    public Figure(String name ,Cell position ) {
+    /**
+     * Constructor.
+     *
+     * @param name
+     * @param position
+     */
+    public Figure(String name, Cell position) {
         this.name = name;
 
     }
@@ -27,10 +38,13 @@ public abstract class Figure {
         this.name = name;
     }
 
-    public abstract Cell move(Cell newposition );
+    /**
+     * Abstract method move.
+     * @param newposition
+     * @return
+     */
+    public abstract Cell move(Cell newposition);
 
-
-
-    }
+}
 
 

@@ -1,7 +1,7 @@
 package ru.job4j.profession;
 
 /**
- * Занятие наследования
+ * Занятие наследования.
  */
 public class Main {
     public static void main(String[] args) {

@@ -1,9 +1,13 @@
 package ru.job4j.Strategy;
 
 /**
- * Created by Katy on 02.03.2017.
+ * Strategy.
  */
 public class StartStrategy {
+    /**
+     * Main method.
+     * @param args
+     */
     public static void main(String[] args) {
         Paint paint = new Paint(new DrawSquare());
         Paint paint2 = new Paint(new DrawTriangle());

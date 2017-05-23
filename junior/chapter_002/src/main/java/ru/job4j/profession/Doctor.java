@@ -1,16 +1,22 @@
 package ru.job4j.profession;
 
 /**
- * Created by Katy on 27.02.2017.
+ * Class Doctor.
  */
 public class Doctor extends Profession {
-
+    /**
+     * Speciality.
+     */
     private String speciality;
 
-
+    /**
+     * Constructor
+     */
     public Doctor() {
     }
-
+    /**
+     * Constructor
+     */
     public Doctor(String speciality) {
         this.speciality = speciality;
     }
@@ -28,6 +34,9 @@ public class Doctor extends Profession {
         this.speciality = speciality;
     }
 
+    /**
+     * Working.
+     */
     public  void cure(){
         System.out.println("Лечу больного");
 

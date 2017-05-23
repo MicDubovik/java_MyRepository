@@ -55,30 +55,45 @@ public class MyList  {
     }
 
     /**
-     * Properties for all fields.
+     * Get.
      * @return
      */
-
     public String getBook() {
         return book;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public String getOperation() {
         return operation;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public double getPrice() {
         return price;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public int getValue() {
         return value;
     }
 
+    /**
+     * Set.
+     * @param value
+     */
     public void setValue(int value) {
         this.value = value;
     }
-
+    /**
+     * Get.
+     * @return
+     */
     public int getOrderId() {
         return orderId;
     }

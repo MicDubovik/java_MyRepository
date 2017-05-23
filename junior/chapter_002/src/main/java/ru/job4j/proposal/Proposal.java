@@ -7,13 +7,30 @@ import java.util.Scanner;
  * Класс заявок
  */
 public class Proposal {
+    /**
+     * id
+     */
     private String id = "Пустое поле";
+    /**
+     * Desc.
+     */
     private String description = "Пустое поле";
+    /**
+     * Date.
+     */
     private String date = "Пустое поле";
+    /**
+     * Comment.
+     */
     private String comment = "Пустое поле";
+    /**
+     * Input param.
+     */
     Scanner scan = new Scanner(System.in);
 
-
+    /**
+     * Constructor.
+     */
     public Proposal() {
     }
 

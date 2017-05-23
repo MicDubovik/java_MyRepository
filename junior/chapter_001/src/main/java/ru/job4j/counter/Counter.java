@@ -1,4 +1,4 @@
-package ru.job4j;
+package ru.job4j.counter;
 
 /**
  * Нахождение суммы четных чисел в заданном диапазоне

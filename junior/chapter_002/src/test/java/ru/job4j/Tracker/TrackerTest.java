@@ -9,6 +9,10 @@ import static org.junit.Assert.assertThat;
  * Тесты !!!
  */
 public class TrackerTest {
+    /**
+     * add.
+     * @throws Exception
+     */
     @Test
     public void add() throws Exception {
         Tracker tracker = new Tracker();
@@ -17,6 +21,10 @@ public class TrackerTest {
         assertThat(result,is("first name"));
     }
 
+    /**
+     * addComment.
+     * @throws Exception
+     */
     @Test
     public void addComment() throws Exception {
         Tracker tracker = new Tracker();
@@ -27,6 +35,10 @@ public class TrackerTest {
         assertThat(item.getComment(),is("new comment"));
     }
 
+    /**
+     * editItem.
+     * @throws Exception
+     */
     @Test
     public void editItem() throws Exception {
         Tracker tracker = new Tracker();
@@ -38,6 +50,10 @@ public class TrackerTest {
 
     }
 
+    /**
+     * findByComment.
+     * @throws Exception
+     */
     @Test
     public void findByComment() throws Exception {
         Tracker tracker = new Tracker();
@@ -46,6 +62,10 @@ public class TrackerTest {
         assertThat(tracker.findByComment( "ment"),is(item));
     }
 
+    /**
+     * deleteItem.
+     * @throws Exception
+     */
     @Test
     public void deleteItem() throws Exception {
         Tracker tracker = new Tracker();
@@ -66,6 +86,10 @@ public class TrackerTest {
         assertThat(newLenght2 ,is(1));
     }
 
+    /**
+     * findById.
+     * @throws Exception
+     */
     @Test
     public void findById() throws Exception {
         Tracker tracker = new Tracker();
@@ -78,8 +102,10 @@ public class TrackerTest {
 
     }
 
-
-
+    /**
+     * getAll.
+     * @throws Exception
+     */
     @Test
     public void getAll() throws Exception {
         Tracker tracker = new Tracker();

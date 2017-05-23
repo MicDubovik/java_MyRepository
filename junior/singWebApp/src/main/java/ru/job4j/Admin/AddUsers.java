@@ -54,6 +54,5 @@ public class AddUsers extends HttpServlet {
 
          doGet(req,resp);
 
-
     }
 }

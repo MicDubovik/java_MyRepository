@@ -12,32 +12,39 @@ import java.sql.SQLException;
  * Admin page for Update user.
  */
 public class AdminUpdateUsers extends HttpServlet {
-
+    /**
+     * Init db.
+     */
     InitDB initDB = new InitDB();
 
+    /**
+     * doGet.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }
 
+    /**
+     * doPost.
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text,html");
         String name = req.getParameter("name");
         String login = req.getParameter("login");
 
-        try {
-            this.initDB.getPool().getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         this.initDB.updateUserName(name,login);
 
-        try {
-            this.initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
             doGet(req,resp);
 //        req.getRequestDispatcher("/WEB-INF/AdminEdit.jsp").forward(req,resp);
     }

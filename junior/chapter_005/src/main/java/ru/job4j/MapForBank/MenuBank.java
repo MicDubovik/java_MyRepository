@@ -4,18 +4,41 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * MenuBank
+ */
 public class MenuBank {
-
+    /**
+     * InputBank.
+     */
     private InputBank input;
+    /**
+     * Bank.
+     */
     private Bank bank;
+    /**
+     * List<UserActionBank>.
+     */
     private List<UserActionBank> actions = new ArrayList<>();
+    /**
+     * HashMap<Integer, UserActionBank>.
+     */
     private HashMap<Integer, UserActionBank> possibleAction = new HashMap<>();
 
+    /**
+     * Constructor..
+     * @param input
+     * @param bank
+     */
     public MenuBank(InputBank input, Bank bank) {
         this.input = input;
         this.bank = bank;
     }
 
+    /**
+     * FillActions.
+     * @return
+     */
     public HashMap<Integer, UserActionBank> fillActions() {
         this.actions.add(new AddUser());
         this.actions.add(new DeleteUse());
@@ -31,12 +54,19 @@ public class MenuBank {
         return possibleAction;
     }
 
+    /**
+     * Select by key.
+     * @param key
+     */
     public void select(int key) {
 
         this.possibleAction.get(key).execute(this.input, this.bank);
 
     }
 
+    /**
+     * Show.
+     */
     public void show() {
         for (UserActionBank action : actions) {
             if (action != null) {
@@ -45,10 +75,17 @@ public class MenuBank {
         }
     }
 
+    /**
+     * Show user.
+     * @param user
+     */
     private void showUser(User user) {
         System.out.println(user.getName() + " " + user.getPassport() + " " + user.getAccounts().size());
     }
 
+    /**
+     * Add user.
+     */
     private class AddUser extends BaseActionBank {
 
         /**
@@ -82,6 +119,9 @@ public class MenuBank {
 
     }
 
+    /**
+     * class DeleteUse
+     */
     private class DeleteUse extends BaseActionBank {
 
         /**

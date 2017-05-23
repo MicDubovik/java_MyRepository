@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * Created by Katy on 07.05.2017.
+ * InitDB.
  */
 public class InitDB {
 
@@ -20,7 +20,7 @@ public class InitDB {
     /**
      * Structure table.
      */
-    Structure structure = new Structure("name", "login", "password","email");
+    Structure structure = new Structure("name", "login", "password", "email");
     /**
      * List users.
      */
@@ -34,8 +34,8 @@ public class InitDB {
      * Constructor
      */
     public InitDB() {
-    }
 
+    }
 
     /**
      * Get List users.
@@ -62,8 +62,8 @@ public class InitDB {
      * @param login
      * @param email
      */
-    public boolean addUser(String name, String login, String email,String password) {
-        String query = "INSERT  INTO tableName (" + structure.getName() + "," + structure.getLogin() + "," + structure.getPassword() +"," + structure.getEmail()+") VALUES(?,?,?,?)";
+    public boolean addUser(String name, String login, String email, String password) {
+        String query = "INSERT  INTO tableName (" + structure.getName() + "," + structure.getLogin() + "," + structure.getPassword() + "," + structure.getEmail() + ") VALUES(?,?,?,?)";
         String newQuery = query.replace("tableName", this.tableName);
         boolean isexist = false;
         try (Connection conn = pool.getConnection();
@@ -78,7 +78,7 @@ public class InitDB {
             ps.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
-            isexist=true;
+            isexist = true;
         }
         return isexist;
     }
@@ -129,7 +129,7 @@ public class InitDB {
                 user.setPassword(res.getString("password"));
                 user.setEmail(res.getString("email"));
                 user.setDate(res.getString("date"));
-                user.setRole( String.valueOf(res.getString("id_role")));
+                user.setRole(String.valueOf(res.getString("id_role")));
 
                 userList.add(user);
             }
@@ -161,14 +161,27 @@ public class InitDB {
         }
     }
 
-    public boolean CheckPass(User user,String login,String password) {
-        boolean exist =false;
+    /**
+     * Check password.
+     * @param user
+     * @param login
+     * @param password
+     * @return
+     */
+    public boolean CheckPass(User user, String login, String password) {
+        boolean exist = false;
         if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
             exist = true;
         }
         return exist;
     }
 
+    /**
+     * Check user.
+     * @param login
+     * @param password
+     * @return
+     */
     public boolean isExist(String login, String password) {
         boolean exist = false;
         ResultSet res = null;
@@ -190,7 +203,6 @@ public class InitDB {
                 user.setDate(res.getString("date"));
                 user.setRole(String.valueOf(res.getString("id_role")));
 
-
             }
             ps.close();
 
@@ -203,7 +215,11 @@ public class InitDB {
         return exist;
     }
 
-
+    /**
+     * Get user by login.
+     * @param login
+     * @return
+     */
     public User getUserByLogin(String login) {
 
         ResultSet res = null;
@@ -223,18 +239,16 @@ public class InitDB {
                 user.setPassword(res.getString("password"));
                 user.setEmail(res.getString("email"));
                 user.setDate(res.getString("date"));
-                user.setRole( String.valueOf(res.getInt("id_role")));
-
+                user.setRole(String.valueOf(res.getInt("id_role")));
 
             }
-
+            conn.close();
         } catch (SQLException e) {
             System.out.printf("You have problem: %s ,please try again\n", e.getMessage());
         }
 
         return user;
     }
-
 
 }
 

@@ -2,6 +2,9 @@ package ru.job4j.Sort;
 
 import java.util.Comparator;
 
+/**
+ * SortByLongNameComparator.
+ */
 public class SortByLongNameComparator implements Comparator<User> {
     /**
      * Override method compare for sort by length .

@@ -1,11 +1,28 @@
 package ru.job4j.Food;
 
+/**
+ * WareHouse2.
+ */
 public class WareHouse2 extends Food implements IStrategy {
+    /**
+     * List ware2Products.
+     */
     private Food[] ware2Products = new Food[100];
 
+    /**
+     * Constructor.
+     */
     public WareHouse2() {
     }
 
+    /**
+     * Constructor.
+     * @param name
+     * @param expiryDate
+     * @param createDate
+     * @param price
+     * @param disscount
+     */
     public WareHouse2(String name, int expiryDate, String createDate, int price, int disscount) {
         super(name, expiryDate, createDate, price, disscount);
     }
@@ -30,10 +47,18 @@ public class WareHouse2 extends Food implements IStrategy {
         return ware2Products;
     }
 
+    /**
+     * Get.
+     * @return
+     */
     public Food[] getWareProducts() {
         return ware2Products;
     }
 
+    /**
+     * Set.
+     * @param wareProducts
+     */
     public void setWareProducts(Food[] wareProducts) {
         this.ware2Products = wareProducts;
     }

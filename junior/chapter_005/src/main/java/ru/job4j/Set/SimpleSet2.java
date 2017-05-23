@@ -4,12 +4,22 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * SimpleSet2<E>.
+ * @param <E>
+ */
 public class SimpleSet2<E> implements ISetIntarface,Iterator {
-
+    /**
+     * List<E>.
+     */
     List<E> myset = new LinkedList<E>();
 
     int index;
 
+    /**
+     * hasNext.
+     * @return
+     */
     @Override
     public boolean hasNext() {
         boolean result = false;
@@ -23,6 +33,10 @@ public class SimpleSet2<E> implements ISetIntarface,Iterator {
         return result;
     }
 
+    /**
+     * next.
+     * @return
+     */
     @Override
     public E next() {
         if (hasNext()){
@@ -32,6 +46,10 @@ public class SimpleSet2<E> implements ISetIntarface,Iterator {
         }
     }
 
+    /**
+     * add.
+     * @param o
+     */
     @Override
     public void add(Object o)   {
         if (!myset.contains(o)){

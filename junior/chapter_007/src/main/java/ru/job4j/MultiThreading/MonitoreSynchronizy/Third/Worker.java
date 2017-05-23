@@ -2,8 +2,13 @@ package ru.job4j.MultiThreading.MonitoreSynchronizy.Third;
 
 import java.util.concurrent.Callable;
 
+/**
+ * Worker.
+ */
 public class Worker implements Callable<Long> {
-
+    /**
+     * CallableCounter.
+     */
     CallableCounter counter = new CallableCounter();
     @Override
     public Long call() throws Exception {

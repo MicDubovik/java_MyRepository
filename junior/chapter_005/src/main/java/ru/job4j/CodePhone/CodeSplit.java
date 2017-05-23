@@ -2,6 +2,9 @@ package ru.job4j.CodePhone;
 
 import java.util.*;
 
+/**
+ * CodeSplit.
+ */
 public class CodeSplit {
 
     /**
@@ -18,9 +21,6 @@ public class CodeSplit {
      * @param string
      */
     public void cutArray(String[] string) {
-
-        // Уверен , что этот метод можно  сделать с помощью рекурсии , но не пойму как.
-        // Понимаю как работает рекурсия , но не совсем понимаю как ее сделать .
 
         String temp = null;
         for (int i = 0; i < string.length; i++) {
@@ -91,7 +91,10 @@ public class CodeSplit {
         return len1 - len2;
     }
 
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
         String[] strings = {"K1/SK1", "K1/SK2", "K1/SK1/SSK1", "K1/SK1/SSK2", "K2", "K2/SK1/SSK1", "K2/SK1/SSK2"};

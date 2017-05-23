@@ -1,17 +1,31 @@
 package ru.job4j.Test;
 
 /**
- * Created by Katy on 05.03.2017.
+ * Game.
  */
 public class Game {
+    /**
+     * Reference to the array figures.
+     */
     Figure[] figures;
+    /**
+     * Reference to the boards.
+     */
     Board boards;
 
+    /**
+     * Constructor.
+     * @param figures
+     * @param boards
+     */
     public Game(Figure[] figures, Board boards) {
         this.figures = figures;
         this.boards = boards;
     }
 
+    /**
+     * Start.
+     */
     public void start() {
         System.out.println("Select figure");
         System.out.println("Enter new position ");

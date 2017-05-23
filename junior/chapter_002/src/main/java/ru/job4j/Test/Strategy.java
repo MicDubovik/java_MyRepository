@@ -1,8 +1,14 @@
 package ru.job4j.Test;
 
 /**
- * Created by Katy on 02.03.2017.
+ * Strategy.
  */
 public interface Strategy {
+    /**
+     * doOperation.
+     * @param num1
+     * @param num2
+     * @return
+     */
     public int doOperation(int num1, int num2);
 }

@@ -1,11 +1,22 @@
 package ru.job4j.Calculator;
 
 public class EngineerStart implements IStart {
-
+    /**
+     * EngineerCalc
+     */
     EngineerCalc calculator;
+    /**
+     * numOperation
+     */
     private String numOperation;
+    /**
+     * ConsoleInput.
+     */
     ConsoleInput consoleIn = new ConsoleInput();
 
+    /**
+     * Start.
+     */
     public void start() {
 
         calculator = new EngineerCalc();
@@ -23,6 +34,10 @@ public class EngineerStart implements IStart {
         }
     }
 
+    /**
+     * getResult.
+     * @return
+     */
     public double getResult() {
         return this.calculator.getResult();
     }

@@ -3,15 +3,31 @@ package ru.job4j.List;
 
 import java.util.Iterator;
 
+/**
+ * Cycle.
+ */
 public class Cycle implements Iterator {
-
+    /**
+     * Value.
+     */
     int value;
+    /**
+     * Reference to next object.
+     */
     Cycle next;
 
+    /**
+     * Constructor.
+     * @param value
+     */
     public Cycle(int value) {
         this.value = value;
     }
 
+    /**
+     * hasNext.
+     * @return
+     */
     @Override
     public boolean hasNext() {
         if (next.next() != null)
@@ -19,12 +35,20 @@ public class Cycle implements Iterator {
         else return false;
     }
 
+    /**
+     * Next.
+     * @return
+     */
     @Override
     public Cycle next() {
 
         return next;
     }
 
+    /**
+     * Check - isCycle.
+     * @return
+     */
     public boolean isCycle() {
 
         Cycle fast = this;
@@ -42,6 +66,10 @@ public class Cycle implements Iterator {
         }
     }
 
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
         Cycle first = new Cycle(1);

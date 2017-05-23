@@ -76,6 +76,11 @@ public class Order {
         return id;
     }
 
+    /**
+     * equals
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -87,6 +92,11 @@ public class Order {
         Order order = (Order) o;
         return id == order.id;
     }
+
+    /**
+     * hashCode.
+     * @return
+     */
     @Override
     public int hashCode() {
         return id;

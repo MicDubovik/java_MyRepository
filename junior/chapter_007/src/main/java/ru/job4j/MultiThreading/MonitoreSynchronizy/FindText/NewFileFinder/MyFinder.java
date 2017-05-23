@@ -90,6 +90,9 @@ public class MyFinder implements Runnable {
         }
     }
 
+    /**
+     * run.
+     */
     @Override
     public void run() {
         System.out.println("Start finder");

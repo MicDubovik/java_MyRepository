@@ -10,23 +10,28 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created by Katy on 19.05.2017.
+ * ShowUsers.
  */
 public class ShowUsers extends HttpServlet {
-
+    /**
+     * doGet.
+     *
+     * @param req
+     * @param resp
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        /**
+         * Init db.
+         */
         InitDB initDB = new InitDB();
 
-        try {
-            initDB.getPool().getConnection();
-            initDB.getAllUsers();
-            req.setAttribute("users",initDB.getUserList());
-            initDB.getPool().getConnection().close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-            req.getRequestDispatcher("/WEB-INF/showUsers.jsp").forward(req, resp);
+        initDB.getAllUsers();
+        req.setAttribute("users", initDB.getUserList());
+
+        req.getRequestDispatcher("/WEB-INF/showUsers.jsp").forward(req, resp);
 
     }
 }

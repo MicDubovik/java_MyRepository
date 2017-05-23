@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
+/**
+ * class CallableCounter.
+ */
 public class CallableCounter {
     /**
      * Value.
      */
     private  long value;
-
+    /**
+     * number.
+     */
     private static final int num = 10;
 
     /**
@@ -27,6 +32,10 @@ public class CallableCounter {
         return this.value;
     }
 
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
 

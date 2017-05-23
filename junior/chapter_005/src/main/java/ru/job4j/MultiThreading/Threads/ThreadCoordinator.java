@@ -1,16 +1,30 @@
 package ru.job4j.MultiThreading.Threads;
 
+/**
+ * ThreadCoordinator.
+ */
 public class ThreadCoordinator {
-
+    /**
+     * runCoordinator.
+     * @param print
+     */
     public void runCoordinator(Runnable print) {
         print.run();
     }
 
+    /**
+     * createThread.
+     * @param print
+     * @return
+     */
     public Thread createThread(Runnable print) {
       return   new Thread(print);
     }
 
-
+    /**
+     * joinThread.
+     * @param thread
+     */
     public void joinThread(Thread thread) {
         try {
            thread.join();
@@ -19,6 +33,11 @@ public class ThreadCoordinator {
         }
     }
 
+    /**
+     * main.
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
 
         ThreadCoordinator coordinator = new ThreadCoordinator();
@@ -46,11 +65,6 @@ public class ThreadCoordinator {
             System.out.println("------");
 
         }
-
-
-//        coordinator.createThread(printerC).start();
-//        coordinator.createThread(printerC).join();
-//        System.out.println("------");
 
     }
 }

@@ -5,8 +5,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
+/**
+ * main.
+ */
 public class Main {
-
+    /**
+     * main.
+     * @param args
+     * @throws FileNotFoundException
+     * @throws XMLStreamException
+     */
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
 
 

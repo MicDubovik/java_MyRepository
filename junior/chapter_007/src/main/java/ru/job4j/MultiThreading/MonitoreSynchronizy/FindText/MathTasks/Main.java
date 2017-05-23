@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
+/**
+ * Main.
+ */
 public class Main{
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args) {
 
         MathTasks task1 = new MathTasks(100,5,0);

@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.*;
 
+/**
+ * FindFiles.
+ */
 public class FindFiles {
     /**
      * Text for find in fileName.
@@ -17,9 +20,13 @@ public class FindFiles {
      * Input path.
      */
     File file;
-
+    /**
+     * MyRunable
+     */
     MyRunable myRunable;
-
+    /**
+     * List<File>.
+     */
     List<File> fileList = new LinkedList<>();
 
     /**
@@ -57,6 +64,10 @@ public class FindFiles {
 //
 //
 
+    /**
+     * cutDirectory.
+     * @param file
+     */
     public void cutDirectory(File file)   {
 
         for (File file1 : file.listFiles()) {
@@ -70,7 +81,10 @@ public class FindFiles {
         }
     }
 
-
+    /**
+     * main.
+     * @param args
+     */
     public static void main(String[] args)   {
         // Однопоточный режим.
         String text = "FindFiles";
@@ -78,49 +92,13 @@ public class FindFiles {
         File file = new File("d:/");
 
         FindFiles files = new FindFiles(text, file);
-//        long start = System.currentTimeMillis();
-//        File temp = files.addFiles(file);                        // для одногопотока
-//        System.out.println(System.currentTimeMillis() - start);
-//        System.out.println(temp.getAbsolutePath());              // для одного потока
-
-
 
             files.cutDirectory(file);
-
-
-
-        // Вариант с Runable !!!
-//         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
-//
-//             files.myRunable.getNum() = i;
-//
-//             Thread thread = new Thread(files.myRunable);
-//
-//             thread.start();
-//             try {
-//                 thread.join();
-//
-//             } catch (InterruptedException e) {
-//                 e.printStackTrace();
-//             }
-//         }
-////        System.out.println(System.currentTimeMillis()-start);
-//        if (files.myRunable.getTemp() != null) {
-//            System.out.println(files.myRunable.getTemp());
-//        }
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
         List<Future<File>> list = new ArrayList<Future<File>>();
-//        for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
-//            files.myRunable.setNum(i);
-//
-//            Callable<File> callable = files.myRunable;
-//            Future<File> submit = executor.submit(callable);
-//
-//            list.add(submit);
-//
-//        }
+
 
         List<MyRunable> tasks = new ArrayList<>();
         for (int i = 0; i < files.myRunable.getFindFiles().size(); i++) {
@@ -145,25 +123,6 @@ public class FindFiles {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-//
-//        for (Future<File> future : list) {
-//
-//            try {
-//                if (future.get() != null) {
-//                    System.out.println(future.get());
-//                    return;
-//                } else {
-//                    System.out.println("file not found!!!");
-//                }
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            } catch (ExecutionException e) {
-//                e.printStackTrace();
-//            }
-
-//    }
 
     }
 
