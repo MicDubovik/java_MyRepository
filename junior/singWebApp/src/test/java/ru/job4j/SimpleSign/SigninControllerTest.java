@@ -39,26 +39,17 @@ public class SigninControllerTest {
 
 
         when(request.getRequestDispatcher(anyString())).thenReturn(dispatcher);
-        HttpSession session = request.getSession();
-        controller.doGet(request, response);
 
+        controller.doGet(request, response);
 
         InitDB initDB = new InitDB();
         User user = null;
         boolean flag = false;
-        try {
 
-            initDB.getPool().getConnection();
-            user = initDB.getUserByLogin("mic");
-            flag = initDB.CheckPass(user, "mic", "0101");
+        user = initDB.getUserByLogin("mic");
+        flag = initDB.CheckPass(user, "mic", "0101");
 
-            initDB.getPool().getConnection().close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        assertThat(flag,is(true)) ;
+        assertThat(flag, is(true));
 
 
     }

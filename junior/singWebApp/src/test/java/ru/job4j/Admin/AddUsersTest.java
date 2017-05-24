@@ -8,12 +8,10 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -28,7 +26,7 @@ public class AddUsersTest {
         AddUsers addUsers = new AddUsers();
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
-        RequestDispatcher dispatcher  = mock(RequestDispatcher.class);
+        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(request.getParameter("name")).thenReturn("Gosha");
         when(request.getParameter("login")).thenReturn("goga");
         when(request.getParameter("password")).thenReturn("1111");
@@ -41,16 +39,8 @@ public class AddUsersTest {
         User user = null;
 
         InitDB initDB = new InitDB();
-        try {
 
-            initDB.getPool().getConnection();
-            user = initDB.getUserByLogin("goga");
-            initDB.getPool().getConnection().close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        user = initDB.getUserByLogin("goga");
 
         assertThat(user.getLogin(), is("goga"));
     }

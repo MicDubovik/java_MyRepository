@@ -32,8 +32,6 @@ public class ShowUsersTest {
         HttpServletResponse response = mock(HttpServletResponse.class);
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
 
-//        when(request.getParameter("login")).thenReturn("goga");
-
 
         when(request.getRequestDispatcher(anyString())).thenReturn(dispatcher);
 
@@ -42,16 +40,10 @@ public class ShowUsersTest {
         List<User> userList = new ArrayList<>();
 
         InitDB initDB = new InitDB();
-        try {
 
-            initDB.getPool().getConnection();
             initDB.getAllUsers();
             userList = initDB.getUserList();
-            initDB.getPool().getConnection().close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
         assertThat(userList.get(0).getLogin(), is("apetr"));
     }

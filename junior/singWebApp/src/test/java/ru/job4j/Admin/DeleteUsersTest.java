@@ -39,15 +39,9 @@ public class DeleteUsersTest {
         User user = null;
 
         InitDB initDB = new InitDB();
-        try {
 
-            initDB.getPool().getConnection();
             user = initDB.getUserByLogin("goga");
-            initDB.getPool().getConnection().close();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         String login=null;
         if (user.getLogin()==null){
              login = "empty";

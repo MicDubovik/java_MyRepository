@@ -16,6 +16,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
@@ -27,17 +28,14 @@ public class UpdateUserTest {
         UpdateUser updateUser = new UpdateUser();
         HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
-        RequestDispatcher dispatcher  = mock(RequestDispatcher.class);
-        HttpSession session = mock( HttpSession.class );
+        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+        HttpSession session = mock(HttpSession.class);
 
-
-        when(request.getParameter("name")).thenReturn("Grogory");
-
+//
+        when(request.getParameter("name")).thenReturn("Gosha");
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("login")).thenReturn("goga");
-
         when(request.getRequestDispatcher(anyString())).thenReturn(dispatcher);
-
 
         updateUser.doPost(request, response);
 
@@ -45,19 +43,9 @@ public class UpdateUserTest {
 
         InitDB initDB = new InitDB();
 
-        try {
+        user = initDB.getUserByLogin("goga");
 
-            initDB.getPool().getConnection();
-            initDB.updateUserName("Grogory","goga");
-            user = initDB.getUserByLogin("goga");
-            initDB.getPool().getConnection().close();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-        assertThat(user.getName(), is("Grogory"));
+        assertThat(user.getName(), is("Gosha"));
     }
 
 }

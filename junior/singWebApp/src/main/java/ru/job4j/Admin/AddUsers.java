@@ -38,6 +38,7 @@ public class AddUsers extends HttpServlet {
         String password = req.getParameter("password");
         String email = req.getParameter("email");
 
+
         try {
             this.initDB.getPool().getConnection();
         } catch (SQLException e) {
