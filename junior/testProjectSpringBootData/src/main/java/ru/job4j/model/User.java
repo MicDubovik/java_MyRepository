@@ -28,7 +28,7 @@ public class User implements Serializable {
     private String city;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Role role;
+    private Role role_id;
 
 
     protected User() {
@@ -41,6 +41,7 @@ public class User implements Serializable {
         this.email = email;
         this.country = country;
         this.city = city;
+        this.role_id = role_id;
 
     }
 
