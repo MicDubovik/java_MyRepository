@@ -1,6 +1,6 @@
 package ru.job4j.SQL_JDBC.ParserSQL;
 
-import org.apache.log4j.Logger;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -26,7 +26,7 @@ public class Parse   implements Job {
     /**
      * Logger log4g.
      */
-    static Logger log = Logger.getLogger(Parse.class.getName());
+//    static Logger log = Logger.getLogger(Parse.class.getName());
     /**
      * List for keeping MyFiles.
      */
@@ -134,10 +134,10 @@ public class Parse   implements Job {
         parse.split();
         /**
          * Write String into log.
-         */
-        for (String s : parse.mynewList) {
-            log.warn(s);
-        }
+//         */
+//        for (String s : parse.mynewList) {
+//            log.warn(s);
+//        }
     }
 }
 
