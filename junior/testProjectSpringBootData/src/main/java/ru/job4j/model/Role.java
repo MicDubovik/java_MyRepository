@@ -1,24 +1,20 @@
 package ru.job4j.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "role")
 public class Role implements Serializable{
     @Id()
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "role_id")
     private Long id;
 
     private String role;
-
-    @OneToMany
-    @JoinColumn(name="user_id", updatable = false)
-    private List<User> users = new ArrayList<>();
 
     public Role() {
     }
@@ -26,7 +22,6 @@ public class Role implements Serializable{
     public Role(String role) {
         this.role = role;
     }
-
 
     public Long getId() {
         return id;
@@ -44,13 +39,13 @@ public class Role implements Serializable{
         this.role = role;
     }
 
-    public List<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
 
     @Override
     public String toString() {

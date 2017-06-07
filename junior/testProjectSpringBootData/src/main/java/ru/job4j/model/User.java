@@ -16,7 +16,6 @@ public class User implements Serializable {
     private static final long serialVersionUID = -3009157732242241606L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
     private long id;
 
     private String name;
@@ -28,13 +27,17 @@ public class User implements Serializable {
     private String country;
     private String city;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="role_id", updatable = false)
     private Role role;
 
+    private Long number;
 
-    protected User() {
+
+    public User() {
     }
 
-    public User(String name, String login, String password, String email, String country, String city, Role role) {
+    public User(String name, String login, String password, String email, String country, String city, Role role, Long number) {
         this.name = name;
         this.login = login;
         this.password = password;
@@ -42,18 +45,11 @@ public class User implements Serializable {
         this.country = country;
         this.city = city;
         this.role = role;
-
+        this.number = number;
     }
 
-
-    @ManyToOne
-    @JoinColumn(name="role_id", updatable = false)
-    public Role getRole() {
-        return role;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public User(Long number) {
+        this.number = number;
     }
 
     public long getId() {
@@ -112,13 +108,25 @@ public class User implements Serializable {
         this.city = city;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
     public void setRole(Role role) {
         this.role = role;
     }
 
+    public Long getNumber() {
+        return number;
+    }
+
+    public void setNumber(Long number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
-        return "{" +
+        return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", login='" + login + '\'' +
@@ -126,7 +134,8 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
-                ", role_id=" +
+                ", role=" + role +
+                ", number=" + number +
                 '}';
     }
 }

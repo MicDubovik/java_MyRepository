@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bookModule">
+<head>
+    <meta charset="UTF-8">
+    <title>BooksAPI</title>
+    <script src="../angular.min%20.js"></script>
+    <link href="../bootstrap-theme.css" rel="stylesheet" />
+    <link href="../bootstrap.css" rel="stylesheet" />
+</head >
+ <div>
+     <h3>BooksAPI</h3>
+ </div>
+<body ng-controller="bookCtrl">
+
+    <div class="panel-title">
+        <button class="btn btn-success" ng-click="getBooks()">
+            <h2>Get Books!</h2>
+        </button>
+    </div><br/>
+    <div class="panel-title">
+        <button class="btn btn-success" ng-click="fillShope()">
+            <h2>Fill shop!</h2>
+        </button>
+    </div>
+    <tbody ng-repeat="book in books">
+        <tr>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre}}</td>
+            <td>{{book.rating}}</td>
+        </tr>
+    </tbody>
+    <script>
+        angular.module("bookModule", [])
+            .constant("Url", "http://localhost:8080/api/")
+            .controller("bookCtrl", function ($scope, $http) {
+                $scope.getBooks = function () {
+                    $http.get(Url+"getAll/").then(function (response) {
+                        console.log("Status: " + response.status);
+                        console.log("Type: " + response.headers("content-type"));
+                        console.log("Length: " + response.headers("content-length"));
+                        console.log("Data"+response.data);
+                        $scope.books = response.data;
+                    })
+                };
+                $scope.fillShope = function () {
+                    $http.get(Url+"fill/").then(function (response) {
+                        console.log("Status: " + response.status);
+                        console.log("Type: " + response.headers("content-type"));
+                        console.log("Length: " + response.headers("content-length"));
+                        console.log("Data"+response.data);
+                        $scope.books = response.data;
+                    })
+                }
+            });
+    </script>
+
+</body>
+</html>

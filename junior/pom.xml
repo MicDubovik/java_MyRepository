@@ -27,6 +27,7 @@
         <module>chaptre_008</module>
         <module>singWebApp</module>
         <module>testProjectSpringBootData</module>
+        <module>RestVoting</module>
 
         <!--<module>chapter_012</module>-->
     </modules>
