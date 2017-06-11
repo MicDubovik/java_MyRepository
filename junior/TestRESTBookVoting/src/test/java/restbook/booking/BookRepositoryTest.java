@@ -33,7 +33,7 @@ public class BookRepositoryTest {
 
 
     @Test
-    public void testfindAll() {
+    public void whenfindAllGetFirstBookTitle() {
 
         this.entityManager.persist(new Book("testname", "testauthor", "testgenre"));
         List<Book> books = this.repository.findAll();
@@ -43,7 +43,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void testFindAllByRating() {
+    public void whenFindAllByRatingGetFirstBookTitle() {
 
         Book book = new Book("testname", "testauthor", "testgenre", 99);
         this.entityManager.persist(book);
@@ -54,7 +54,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void testFindAllById() {
+    public void whenFindAllByIdGetAllBookAndGetBookById() {
 
         Book book = new Book("testname", "testauthor", "testgenre", 99);
         this.entityManager.persist(book);
@@ -68,7 +68,7 @@ public class BookRepositoryTest {
     }
 
     @Test
-    public void testDeleteById() {
+    public void whenDeleteByIdGetContainsBooklist() {
 
         Book book = new Book("testname", "testauthor", "testgenre", 99);
         Book book2 = new Book("testname", "testauthor", "testgenre", 100);
