@@ -11,8 +11,10 @@ public class Book implements Serializable{
     private String title;
     private String author;
     private String genre;
+
     @Column(nullable=false)
     private Integer rating=0;
+
 
     public Book() {
 
@@ -31,6 +33,8 @@ public class Book implements Serializable{
         this.genre = genre;
         this.rating = rating;
     }
+
+
 
     public Integer getId() {
         return id;

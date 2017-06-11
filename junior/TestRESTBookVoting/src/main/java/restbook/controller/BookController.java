@@ -52,10 +52,8 @@ public class BookController {
 
         Book book2 = bookRepository.findBookById(id);
 
-        synchronized (book2) {
-            Integer rating = book2.getRating() + 1;
-            bookRepository.setRating(id, rating);
-        }
+
+            bookRepository.setRating(id, book2.getRating()+1);
 
 
         Optional<List<Book>> list = Optional.ofNullable(bookRepository.findAll());
