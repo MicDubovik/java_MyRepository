@@ -34,7 +34,13 @@ public class Book implements Serializable{
         this.rating = rating;
     }
 
-
+    public Book(Integer id ,String title, String author, String genre, Integer rating) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.rating = rating;
+        this.id = id;
+    }
 
     public Integer getId() {
         return id;

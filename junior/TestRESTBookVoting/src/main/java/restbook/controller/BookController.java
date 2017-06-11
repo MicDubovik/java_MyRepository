@@ -1,8 +1,10 @@
 package restbook.controller;
 
-import org.jsondoc.core.annotation.ApiPathParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import restbook.model.Book;
 import restbook.repository.BookRepository;
 
@@ -27,33 +29,33 @@ public class BookController {
     }
 
     @RequestMapping(value = "/rating/{rating}", method = RequestMethod.GET)
-    public List<Book> getByRating(@ApiPathParam(name = "rating") @PathVariable Integer rating) {
+    public List<Book> getByRating(@RequestBody Integer rating) {
         return bookRepository.findAllByRating(rating);
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public List<Book> create(@RequestBody Book book ) {
-        Book book1 = book;
+
         bookRepository.save(book);
 
         return bookRepository.findAll();
     }
 
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-    public List<Book> remove(@ApiPathParam(name = "id") @PathVariable Integer id) {
+    public List<Book> remove(@RequestBody Integer id) {
         bookRepository.deleteBookById(id);
 
         return bookRepository.findAll();
     }
 
     @RequestMapping(value = "/addvote/{id}", method = RequestMethod.PUT)
-    public Optional<List<Book>> addVoice(@ApiPathParam(name = "id") @PathVariable Integer id) {
+    public Optional<List<Book>> addVoice(@RequestBody  Integer id) {
 
 
         Book book2 = bookRepository.findBookById(id);
 
 
-            bookRepository.setRating(id, book2.getRating()+1);
+            bookRepository.setRating(id, book2.getRating());
 
 
         Optional<List<Book>> list = Optional.ofNullable(bookRepository.findAll());

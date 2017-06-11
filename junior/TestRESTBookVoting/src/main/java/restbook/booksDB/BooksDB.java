@@ -1,4 +1,4 @@
-package restbook.BooksDB;
+package restbook.booksDB;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
