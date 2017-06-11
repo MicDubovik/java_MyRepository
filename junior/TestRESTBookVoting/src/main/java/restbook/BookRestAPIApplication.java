@@ -1,12 +1,14 @@
-package ru.job4j;
+package restbook;
 
+import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringJpaPostgreSqlApplication {
+@EnableJSONDoc
+public class BookRestAPIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringJpaPostgreSqlApplication.class, args);
+		SpringApplication.run(BookRestAPIApplication.class, args);
 	}
 }

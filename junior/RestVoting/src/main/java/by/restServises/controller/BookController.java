@@ -4,21 +4,21 @@ package by.restServises.controller;
 import by.restServises.model.Book;
 import by.restServises.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class BookController  {
     @Autowired
     BookRepository bookRepository;
 
     @RequestMapping("/first")
-    public String show(){
-//       ModelAndView view = new ModelAndView("public/API/views/home.html");
-
-       return "templates/";
+    public String show(Model model){
+//        ModelAndView view = new ModelAndView("API/views/home.html");
+        model.addAttribute("name","Michyy");
+       return "home";
     }
 
     @RequestMapping("/fill")
